@@ -16,7 +16,7 @@ title_bar() {
 	echo "╚═══════════════════════════════════════════════════╝"
 }
 title_bar
-	read -p "YOU'LL NEED TO BE ABLE SURE ENABLE 32-BIT LIBRARIES[ENTER], to Abort{^C}: "
+	read -p "YOU'LL NEED TO BE ABLE SURE 32-BIT LIBRARIES ENABLED[ENTER], to Abort{^C}: "
 	sudo dpkg --add-architecture i386
 amd() {
 	sudo add-apt-repository ppa:kisak/kisak-mesa -y
