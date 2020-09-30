@@ -7,7 +7,7 @@ echo "║                                      (for a while)║"
 echo "║                                                   ║"
 echo "╚═══════════════════════════════════════════════════╝"
 echo ""
-read -p "To continue press [ENTER], or Ctrl-C to exit"
+read -p "To continue press [ENTER], or ^C to Abort."
 
 title_bar() {
 	clear
