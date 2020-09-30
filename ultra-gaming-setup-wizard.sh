@@ -2,7 +2,7 @@
 
 clear
 echo "╔═══════════════════════════════════════════════════╗"
-echo "║ This script only works on Debian based distros. ╗ ║"
+echo "║ This script only works on Ubuntu based distros. ╗ ║"
 echo "║                                      (for a while)║"
 echo "║                                                   ║"
 echo "╚═══════════════════════════════════════════════════╝"
