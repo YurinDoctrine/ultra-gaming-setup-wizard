@@ -17,7 +17,7 @@ title_bar() {
 }
 title_bar
 	read -p "YOU'LL NEED TO BE ABLE SURE 32-BIT LIBRARIES ENABLED[ENTER], to Abort{^C}: "
-	sudo dpkg --add-architecture i386
+
 amd() {
 	sudo add-apt-repository ppa:kisak/kisak-mesa -y
 	sudo apt update
@@ -36,12 +36,12 @@ prompt_0() {
 	echo "Choose what compatible which is in below with your hardware."
 	echo "1. : AMD"
 	echo "2. : NVIDIA"
-	read -p ">: " nock 
-	if [[ "$nock" == "1" ]]; then
+	read -p ">: " noc
+	if [[ "$noc" == "1" ]]; then
 	printf 'INSTALLING...' && clear
 	amd
 	fi
-	if [[ "$nock" == "2" ]]; then
+	if [[ "$noc" == "2" ]]; then
 	printf 'INSTALLING...' && clear
 	nvidia
 	fi
@@ -49,10 +49,17 @@ prompt_0() {
 }
 xanmod() {
 	echo 'deb http://deb.xanmod.org releases main' | sudo tee /etc/apt/sources.list.d/xanmod-kernel.list && wget -qO - https://dl.xanmod.org/gpg.key | sudo apt-key add -
-	sudo apt update && sudo apt install linux-xanmod intel-microcode iucode-tool amd64-microcode -y
+	sudo apt update && sudo apt install linux-xanmod-rt intel-microcode iucode-tool amd64-microcode -y
 	echo 'net.core.default_qdisc = fq_pie' | sudo tee /etc/sysctl.d/90-override.conf
 	clear
-	read -p "You better reboot right now [ENTER], or ^C to Abort." && sudo reboot
+	read -p "You better reboot right now [r], or reboot (l)ater." nock
+	if [[ "$nock" == "r" ]]; then
+	sudo reboot
+	fi
+	if [[ "$nock" == "l" ]]; then
+	clear
+	fi
+
 }
 
 liquarix() {
@@ -61,10 +68,6 @@ liquarix() {
 	clear
 }
 
-skip_0() {
-	clear
-	
-}
 multiarch() {
         sudo dpkg --add-architecture i386
         prompt_0
@@ -152,7 +155,7 @@ prompt_5() {
         sleep 2s
         printf "MY THANKS <3... IF YOU'RE HAVING AN ISSUE(HOPE NOT) JUST COMMIT YOUR ISSUE RIGHT IN MY GITHUB.\n"
         sleep 1s
-        printf "THERE YOU GO:' www.github.com/YurinDoctrine/ultra-gaming-setup-wizard/issues/ '\n"
+        printf "THERE YOU GO:' http://www.github.com/YurinDoctrine/ultra-gaming-setup-wizard/issues/ '\n"
 	fi
 	if [[ "$nocklbye" == "n" ]]; then
 	clear
@@ -160,7 +163,7 @@ prompt_5() {
 	sleep 2s
 	printf "MY THANKS <3... IF YOU'RE HAVING AN ISSUE(HOPE NOT) JUST COMMIT YOUR ISSUE RIGHT IN MY GITHUB.\n"
 	sleep 1s
-	printf "THERE YOU GO:' www.github.com/YurinDoctrine/ultra-gaming-setup-wizard/issues/ '\n"
+	printf "THERE YOU GO:' http://www.github.com/YurinDoctrine/ultra-gaming-setup-wizard/issues/ '\n"
 	fi
 }
 
