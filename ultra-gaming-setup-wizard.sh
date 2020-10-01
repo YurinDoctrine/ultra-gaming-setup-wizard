@@ -136,7 +136,11 @@ prompt_3
 utulities() {
 	sudo add-apt-repository ppa:linrunner/tlp
 	sudo apt update
-	sudo apt install gamemode earlyoom tlp tlp-rdw amd64-microcode iucode-tool intel-microcode -y
+	sudo apt install gamemode earlyoom tlp tlp-rdw zram-tools amd64-microcode iucode-tool intel-microcode -y
+	sudo tlp start
+	sudo sysctl -w vm.swappiness=1
+	echo 'vm.swappiness=1'| sudo tee /etc/sysctl.d/local.conf
+        echo 'vm.vfs_cache_pressure=50'| sudo tee /etc/sysctl.d/local.conf
 	clear
 
 }
