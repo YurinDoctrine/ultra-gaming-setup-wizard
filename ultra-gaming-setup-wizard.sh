@@ -2,21 +2,30 @@
 
 clear
 echo "╔═══════════════════════════════════════════════════╗"
-echo "║ This script only works on Ubuntu based distros. ╗ ║"
+echo "║ This script only works on Ubuntu based distros ═╗ ║"
 echo "║                                      (for a while)║"
 echo "║                                                   ║"
 echo "╚═══════════════════════════════════════════════════╝"
 echo ""
-read -p "To continue press [ENTER], or ^C to Abort."
+read -p "To continue press [ENTER], ^C to Abort."
 
 title_bar() {
 	clear
 	echo "╔═══════════════════════════════════════════════════╗"
 	echo "║YURIN'S | ultimate-gaming-setup-wizard | Greetings!║"
 	echo "╚═══════════════════════════════════════════════════╝"
+
 }
+
 title_bar
-	read -p "YOU'LL NEED TO BE ABLE SURE 32-BIT LIBRARIES ENABLED[ENTER], to Abort{^C}: "
+
+multiarch() {
+        sudo dpkg --add-architecture i386
+        prompt_0
+
+}
+	read -p "YOU'LL NEED TO BE ABLE SURE 32-BIT LIBRARIES ENABLED[ENTER], ^C to Abort: "
+multiarch
 
 amd() {
 	sudo add-apt-repository ppa:kisak/kisak-mesa -y
@@ -24,6 +33,7 @@ amd() {
 	sudo apt install libgl1-mesa-dri:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386 -y
 	echo 'RADV_PERFTEST=aco' | sudo tee /etc/environment
 	clear
+
 }
 
 nvidia() {
@@ -31,7 +41,9 @@ nvidia() {
 	sudo apt update
 	sudo apt install nvidia-driver-450 libnvidia-gl-450 libnvidia-gl-450:i386 libvulkan1 libvulkan1:i386 -y
 	clear
+
 }
+
 prompt_0() {
 	echo "Choose what compatible which is in below with your hardware."
 	echo "1. : AMD"
@@ -49,7 +61,7 @@ prompt_0() {
 }
 xanmod() {
 	echo 'deb http://deb.xanmod.org releases main' | sudo tee /etc/apt/sources.list.d/xanmod-kernel.list && wget -qO - https://dl.xanmod.org/gpg.key | sudo apt-key add -
-	sudo apt update && sudo apt install linux-xanmod-rt intel-microcode iucode-tool amd64-microcode -y
+	sudo apt update && sudo apt install --install-recommends linux-xanmod-rt intel-microcode iucode-tool amd64-microcode -y
 	echo 'net.core.default_qdisc = fq_pie' | sudo tee /etc/sysctl.d/90-override.conf
 	clear
 	read -p "You better reboot right now [r], or reboot (l)ater." nock
@@ -64,15 +76,11 @@ xanmod() {
 
 liquarix() {
 	sudo add-apt-repository ppa:damentz/liquorix && sudo apt-get update
-	sudo apt-get install linux-image-liquorix-amd64 linux-headers-liquorix-amd64
+	sudo apt-get install --install-recommends linux-image-liquorix-amd64 linux-headers-liquorix-amd64
 	clear
+
 }
 
-multiarch() {
-        sudo dpkg --add-architecture i386
-        prompt_0
-}
-multiarch
 prompt_1() {
 	echo "You might want to customize your current(generic) kernel as well... here is your options(XANMOD is currently recommended) or you might (s)kip this step simply..."
 	echo "1. : XANMOD"
@@ -91,8 +99,8 @@ prompt_1() {
 	fi
 
 }
-prompt_1
 
+prompt_1
 prompt_2() {
 	read -p "Now you must install WINE and Dependancies either[ENTER]>: "
 	wget -nc https://dl.winehq.org/wine-builds/winehq.key
@@ -108,7 +116,6 @@ prompt_2() {
 }
 
 prompt_2
-
 prompt_3() {
 	ulimit -Hn
 	echo "If this above returns more than 500,000 than ESYNC IS ENABLED![ (s)kip this step ] If not[y], than dig in!"
@@ -124,13 +131,16 @@ prompt_3() {
         fi
 
 }
+
 prompt_3
 utulities() {
 	sudo add-apt-repository ppa:linrunner/tlp
 	sudo apt update
-	sudo apt install --install-recommends gamemode earlyoom tlp tlp-rdw amd64-microcode iucode-tool intel-microcode -y
+	sudo apt install gamemode earlyoom tlp tlp-rdw amd64-microcode iucode-tool intel-microcode -y
 	clear
+
 }
+
 prompt_4() {
 	echo "Do you want install also Utility wares? gamemode, earlyoom etc.(AS I PERSONALLY RECOMMEND THAT[y]) (s)kip this step"
 	read -p ">: " nocklby
@@ -144,9 +154,8 @@ prompt_4() {
 }
 
 prompt_4
-
 prompt_5() {
-	echo "Okay here is final step: Do you want to install steam? [y]/[n(later)]"
+	echo "Okay here is final step: Do you want to install steam? [y]/(l)ater"
 	read -p ">: " nocklbye
 	if [[ "$nocklbye" == "y" ]]; then
 	sudo apt install --install-recommends steam-installer -y
@@ -157,7 +166,7 @@ prompt_5() {
         sleep 1s
         printf "THERE YOU GO:' http://www.github.com/YurinDoctrine/ultra-gaming-setup-wizard/issues/ '\n"
 	fi
-	if [[ "$nocklbye" == "n" ]]; then
+	if [[ "$nocklbye" == "l" ]]; then
 	clear
 	printf "YOU ARE ALL SET TO GO!\n"
 	sleep 2s
