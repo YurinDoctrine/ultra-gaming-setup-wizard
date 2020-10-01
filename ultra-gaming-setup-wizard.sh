@@ -140,7 +140,7 @@ utulities() {
 	sudo tlp start
 	sudo sysctl -w vm.swappiness=1
 	echo 'vm.swappiness=1'| sudo tee /etc/sysctl.d/local.conf
-        echo 'vm.vfs_cache_pressure=50'| sudo tee /etc/sysctl.d/local.conf
+	echo 'vm.vfs_cache_pressure=50'| sudo tee /etc/sysctl.d/local.conf
 	clear
 
 }
