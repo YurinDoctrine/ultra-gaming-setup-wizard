@@ -16,7 +16,6 @@ title_bar() {
 	echo "╚═══════════════════════════════════════════════════╝"
 
 }
-
 title_bar
 
 multiarch() {
@@ -24,7 +23,8 @@ multiarch() {
         prompt_0
 
 }
-	read -p "YOU'LL NEED TO BE ABLE SURE 32-BIT LIBRARIES ENABLED[ENTER], ^C to Abort: "
+read -p "YOU'LL NEED TO BE ABLE SURE 32-BIT LIBRARIES ENABLED[ENTER], ^C to Abort: "
+
 multiarch
 
 amd() {
@@ -35,7 +35,6 @@ amd() {
 	clear
 
 }
-
 nvidia() {
 	sudo add-apt-repository ppa:graphics-drivers/ppa -y
 	sudo apt update
@@ -43,7 +42,6 @@ nvidia() {
 	clear
 
 }
-
 prompt_0() {
 	echo "Choose what compatible which is in below with your hardware."
 	echo "1. : AMD"
@@ -73,14 +71,12 @@ xanmod() {
 	fi
 
 }
-
 liquarix() {
 	sudo add-apt-repository ppa:damentz/liquorix && sudo apt-get update
 	sudo apt-get install --install-recommends linux-image-liquorix-amd64 linux-headers-liquorix-amd64
 	clear
 
 }
-
 prompt_1() {
 	echo "You might want to customize your current(generic) kernel as well... here is your options(XANMOD is currently recommended) or you might (s)kip this step simply..."
 	echo "1. : XANMOD"
@@ -99,7 +95,6 @@ prompt_1() {
 	fi
 
 }
-
 prompt_1
 prompt_2() {
 	read -p "Now you must install WINE and Dependancies either[ENTER]>: "
@@ -114,7 +109,6 @@ prompt_2() {
 	clear
 
 }
-
 prompt_2
 prompt_3() {
 	ulimit -Hn
@@ -131,7 +125,6 @@ prompt_3() {
         fi
 
 }
-
 prompt_3
 utulities() {
 	sudo add-apt-repository ppa:linrunner/tlp
@@ -145,7 +138,6 @@ utulities() {
 	clear
 
 }
-
 prompt_4() {
 	echo "Do you want install also Utility wares? gamemode, earlyoom etc.(AS I PERSONALLY RECOMMEND THAT[y]) (s)kip this step"
 	read -p ">: " nocklby
@@ -157,7 +149,6 @@ prompt_4() {
 	fi
 
 }
-
 prompt_4
 prompt_5() {
 	echo "Okay here is final step: Do you want to install steam? [y]/(l)ater"
@@ -180,5 +171,4 @@ prompt_5() {
 	printf "THERE YOU GO:' http://www.github.com/YurinDoctrine/ultra-gaming-setup-wizard/issues/ '\n"
 	fi
 }
-
 prompt_5
