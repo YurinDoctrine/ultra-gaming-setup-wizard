@@ -20,7 +20,6 @@ title_bar
 
 multiarch() {
         sudo dpkg --add-architecture i386
-        prompt_0
 
 }
 read -p "YOU'LL NEED TO BE ABLE SURE 32-BIT LIBRARIES ENABLED[ENTER], ^C to Abort: "
@@ -57,12 +56,13 @@ prompt_0() {
 	fi
 
 }
+prompt_0
 xanmod() {
 	echo 'deb http://deb.xanmod.org releases main' | sudo tee /etc/apt/sources.list.d/xanmod-kernel.list && wget -qO - https://dl.xanmod.org/gpg.key | sudo apt-key add -
 	sudo apt update && sudo apt install --install-recommends linux-xanmod-rt intel-microcode iucode-tool amd64-microcode -y
 	echo 'net.core.default_qdisc = fq_pie' | sudo tee /etc/sysctl.d/90-override.conf
 	clear
-	read -p "You better reboot right now [r], or reboot (l)ater." nock
+	read -p "You better reboot right now [r], or reboot (l)ater: " nock
 	if [[ "$nock" == "r" ]]; then
 	sudo reboot
 	fi
