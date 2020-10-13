@@ -129,12 +129,13 @@ prompt_3
 utulities() {
 	sudo add-apt-repository ppa:linrunner/tlp
 	sudo apt update
-	sudo apt install gamemode earlyoom tlp tlp-rdw zram-tools amd64-microcode iucode-tool intel-microcode microcode.ctl -y
+	sudo apt install gamemode earlyoom preload tlp tlp-rdw zram-tools amd64-microcode iucode-tool intel-microcode microcode.ctl -y
 	sudo apt --purge remove gstreamer1.0-fluendo-mp3 deja-dup shotwell whoopsie whoopsie-preferences -y
 	sudo tlp start
 	sudo sysctl -w vm.swappiness=1
 	echo 'vm.swappiness=1'| sudo tee /etc/sysctl.d/local.conf
 	echo 'vm.vfs_cache_pressure=50'| sudo tee /etc/sysctl.d/local.conf
+	echo 'Acquire::Languages "none";'| sudo tee /etc/apt/apt.conf.d/00aptitude
 	clear
 
 }
