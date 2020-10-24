@@ -19,7 +19,7 @@ title_bar() {
 title_bar
 
 multiarch() {
-        sudo dpkg --add-architecture i386
+	sudo dpkg --add-architecture i386
 
 }
 read -p "YOU'LL NEED TO BE ABLE SURE 32-BIT LIBRARIES ENABLED[ENTER], ^C to Abort: "
@@ -47,12 +47,12 @@ prompt_0() {
 	echo "2. : NVIDIA"
 	read -p ">: " noc
 	if [[ "$noc" == "1" ]]; then
-	printf 'INSTALLING...' && clear
-	amd
+		printf 'INSTALLING...' && clear
+		amd
 	fi
 	if [[ "$noc" == "2" ]]; then
-	printf 'INSTALLING...' && clear
-	nvidia
+		printf 'INSTALLING...' && clear
+		nvidia
 	fi
 
 }
@@ -64,10 +64,10 @@ xanmod() {
 	clear
 	read -p "You better reboot right now [r], or reboot (l)ater: " nock
 	if [[ "$nock" == "r" ]]; then
-	sudo reboot
+		sudo reboot
 	fi
 	if [[ "$nock" == "l" ]]; then
-	clear
+		clear
 	fi
 
 }
@@ -81,17 +81,17 @@ prompt_1() {
 	echo "You might want to customize your current(generic) kernel as well... here is your options(XANMOD is currently recommended) or you might (s)kip this step simply..."
 	echo "1. : XANMOD"
 	echo "2. : LIQUARIX"
-	read -p ">: " nockl 
+	read -p ">: " nockl
 	if [[ "$nockl" == "1" ]]; then
-	printf 'INSTALLING...' && clear
-	xanmod
+		printf 'INSTALLING...' && clear
+		xanmod
 	fi
 	if [[ "$nockl" == "2" ]]; then
-	printf 'INSTALLING...' && clear
-	liquarix
+		printf 'INSTALLING...' && clear
+		liquarix
 	fi
 	if [[ "$nockl" == "s" ]]; then
-	printf 'SKIPPING...' && clear
+		printf 'SKIPPING...' && clear
 	fi
 
 }
@@ -115,14 +115,14 @@ prompt_3() {
 	echo "If this above returns more than 500,000 than ESYNC IS ENABLED![ (s)kip this step ] If not[y], than dig in!"
 	read -p ">: " nocklb
 	if [[ "$nocklb" == "y" ]]; then
-        echo 'DefaultLimitNOFILE=524288' | sudo tee /etc/systemd/system.conf && echo 'DefaultLimitNOFILE=524288' | sudo tee /etc/systemd/user.conf
-	echo $USER 'hard nofile 524288'| sudo tee /etc/security/limits.conf
-	sleep 1s
-	printf "DONE."
-        fi
-        if [[ "$nocklb" == "s" ]]; then
-        printf 'SKIPPING...' && clear
-        fi
+		echo 'DefaultLimitNOFILE=524288' | sudo tee /etc/systemd/system.conf && echo 'DefaultLimitNOFILE=524288' | sudo tee /etc/systemd/user.conf
+		echo $USER 'hard nofile 524288' | sudo tee /etc/security/limits.conf
+		sleep 1s
+		printf "DONE."
+	fi
+	if [[ "$nocklb" == "s" ]]; then
+		printf 'SKIPPING...' && clear
+	fi
 
 }
 prompt_3
@@ -133,9 +133,9 @@ utulities() {
 	sudo apt --purge remove gstreamer1.0-fluendo-mp3 deja-dup shotwell whoopsie whoopsie-preferences -y
 	sudo tlp start
 	sudo sysctl -w vm.swappiness=1
-	echo 'vm.swappiness=1'| sudo tee /etc/sysctl.d/local.conf
-	echo 'vm.vfs_cache_pressure=50'| sudo tee /etc/sysctl.d/local.conf
-	echo 'Acquire::Languages "none";'| sudo tee /etc/apt/apt.conf.d/00aptitude
+	echo 'vm.swappiness=1' | sudo tee /etc/sysctl.d/local.conf
+	echo 'vm.vfs_cache_pressure=50' | sudo tee /etc/sysctl.d/local.conf
+	echo 'Acquire::Languages "none";' | sudo tee /etc/apt/apt.conf.d/00aptitude
 	clear
 
 }
@@ -143,10 +143,10 @@ prompt_4() {
 	echo "Do you want install also Utility wares? gamemode, earlyoom etc.(AS I PERSONALLY RECOMMEND THAT[y]) (s)kip this step"
 	read -p ">: " nocklby
 	if [[ "$nocklby" == "y" ]]; then
-	utulities
+		utulities
 	fi
 	if [[ "$nocklby" == "s" ]]; then
-	clear
+		clear
 	fi
 
 }
@@ -155,21 +155,21 @@ prompt_5() {
 	echo "Okay here is final step: Do you want to install steam? [y]/(l)ater"
 	read -p ">: " nocklbye
 	if [[ "$nocklbye" == "y" ]]; then
-	sudo apt install --install-recommends steam-installer -y
-	clear
-	printf "YOU ARE ALL SET TO GO!\n"
-        sleep 2s
-        printf "MY THANKS <3... IF YOU'RE HAVING AN ISSUE(HOPE NOT) JUST COMMIT YOUR ISSUE RIGHT IN MY GITHUB.\n"
-        sleep 1s
-        printf "THERE YOU GO:' http://www.github.com/YurinDoctrine/ultra-gaming-setup-wizard/issues/ '\n"
+		sudo apt install --install-recommends steam-installer -y
+		clear
+		printf "YOU ARE ALL SET TO GO!\n"
+		sleep 2s
+		printf "MY THANKS <3... IF YOU'RE HAVING AN ISSUE(HOPE NOT) JUST COMMIT YOUR ISSUE RIGHT IN MY GITHUB.\n"
+		sleep 1s
+		printf "THERE YOU GO:' http://www.github.com/YurinDoctrine/ultra-gaming-setup-wizard/issues/ '\n"
 	fi
 	if [[ "$nocklbye" == "l" ]]; then
-	clear
-	printf "YOU ARE ALL SET TO GO!\n"
-	sleep 2s
-	printf "MY THANKS <3... IF YOU'RE HAVING AN ISSUE(HOPE NOT) JUST COMMIT YOUR ISSUE RIGHT IN MY GITHUB.\n"
-	sleep 1s
-	printf "THERE YOU GO:' http://www.github.com/YurinDoctrine/ultra-gaming-setup-wizard/issues/ '\n"
+		clear
+		printf "YOU ARE ALL SET TO GO!\n"
+		sleep 2s
+		printf "MY THANKS <3... IF YOU'RE HAVING AN ISSUE(HOPE NOT) JUST COMMIT YOUR ISSUE RIGHT IN MY GITHUB.\n"
+		sleep 1s
+		printf "THERE YOU GO:' http://www.github.com/YurinDoctrine/ultra-gaming-setup-wizard/issues/ '\n"
 	fi
 }
 prompt_5
