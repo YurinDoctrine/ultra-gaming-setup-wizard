@@ -97,7 +97,7 @@ prompt_1() {
 }
 prompt_1
 prompt_2() {
-	read -p "Now you must install WINE and Dependancies either[ENTER]>: "
+	read -p "Now you must install WINE and Dependencies either[ENTER]>: "
 	wget -nc https://dl.winehq.org/wine-builds/winehq.key
 	sudo apt-key add winehq.key
 	sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main' -y
