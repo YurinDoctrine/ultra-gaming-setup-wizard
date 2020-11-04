@@ -2,8 +2,8 @@
 
 clear
 echo "╔═══════════════════════════════════════════════════╗"
-echo "║ This script only works on Ubuntu based distros ═╗ ║"
-echo "║                                      (for a while)║"
+echo "║This script only works on Arch&Ubuntu based distros║"
+echo "║                                                   ║"
 echo "║                                                   ║"
 echo "╚═══════════════════════════════════════════════════╝"
 echo ""
@@ -19,27 +19,70 @@ title_bar() {
 title_bar
 
 multiarch() {
-	sudo dpkg --add-architecture i386
-
+which apt >/dev/null 2>&1
+if [ $? -eq 0 ]
+	then
+		sudo dpkg --add-architecture i386
+		sudo apt update
+		sudo apt install ubuntu-restricted-extras -y
+fi
+which pacman >/dev/null 2>&1
+if [ $? -eq 0 ]
+	then
+		_has_multilib=`grep -n "\[multilib\]" /etc/pacman.conf | cut -f1 -d:`
+		if [[ -z $_has_multilib ]]; then
+        		echo -e "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacm>
+        		echo -e '\nMultilib repository successfully added into pacman.conf file'
+			sudo pacman -Syyu
+		else
+    			sed -i "${_has_multilib}s/^#//" /etc/pacman.conf
+        		_has_multilib=$(( ${_has_multilib} + 1 ))
+        		sed -i "${_has_multilib}s/^#//" /etc/pacman.conf
+			sudo pacman -Syyu
+		fi
+fi
 }
 read -p "YOU'LL NEED TO BE ABLE SURE 32-BIT LIBRARIES ENABLED[ENTER], ^C to Abort: "
 
 multiarch
 
 amd() {
-	sudo add-apt-repository ppa:kisak/kisak-mesa -y
-	sudo apt update
-	sudo apt install libgl1-mesa-dri:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386 -y
-	echo 'RADV_PERFTEST=aco' | sudo tee /etc/environment
-	clear
-
+which apt >/dev/null 2>&1
+if [ $? -eq 0 ]
+        then
+		sudo add-apt-repository ppa:kisak/kisak-mesa -y
+		sudo apt update
+		sudo apt install libgl1-mesa-dri:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386 -y
+		echo 'RADV_PERFTEST=aco' | sudo tee /etc/environment
+		clear
+fi
+which pacman >/dev/null 2>&1
+if [ $? -eq 0 ]
+	then
+		sudo pacman -S lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader xf86-video-amdgpu vulkan-radeon -y
+		git clone https://aur.archlinux.org/catalyst.git
+		cd catalyst
+		makepkg -si
+                echo 'RADV_PERFTEST=aco' | sudo tee /etc/environment
+                cd
+		clear
+fi
 }
 nvidia() {
-	sudo add-apt-repository ppa:graphics-drivers/ppa -y
-	sudo apt update
-	sudo apt install nvidia-driver-450 libnvidia-gl-450 libnvidia-gl-450:i386 libvulkan1 libvulkan1:i386 -y
-	clear
-
+which apt >/dev/null 2>&1
+if [ $? -eq 0 ]
+        then
+		sudo add-apt-repository ppa:graphics-drivers/ppa -y
+		sudo apt update
+		sudo apt install nvidia-driver-450 libnvidia-gl-450 libnvidia-gl-450:i386 libvulkan1 libvulkan1:i386 -y
+		clear
+fi
+which pacman >/dev/null 2>&1
+if [ $? -eq 0 ]
+        then
+		sudo pacman -S nvidia opencl-nvidia lib32-opencl-nvidia lib32-nvidia-utils
+		clear
+fi
 }
 prompt_0() {
 	echo "Choose what compatible which is in below with your hardware."
@@ -58,29 +101,60 @@ prompt_0() {
 }
 prompt_0
 xanmod() {
-	echo 'deb http://deb.xanmod.org releases main' | sudo tee /etc/apt/sources.list.d/xanmod-kernel.list && wget -qO - https://dl.xanmod.org/gpg.key | sudo apt-key add -
-	sudo apt update && sudo apt install --install-recommends linux-xanmod-rt intel-microcode iucode-tool amd64-microcode -y
-	echo 'net.core.default_qdisc = fq_pie' | sudo tee /etc/sysctl.d/90-override.conf
-	clear
-	read -p "You better reboot right now [r], or reboot (l)ater: " nock
-	if [[ "$nock" == "r" ]]; then
-		sudo reboot
-	fi
-	if [[ "$nock" == "l" ]]; then
+which apt >/dev/null 2>&1
+if [ $? -eq 0 ]
+        then
+		echo 'deb http://deb.xanmod.org releases main' | sudo tee /etc/apt/sources.list.d/xanmod-kernel.list && wget -qO - https://dl.xanmod.org/gpg.key | sudo apt-key add -
+		sudo apt update && sudo apt install --install-recommends linux-xanmod-rt intel-microcode iucode-tool amd64-microcode -y
+		echo 'net.core.default_qdisc = fq_pie' | sudo tee /etc/sysctl.d/90-override.conf
 		clear
-	fi
+		read -p "You better reboot right now [r], or reboot (l)ater: " nock
+		if [[ "$nock" == "r" ]]; then
+			sudo reboot
+		fi
+		if [[ "$nock" == "l" ]]; then
+			clear
+		fi
 
+fi
+which pacman >/dev/null 2>&1
+if [ $? -eq 0 ]
+        then
+		sudo pacman -S --needed yay -y
+		yay -S linux-xanmod linux-xanmod-headers -y
+		echo 'net.core.default_qdisc = fq_pie' | sudo tee /etc/sysctl.d>
+                clear
+                read -p "You better reboot right now [r], or reboot (l)ater: " >
+                if [[ "$nock" == "r" ]]; then
+                        sudo reboot
+                fi
+                if [[ "$nock" == "l" ]]; then
+                        clear
+                fi
+fi
 }
 liquarix() {
-	sudo add-apt-repository ppa:damentz/liquorix && sudo apt-get update
-	sudo apt-get install --install-recommends linux-image-liquorix-amd64 linux-headers-liquorix-amd64
-	clear
-
+which apt >/dev/null 2>&1
+if [ $? -eq 0 ]
+        then
+		sudo add-apt-repository ppa:damentz/liquorix && sudo apt-get update
+		sudo apt-get install --install-recommends linux-image-liquorix-amd64 linux-headers-liquorix-amd64
+		clear
+fi
+}
+zen() {
+which pacman >/dev/null 2>&1
+if [ $? -eq 0 ]
+        then
+		yay -S --needed --noconfirm linux-zen linux-zen-headers
+		clear
+fi
 }
 prompt_1() {
-	echo "You might want to customize your current(generic) kernel as well... here is your options(XANMOD is currently recommended) or you might (s)kip this step simply..."
-	echo "1. : XANMOD"
-	echo "2. : LIQUARIX"
+	echo "You might want to customize your regular kernel as well, here is a couple of kernels(XANMOD is currently recommended) or you might (s)kip this step simply..."
+	echo "1. : XANMOD(BOTH)"
+	echo "2. : LIQUARIX(UBUNTUONLY)"
+	echo "3. : ZEN(ARCHONLY)"
 	read -p ">: " nockl
 	if [[ "$nockl" == "1" ]]; then
 		printf 'INSTALLING...' && clear
@@ -90,6 +164,10 @@ prompt_1() {
 		printf 'INSTALLING...' && clear
 		liquarix
 	fi
+        if [[ "$nockl" == "3" ]]; then
+                printf 'INSTALLING...' && clear
+                zen
+        fi
 	if [[ "$nockl" == "s" ]]; then
 		printf 'SKIPPING...' && clear
 	fi
@@ -97,22 +175,38 @@ prompt_1() {
 }
 prompt_1
 prompt_2() {
-	read -p "Now you must install WINE and Dependencies either[ENTER]>: "
-	wget -nc https://dl.winehq.org/wine-builds/winehq.key
-	sudo apt-key add winehq.key
-	sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main' -y
-	sudo add-apt-repository ppa:lutris-team/lutris -y
-	sudo apt update
-	sudo apt-get install --install-recommends winehq-staging -y
-	sudo apt-get install libgnutls30:i386 libldap-2.4-2:i386 libgpg-error0:i386 libxml2:i386 libasound2-plugins:i386 libsdl2-2.0-0:i386 libfreetype6:i386 libdbus-1-3:i386 libsqlite3-0:i386 -y
-	sudo apt-get install --install-recommends dxvk lutris ubuntu-restricted-extras -y
-	clear
-
+echo "Now you must install WINE and Dependencies either.[ENTER]"
+read -p ">: "
+which apt >/dev/null 2>&1
+if [ $? -eq 0 ]
+        then
+		wget -nc https://dl.winehq.org/wine-builds/winehq.key
+		sudo apt-key add winehq.key
+		sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main' -y
+		sudo add-apt-repository ppa:lutris-team/lutris -y
+		sudo apt update
+		sudo apt-get install --install-recommends winehq-staging -y
+		sudo apt-get install libgnutls30:i386 libldap-2.4-2:i386 libgpg-error0:i386 libxml2:i386 libasound2-plugins:i386 libsdl2-2.0-0:i386 libfreetype6:i386 libdbus-1-3:i386 libsqlite3-0:i386 -y
+		sudo apt-get install --install-recommends dxvk lutris -y
+		sudo apt-get install --install-recommends build-essential manpages-dev libx11-dev ninja xorg-dev meson glslang systemd git dbus base-devel -y
+		git clone https://github.com/DadSchoorse/vkBasalt.git
+		cd vkBasalt
+		meson --buildtype=release --prefix=/usr builddir
+		ninja -C builddir install
+		cd
+		clear
+fi
+which pacman >/dev/null 2>&1
+if [ $? -eq 0 ]
+        then
+		sudo pacman -S --needed wine-staging giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse libgpg-error lib32-libgpg-error alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo sqlite lib32-sqlite libxcomposite lib32-libxcomposite libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader lutris -y 
+		yay -S --needed --noconfirm ninja meson glslang systemd git dbus base-devel xorg-dev libx11-dev dxvk-bin
+fi
 }
 prompt_2
 prompt_3() {
 	ulimit -Hn
-	echo "If this above returns more than 500,000 than ESYNC IS ENABLED![ (s)kip this step ] If not[y], than dig in!"
+	echo "If this above returns more than 500,000 than ESYNC IS ENABLED! (s)kip this step... If not than dig in![y]"
 	read -p ">: " nocklb
 	if [[ "$nocklb" == "y" ]]; then
 		echo 'DefaultLimitNOFILE=524288' | sudo tee /etc/systemd/system.conf && echo 'DefaultLimitNOFILE=524288' | sudo tee /etc/systemd/user.conf
@@ -127,17 +221,30 @@ prompt_3() {
 }
 prompt_3
 utulities() {
-	sudo add-apt-repository ppa:linrunner/tlp
-	sudo apt update
-	sudo apt install gamemode earlyoom preload tlp tlp-rdw zram-tools amd64-microcode iucode-tool intel-microcode microcode.ctl -y
-	sudo apt --purge remove gstreamer1.0-fluendo-mp3 deja-dup shotwell whoopsie whoopsie-preferences -y
-	sudo tlp start
-	sudo sysctl -w vm.swappiness=1
-	echo 'vm.swappiness=1' | sudo tee /etc/sysctl.d/local.conf
-	echo 'vm.vfs_cache_pressure=50' | sudo tee /etc/sysctl.d/local.conf
-	echo 'Acquire::Languages "none";' | sudo tee /etc/apt/apt.conf.d/00aptitude
-	clear
-
+which apt >/dev/null 2>&1
+if [ $? -eq 0 ]
+        then
+		sudo add-apt-repository ppa:linrunner/tlp
+		sudo apt update
+		sudo apt install gamemode earlyoom preload tlp tlp-rdw zram-tools amd64-microcode iucode-tool intel-microcode microcode.ctl -y
+		sudo apt --purge remove gstreamer1.0-fluendo-mp3 deja-dup shotwell whoopsie whoopsie-preferences -y
+		sudo tlp start
+		sudo sysctl -w vm.swappiness=1
+		echo 'vm.swappiness=1' | sudo tee /etc/sysctl.d/local.conf
+		echo 'vm.vfs_cache_pressure=50' | sudo tee /etc/sysctl.d/local.conf
+		echo 'Acquire::Languages "none";' | sudo tee /etc/apt/apt.conf.d/00aptitude
+		clear
+fi
+which pacman >/dev/null 2>&1
+if [ $? -eq 0 ]
+        then
+		yay -S earlyoom preload tlp tlp-rdw systemd-swap-git gamemode lib32-gamemode vkbasalt
+		sudo tlp start
+		sudo sysctl -w vm.swappiness=1
+		echo 'vm.swappiness=1' | sudo tee /etc/sysctl.d/local.conf
+		echo 'vm.vfs_cache_pressure=50' | sudo tee /etc/sysctl.d/local.conf
+		clear
+fi
 }
 prompt_4() {
 	echo "Do you want install also Utility wares? gamemode, earlyoom etc.(AS I PERSONALLY RECOMMEND THAT[y]) (s)kip this step"
@@ -152,24 +259,34 @@ prompt_4() {
 }
 prompt_4
 prompt_5() {
-	echo "Okay here is final step: Do you want to install steam? [y]/(l)ater"
+	echo "Okay here is final step: Do you want to install steam? (y)es or (l)ater"
 	read -p ">: " nocklbye
 	if [[ "$nocklbye" == "y" ]]; then
-		sudo apt install --install-recommends steam-installer -y
-		clear
-		printf "YOU ARE ALL SET TO GO!\n"
-		sleep 2s
-		printf "MY THANKS <3... IF YOU'RE HAVING AN ISSUE(HOPE NOT) JUST COMMIT YOUR ISSUE RIGHT IN MY GITHUB.\n"
-		sleep 1s
-		printf "THERE YOU GO:' http://www.github.com/YurinDoctrine/ultra-gaming-setup-wizard/issues/ '\n"
+		which apt >/dev/null 2>&1
+		if [ $? -eq 0 ]
+        		then
+				sudo apt install --install-recommends steam-installer -y
+		fi
+		which pacman >/dev/null 2>&1
+		if [ $? -eq 0 ]
+		        then
+				sudo pacman -S --needed steam -y
+		fi
+
+			clear
+			printf "YOU ARE ALL SET TO GO!\n"
+			sleep 2s
+			printf "MY THANKS <3... IF YOU'RE HAVING AN ISSUE(HOPE NOT) JUST COMMIT YOUR ISSUE RIGHT IN MY GITHUB!\n"
+			sleep 1s
+			printf "THERE YOU GO;' http://www.github.com/YurinDoctrine/ultra-gaming-setup-wizard/issues/ '\n"
 	fi
 	if [[ "$nocklbye" == "l" ]]; then
 		clear
 		printf "YOU ARE ALL SET TO GO!\n"
 		sleep 2s
-		printf "MY THANKS <3... IF YOU'RE HAVING AN ISSUE(HOPE NOT) JUST COMMIT YOUR ISSUE RIGHT IN MY GITHUB.\n"
+		printf "MY THANKS <3... IF YOU'RE HAVING AN ISSUE(HOPE NOT) JUST COMMIT YOUR ISSUE RIGHT IN MY GITHUB!\n"
 		sleep 1s
-		printf "THERE YOU GO:' http://www.github.com/YurinDoctrine/ultra-gaming-setup-wizard/issues/ '\n"
+		printf "THERE YOU GO;' http://www.github.com/YurinDoctrine/ultra-gaming-setup-wizard/issues/ '\n"
 	fi
 }
 prompt_5
