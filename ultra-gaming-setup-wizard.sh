@@ -60,13 +60,8 @@ if [ $? -eq 0 ]
 	then
 		sudo pacman -S --needed yay -y
 		sudo pacman -S lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader xf86-video-amdgpu vulkan-radeon -y
-		cd
-		git clone https://aur.archlinux.org/catalyst.git
-		cd catalyst
-		makepkg -si
-                echo 'RADV_PERFTEST=aco' | sudo tee /etc/environment
-                cd
-		clear
+		echo 'RADV_PERFTEST=aco' | sudo tee /etc/environment
+                clear
 fi
 }
 nvidia() {
