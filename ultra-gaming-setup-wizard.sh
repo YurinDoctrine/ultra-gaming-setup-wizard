@@ -30,15 +30,14 @@ which pacman >/dev/null 2>&1
 if [ $? -eq 0 ]
 	then
 		_has_multilib=`grep -n "\[multilib\]" /etc/pacman.conf | cut -f1 -d:`
-		if [[ -z $_has_multilib ]]; then
-        		echo -e "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacm>
-        		echo -e '\nMultilib repository successfully added into pacman.conf file'
-			sudo pacman -Syyu
+		if [[ -z $_has_multilib ]];
+			then
+        			echo -e "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
+        			echo -e '\nMultilib repository successfully added into pacman.conf file'
 		else
     			sed -i "${_has_multilib}s/^#//" /etc/pacman.conf
         		_has_multilib=$(( ${_has_multilib} + 1 ))
         		sed -i "${_has_multilib}s/^#//" /etc/pacman.conf
-			sudo pacman -Syyu
 		fi
 fi
 }
@@ -59,7 +58,9 @@ fi
 which pacman >/dev/null 2>&1
 if [ $? -eq 0 ]
 	then
+		sudo pacman -S --needed yay -y
 		sudo pacman -S lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader xf86-video-amdgpu vulkan-radeon -y
+		cd
 		git clone https://aur.archlinux.org/catalyst.git
 		cd catalyst
 		makepkg -si
@@ -72,6 +73,7 @@ nvidia() {
 which apt >/dev/null 2>&1
 if [ $? -eq 0 ]
         then
+		sudo pacman -S --needed yay -y
 		sudo add-apt-repository ppa:graphics-drivers/ppa -y
 		sudo apt update
 		sudo apt install nvidia-driver-450 libnvidia-gl-450 libnvidia-gl-450:i386 libvulkan1 libvulkan1:i386 -y
@@ -80,7 +82,7 @@ fi
 which pacman >/dev/null 2>&1
 if [ $? -eq 0 ]
         then
-		sudo pacman -S nvidia opencl-nvidia lib32-opencl-nvidia lib32-nvidia-utils
+		sudo pacman -S nvidia opencl-nvidia lib32-opencl-nvidia lib32-nvidia-utils -y
 		clear
 fi
 }
@@ -120,11 +122,10 @@ fi
 which pacman >/dev/null 2>&1
 if [ $? -eq 0 ]
         then
-		sudo pacman -S --needed yay -y
-		yay -S linux-xanmod linux-xanmod-headers -y
-		echo 'net.core.default_qdisc = fq_pie' | sudo tee /etc/sysctl.d>
+		yay -S --needed --noconfirm linux-xanmod linux-xanmod-headers
+		echo 'net.core.default_qdisc = fq_pie' | sudo tee /etc/sysctl.d/90-override.conf
                 clear
-                read -p "You better reboot right now [r], or reboot (l)ater: " >
+                read -p "You better reboot right now [r], or reboot (l)ater: " nock
                 if [[ "$nock" == "r" ]]; then
                         sudo reboot
                 fi
@@ -189,6 +190,7 @@ if [ $? -eq 0 ]
 		sudo apt-get install libgnutls30:i386 libldap-2.4-2:i386 libgpg-error0:i386 libxml2:i386 libasound2-plugins:i386 libsdl2-2.0-0:i386 libfreetype6:i386 libdbus-1-3:i386 libsqlite3-0:i386 -y
 		sudo apt-get install --install-recommends dxvk lutris -y
 		sudo apt-get install --install-recommends build-essential manpages-dev libx11-dev ninja xorg-dev meson glslang systemd git dbus base-devel -y
+		cd
 		git clone https://github.com/DadSchoorse/vkBasalt.git
 		cd vkBasalt
 		meson --buildtype=release --prefix=/usr builddir
@@ -200,11 +202,12 @@ which pacman >/dev/null 2>&1
 if [ $? -eq 0 ]
         then
 		sudo pacman -S --needed wine-staging giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse libgpg-error lib32-libgpg-error alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo sqlite lib32-sqlite libxcomposite lib32-libxcomposite libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader lutris -y 
-		yay -S --needed --noconfirm ninja meson glslang systemd git dbus base-devel xorg-dev libx11-dev dxvk-bin
+		yay -S --needed --noconfirm ninja meson glslang systemd git dbus base-devel dxvk-bin preload systemd-swap-git vkbasalt
 fi
 }
 prompt_2
 prompt_3() {
+	clear
 	ulimit -Hn
 	echo "If this above returns more than 500,000 than ESYNC IS ENABLED! (s)kip this step... If not than dig in![y]"
 	read -p ">: " nocklb
@@ -238,7 +241,7 @@ fi
 which pacman >/dev/null 2>&1
 if [ $? -eq 0 ]
         then
-		yay -S earlyoom preload tlp tlp-rdw systemd-swap-git gamemode lib32-gamemode vkbasalt
+		yay -S --needed --noconfirm earlyoom preload tlp tlp-rdw systemd-swap-git gamemode lib32-gamemode
 		sudo tlp start
 		sudo sysctl -w vm.swappiness=1
 		echo 'vm.swappiness=1' | sudo tee /etc/sysctl.d/local.conf
@@ -278,7 +281,8 @@ prompt_5() {
 			sleep 2s
 			printf "MY THANKS <3... IF YOU'RE HAVING AN ISSUE(HOPE NOT) JUST COMMIT YOUR ISSUE RIGHT IN MY GITHUB!\n"
 			sleep 1s
-			printf "THERE YOU GO;' http://www.github.com/YurinDoctrine/ultra-gaming-setup-wizard/issues/ '\n"
+			printf "THERE YOU GO; http://www.github.com/YurinDoctrine/ultra-gaming-setup-wizard/issues/ \n"
+			printf "\n"
 	fi
 	if [[ "$nocklbye" == "l" ]]; then
 		clear
@@ -286,7 +290,8 @@ prompt_5() {
 		sleep 2s
 		printf "MY THANKS <3... IF YOU'RE HAVING AN ISSUE(HOPE NOT) JUST COMMIT YOUR ISSUE RIGHT IN MY GITHUB!\n"
 		sleep 1s
-		printf "THERE YOU GO;' http://www.github.com/YurinDoctrine/ultra-gaming-setup-wizard/issues/ '\n"
+		printf "THERE YOU GO; http://www.github.com/YurinDoctrine/ultra-gaming-setup-wizard/issues/ \n"
+		printf "\n"
 	fi
 }
 prompt_5
