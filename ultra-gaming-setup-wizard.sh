@@ -48,14 +48,14 @@ amd() {
 		sudo add-apt-repository ppa:kisak/kisak-mesa -y
 		sudo apt update
 		sudo apt install libgl1-mesa-dri:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386 -y
-		echo -e 'RADV_PERFTEST=aco' | sudo tee /etc/environment
+		echo -e 'RADV_PERFTEST=aco' | sudo tee -a /etc/environment
 		clear
 	fi
 	which pacman >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
 		sudo pacman -S --needed yay -y
 		sudo pacman -S lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader xf86-video-amdgpu vulkan-radeon -y
-		echo -e 'RADV_PERFTEST=aco' | sudo tee /etc/environment
+		echo -e 'RADV_PERFTEST=aco' | sudo tee -a /etc/environment
 		clear
 	fi
 }
@@ -93,9 +93,9 @@ prompt_0
 xanmod() {
 	which apt >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
-		echo -e 'deb http://deb.xanmod.org releases main' | sudo tee /etc/apt/sources.list.d/xanmod-kernel.list && wget -qO - https://dl.xanmod.org/gpg.key | sudo apt-key add -
+		echo -e 'deb http://deb.xanmod.org releases main' | sudo tee -a /etc/apt/sources.list.d/xanmod-kernel.list && wget -qO - https://dl.xanmod.org/gpg.key | sudo apt-key add -
 		sudo apt update && sudo apt install --install-recommends linux-xanmod-rt intel-microcode iucode-tool amd64-microcode -y
-		echo -e 'net.core.default_qdisc = fq_pie' | sudo tee /etc/sysctl.d/90-override.conf
+		echo -e 'net.core.default_qdisc = fq_pie' | sudo tee -a /etc/sysctl.d/90-override.conf
 		clear
 		read -p "You better reboot right now [r], or reboot (l)ater: " nock
 		if [[ "$nock" == "r" ]]; then
@@ -109,7 +109,7 @@ xanmod() {
 	which pacman >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
 		yay -S --needed --noconfirm linux-xanmod linux-xanmod-headers
-		echo -e 'net.core.default_qdisc = fq_pie' | sudo tee /etc/sysctl.d/90-override.conf
+		echo -e 'net.core.default_qdisc = fq_pie' | sudo tee -a /etc/sysctl.d/90-override.conf
 		clear
 		read -p "You better reboot right now [r], or reboot (l)ater: " nock
 		if [[ "$nock" == "r" ]]; then
@@ -194,8 +194,8 @@ prompt_3() {
 	echo "If this above returns more than 500,000 than ESYNC IS ENABLED! (s)kip this step... If not than dig in![y]"
 	read -p ">: " nocklb
 	if [[ "$nocklb" == "y" ]]; then
-		echo -e 'DefaultLimitNOFILE=524288' | sudo tee /etc/systemd/system.conf && echo -e 'DefaultLimitNOFILE=524288' | sudo tee /etc/systemd/user.conf
-		echo -e $USER 'hard nofile 524288' | sudo tee /etc/security/limits.conf
+		echo -e 'DefaultLimitNOFILE=524288' | sudo tee -a /etc/systemd/system.conf && echo -e 'DefaultLimitNOFILE=524288' | sudo tee -a /etc/systemd/user.conf
+		echo -e $USER 'hard nofile 524288' | sudo tee -a /etc/security/limits.conf
 		sleep 1s
 		printf "DONE."
 	fi
@@ -214,9 +214,9 @@ utulities() {
 		sudo apt --purge remove gstreamer1.0-fluendo-mp3 deja-dup shotwell whoopsie whoopsie-preferences -y
 		sudo tlp start
 		sudo sysctl -w vm.swappiness=1
-		echo -e 'vm.swappiness=1' | sudo tee /etc/sysctl.d/local.conf
-		echo -e 'vm.vfs_cache_pressure=50' | sudo tee /etc/sysctl.d/local.conf
-		echo -e 'Acquire::Languages "none";' | sudo tee /etc/apt/apt.conf.d/00aptitude
+		echo -e 'vm.swappiness=1' | sudo tee -a /etc/sysctl.d/local.conf
+		echo -e 'vm.vfs_cache_pressure=50' | sudo tee -a /etc/sysctl.d/local.conf
+		echo -e 'Acquire::Languages "none";' | sudo tee -a /etc/apt/apt.conf.d/00aptitude
 		clear
 	fi
 	which pacman >/dev/null 2>&1
@@ -224,8 +224,8 @@ utulities() {
 		yay -S --needed --noconfirm earlyoom preload tlp tlp-rdw systemd-swap-git gamemode lib32-gamemode
 		sudo tlp start
 		sudo sysctl -w vm.swappiness=1
-		echo -e 'vm.swappiness=1' | sudo tee /etc/sysctl.d/local.conf
-		echo -e 'vm.vfs_cache_pressure=50' | sudo tee /etc/sysctl.d/local.conf
+		echo -e 'vm.swappiness=1' | sudo tee -a /etc/sysctl.d/local.conf
+		echo -e 'vm.vfs_cache_pressure=50' | sudo tee -a /etc/sysctl.d/local.conf
 		clear
 	fi
 }
