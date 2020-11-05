@@ -1,15 +1,8 @@
 # ultra-gaming-setup-wizard
 
-## CLONING
-
+## CLONING and RUNNING
 ```sh
-git clone https://github.com/YurinDoctrine/ultra-gaming-setup-wizard.git
-```
-
-### RUNNING
-
-```sh
- ultra-gaming-setup-wizard/
-$ sudo chmod +x ultra-gaming-setup-wizard.sh
-$ sudo ./ultra-gaming-setup-wizard.sh
+curl https://raw.githubusercontent.com/YurinDoctrine/secure-linux/main/secure-linux.sh >secure-linux.sh &&
+ chmod 755 secure-linux.sh &&
+ ./secure-linux.sh
 ```
