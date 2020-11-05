@@ -194,7 +194,7 @@ prompt_3() {
 	echo "If this above returns more than 500,000 than ESYNC IS ENABLED! (s)kip this step... If not than dig in![y]"
 	read -p ">: " nocklb
 	if [[ "$nocklb" == "y" ]]; then
-		echo -e 'DefaultLimitNOFILE=524288' | sudo tee /etc/systemd/system.conf && echo 'DefaultLimitNOFILE=524288' | sudo tee /etc/systemd/user.conf
+		echo -e 'DefaultLimitNOFILE=524288' | sudo tee /etc/systemd/system.conf && echo -e 'DefaultLimitNOFILE=524288' | sudo tee /etc/systemd/user.conf
 		echo -e $USER 'hard nofile 524288' | sudo tee /etc/security/limits.conf
 		sleep 1s
 		printf "DONE."
