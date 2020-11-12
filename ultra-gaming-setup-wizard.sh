@@ -135,11 +135,30 @@ zen() {
 		clear
 	fi
 }
+linux-tkg() {
+	which apt >/dev/null 2>&1
+	if [ $? -eq 0 ]; then
+		cd
+		git clone https://github.com/Frogging-Family/linux-tkg.git
+		cd linux-tkg
+		./install.sh install
+		clear
+	fi
+	which pacman >/dev/null 2>&1
+	if [ $? -eq 0 ]; then
+		cd
+		git clone https://github.com/Frogging-Family/linux-tkg.git
+		cd linux-tkg
+		makepkg -si
+		clear
+	fi
+}
 prompt_1() {
 	echo "You might want to customize your regular kernel as well, here is a couple of kernels(XANMOD is currently recommended) or you might (s)kip this step simply..."
 	echo "1. : XANMOD(BOTH)"
 	echo "2. : LIQUARIX(UBUNTUONLY)"
 	echo "3. : ZEN(ARCHONLY)"
+	echo "4. : LINUX-TKG((BOTH) Nvidia not for sure)"
 	read -p ">: " nockl
 	if [[ "$nockl" == "1" ]]; then
 		printf 'INSTALLING...' && clear
@@ -152,6 +171,10 @@ prompt_1() {
 	if [[ "$nockl" == "3" ]]; then
 		printf 'INSTALLING...' && clear
 		zen
+	fi
+	if [[ "$nockl" == "4" ]]; then
+		printf 'INSTALLING...' && clear
+		linux-tkg
 	fi
 	if [[ "$nockl" == "s" ]]; then
 		printf 'SKIPPING...' && clear
@@ -179,12 +202,20 @@ prompt_2() {
 		meson --buildtype=release --prefix=/usr builddir
 		ninja -C builddir install
 		cd
-		clear
+		git clone https://github.com/Frogging-Family/wine-tkg-git.git
+		cd wine-tkg-git
+		./non-makepkg-build.sh
+		cd
 	fi
 	which pacman >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
 		sudo pacman -S --needed wine-staging giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse libgpg-error lib32-libgpg-error alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo sqlite lib32-sqlite libxcomposite lib32-libxcomposite libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader lutris -y
 		yay -S --needed --noconfirm ninja meson glslang systemd git dbus base-devel dxvk-bin preload systemd-swap-git vkbasalt
+		cd
+		git clone https://github.com/Frogging-Family/wine-tkg-git.git
+		cd wine-tkg-git
+		makepkg -si
+		cd
 	fi
 }
 prompt_2
@@ -205,7 +236,7 @@ prompt_3() {
 
 }
 prompt_3
-utulities() {
+utilities() {
 	which apt >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
 		sudo add-apt-repository ppa:linrunner/tlp
@@ -233,7 +264,7 @@ prompt_4() {
 	echo "Do you want install also Utility wares? gamemode, earlyoom etc.(AS I PERSONALLY RECOMMEND THAT[y]) (s)kip this step"
 	read -p ">: " nocklby
 	if [[ "$nocklby" == "y" ]]; then
-		utulities
+		utilities
 	fi
 	if [[ "$nocklby" == "s" ]]; then
 		clear
@@ -253,7 +284,6 @@ prompt_5() {
 		if [ $? -eq 0 ]; then
 			sudo pacman -S --needed steam -y
 		fi
-
 		clear
 		printf "YOU ARE ALL SET TO GO!\n"
 		sleep 2s
