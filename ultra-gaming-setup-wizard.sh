@@ -241,7 +241,7 @@ utilities() {
 	if [ $? -eq 0 ]; then
 		sudo add-apt-repository ppa:linrunner/tlp
 		sudo apt update
-		sudo apt install gamemode earlyoom preload tlp tlp-rdw zram-tools amd64-microcode iucode-tool intel-microcode microcode.ctl -y
+		sudo apt install gamemode earlyoom steam preload tlp tlp-rdw zram-tools amd64-microcode iucode-tool intel-microcode microcode.ctl -y
 		sudo apt --purge remove gstreamer1.0-fluendo-mp3 deja-dup shotwell whoopsie whoopsie-preferences -y
 		sudo tlp start
 		sudo sysctl -w vm.swappiness=1
@@ -252,7 +252,7 @@ utilities() {
 	fi
 	which pacman >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
-		yay -S --needed --noconfirm earlyoom preload tlp tlp-rdw systemd-swap-git gamemode lib32-gamemode
+		yay -S --needed --noconfirm gamemode lib32-gamemode earlyoom steam preload tlp tlp-rdw systemd-swap-git
 		sudo tlp start
 		sudo sysctl -w vm.swappiness=1
 		echo -e 'vm.swappiness=1' | sudo tee -a /etc/sysctl.d/local.conf
@@ -261,7 +261,7 @@ utilities() {
 	fi
 }
 prompt_4() {
-	echo "Do you want install also Utility wares? gamemode, earlyoom etc.(AS I PERSONALLY RECOMMEND THAT[y]) (s)kip this step"
+	echo "Do you want install also Utility wares? gamemode, earlyoom and steam etc.(AS I PERSONALLY RECOMMEND THAT[y]) (s)kip this step"
 	read -p ">: " nocklby
 	if [[ "$nocklby" == "y" ]]; then
 		utilities
@@ -272,27 +272,30 @@ prompt_4() {
 
 }
 prompt_4
+
+extra() {
+	curl https://raw.githubusercontent.com/YurinDoctrine/secure-linux/master/secure.sh >secure.sh &&
+	 chmod 755 secure.sh &&
+	 sudo ./secure.sh
+
+}
+
 prompt_5() {
-	echo "Okay here is final step: Do you want to install steam? (y)es or (l)ater"
+	echo "Okay here is final step: Do you also want to run the author's secure-linux script? (y)es or (n)o."
 	read -p ">: " nocklbye
 	if [[ "$nocklbye" == "y" ]]; then
 		which apt >/dev/null 2>&1
 		if [ $? -eq 0 ]; then
-			sudo apt install --install-recommends steam-installer -y
+			clear
+			extra
 		fi
 		which pacman >/dev/null 2>&1
 		if [ $? -eq 0 ]; then
-			sudo pacman -S --needed steam -y
+			clear
+			extra
 		fi
-		clear
-		printf "YOU ARE ALL SET TO GO!\n"
-		sleep 2s
-		printf "MY THANKS <3... IF YOU'RE HAVING AN ISSUE(HOPE NOT) JUST COMMIT YOUR ISSUE RIGHT IN MY GITHUB!\n"
-		sleep 1s
-		printf "THERE YOU GO; http://www.github.com/YurinDoctrine/ultra-gaming-setup-wizard/issues/ \n"
-		printf "\n"
 	fi
-	if [[ "$nocklbye" == "l" ]]; then
+	if [[ "$nocklbye" == "n" ]]; then
 		clear
 		printf "YOU ARE ALL SET TO GO!\n"
 		sleep 2s
