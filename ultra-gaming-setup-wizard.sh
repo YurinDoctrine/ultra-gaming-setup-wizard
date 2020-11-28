@@ -242,7 +242,6 @@ utilities() {
 		sudo add-apt-repository ppa:linrunner/tlp
 		sudo apt update
 		sudo apt install gamemode earlyoom steam preload tlp tlp-rdw zram-tools amd64-microcode iucode-tool intel-microcode microcode.ctl -y
-		sudo apt --purge remove gstreamer1.0-fluendo-mp3 deja-dup shotwell whoopsie whoopsie-preferences -y
 		sudo tlp start
 		sudo sysctl -w vm.swappiness=1
 		echo -e 'vm.swappiness=1' | sudo tee -a /etc/sysctl.d/local.conf
