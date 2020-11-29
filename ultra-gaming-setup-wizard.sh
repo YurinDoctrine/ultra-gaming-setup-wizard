@@ -108,7 +108,7 @@ xanmod() {
 	fi
 	which pacman >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
-		yay -S --needed --noconfirm linux-xanmod-rt linux-xanmod-headers
+		yay -S --needed --noconfirm linux-xanmod linux-xanmod-headers
 		echo -e 'net.core.default_qdisc = fq_pie' | sudo tee -a /etc/sysctl.d/90-override.conf
 		clear
 		read -p "You better reboot right now [r], or reboot (l)ater: " nock
@@ -242,6 +242,7 @@ utilities() {
 		sudo add-apt-repository ppa:linrunner/tlp
 		sudo apt update
 		sudo apt install gamemode earlyoom steam preload tlp tlp-rdw zram-tools amd64-microcode iucode-tool intel-microcode microcode.ctl -y
+		sudo apt --purge remove gstreamer1.0-fluendo-mp3 deja-dup shotwell whoopsie whoopsie-preferences -y
 		sudo tlp start
 		sudo sysctl -w vm.swappiness=1
 		echo -e 'vm.swappiness=1' | sudo tee -a /etc/sysctl.d/local.conf
