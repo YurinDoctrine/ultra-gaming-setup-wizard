@@ -108,7 +108,7 @@ xanmod() {
 	fi
 	which pacman >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
-		yay -S --needed --noconfirm linux-xanmod linux-xanmod-headers
+		yay -S --needed --noconfirm linux-xanmod-rt linux-xanmod-headers
 		echo -e 'net.core.default_qdisc = fq_pie' | sudo tee -a /etc/sysctl.d/90-override.conf
 		clear
 		read -p "You better reboot right now [r], or reboot (l)ater: " nock
