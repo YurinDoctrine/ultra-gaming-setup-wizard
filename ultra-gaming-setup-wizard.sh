@@ -145,7 +145,6 @@ linux-tkg() {
 	fi
 	which pacman >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
-		cd
 		git clone https://github.com/Frogging-Family/linux-tkg.git
 		cd linux-tkg/
 		makepkg -si
@@ -204,6 +203,7 @@ prompt_2() {
 		git clone https://github.com/Frogging-Family/wine-tkg-git.git
 		cd wine-tkg-git/
 		./non-makepkg-build.sh
+		cd
 	fi
 	which pacman >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
