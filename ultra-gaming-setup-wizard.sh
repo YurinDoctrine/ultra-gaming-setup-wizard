@@ -32,9 +32,9 @@ multiarch() {
 			echo -e '\n[multilib]\nInclude = /etc/pacman.d/mirrorlist' | sudo tee -a /etc/pacman.conf
 			echo -e 'Multilib repository successfully added into pacman.conf file\n'
 		else
-			sed -i "${_has_multilib}s/^#//" /etc/pacman.conf
+			sudo sed -i "${_has_multilib}s/^#//" /etc/pacman.conf
 			_has_multilib=$((${_has_multilib} + 1))
-			sed -i "${_has_multilib}s/^#//" /etc/pacman.conf
+			sudo sed -i "${_has_multilib}s/^#//" /etc/pacman.conf
 		fi
 	fi
 }
@@ -94,7 +94,7 @@ xanmod() {
 	which apt >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
 		echo -e 'deb http://deb.xanmod.org releases main' | sudo tee -a /etc/apt/sources.list.d/xanmod-kernel.list && wget -qO - https://dl.xanmod.org/gpg.key | sudo apt-key add -
-		sudo apt update && sudo apt install --install-recommends linux-xanmod-rt intel-microcode iucode-tool amd64-microcode -y
+		sudo apt update && sudo apt install --install-recommends linux-xanmod-rt -y
 		echo -e 'net.core.default_qdisc = fq_pie' | sudo tee -a /etc/sysctl.d/90-override.conf
 		clear
 		read -p "You better reboot right now [r], or reboot (l)ater: " nock
@@ -140,7 +140,7 @@ linux-tkg() {
 	if [ $? -eq 0 ]; then
 		cd
 		git clone https://github.com/Frogging-Family/linux-tkg.git
-		cd linux-tkg
+		cd linux-tkg/
 		./install.sh install
 		clear
 	fi
@@ -148,7 +148,7 @@ linux-tkg() {
 	if [ $? -eq 0 ]; then
 		cd
 		git clone https://github.com/Frogging-Family/linux-tkg.git
-		cd linux-tkg
+		cd linux-tkg/
 		makepkg -si
 		clear
 	fi
@@ -198,14 +198,13 @@ prompt_2() {
 		sudo apt-get install --install-recommends build-essential manpages-dev libx11-dev ninja xorg-dev meson glslang systemd git dbus base-devel -y
 		cd
 		git clone https://github.com/DadSchoorse/vkBasalt.git
-		cd vkBasalt
+		cd vkBasalt/
 		meson --buildtype=release --prefix=/usr builddir
 		ninja -C builddir install
 		cd
 		git clone https://github.com/Frogging-Family/wine-tkg-git.git
-		cd wine-tkg-git
+		cd wine-tkg-git/
 		./non-makepkg-build.sh
-		cd
 	fi
 	which pacman >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
@@ -213,7 +212,7 @@ prompt_2() {
 		yay -S --needed --noconfirm ninja meson glslang systemd git dbus base-devel dxvk-bin preload systemd-swap-git vkbasalt
 		cd
 		git clone https://github.com/Frogging-Family/wine-tkg-git.git
-		cd wine-tkg-git
+		cd wine-tkg-git/
 		makepkg -si
 		cd
 	fi
