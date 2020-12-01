@@ -138,7 +138,6 @@ zen() {
 linux-tkg() {
 	which apt >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
-		cd
 		git clone https://github.com/Frogging-Family/linux-tkg.git
 		cd linux-tkg/
 		./install.sh install
