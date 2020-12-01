@@ -241,22 +241,15 @@ utilities() {
 	if [ $? -eq 0 ]; then
 		sudo add-apt-repository ppa:linrunner/tlp
 		sudo apt update
-		sudo apt install gamemode earlyoom steam preload tlp tlp-rdw zram-tools amd64-microcode iucode-tool intel-microcode microcode.ctl -y
-		sudo apt --purge remove gstreamer1.0-fluendo-mp3 deja-dup shotwell whoopsie whoopsie-preferences -y
+		sudo apt install gamemode earlyoom steam preload tlp tlp-rdw -y
 		sudo tlp start
-		sudo sysctl -w vm.swappiness=1
-		echo -e 'vm.swappiness=1' | sudo tee -a /etc/sysctl.d/local.conf
-		echo -e 'vm.vfs_cache_pressure=50' | sudo tee -a /etc/sysctl.d/local.conf
 		echo -e 'Acquire::Languages "none";' | sudo tee -a /etc/apt/apt.conf.d/00aptitude
 		clear
 	fi
 	which pacman >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
-		yay -S --needed --noconfirm gamemode lib32-gamemode earlyoom steam preload tlp tlp-rdw systemd-swap-git
+		yay -S --needed --noconfirm gamemode lib32-gamemode earlyoom steam preload tlp tlp-rdw
 		sudo tlp start
-		sudo sysctl -w vm.swappiness=1
-		echo -e 'vm.swappiness=1' | sudo tee -a /etc/sysctl.d/local.conf
-		echo -e 'vm.vfs_cache_pressure=50' | sudo tee -a /etc/sysctl.d/local.conf
 		clear
 	fi
 }
