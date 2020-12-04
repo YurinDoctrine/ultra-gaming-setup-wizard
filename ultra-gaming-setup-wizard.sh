@@ -201,7 +201,7 @@ prompt_2() {
 		ninja -C builddir install
 		cd
 		git clone https://github.com/Frogging-Family/wine-tkg-git.git
-		cd wine-tkg-git/
+		cd wine-tkg-git/wine-tkg-git/
 		./non-makepkg-build.sh
 		cd
 	fi
@@ -211,7 +211,7 @@ prompt_2() {
 		yay -S --needed --noconfirm ninja meson glslang systemd git dbus base-devel dxvk-bin vkbasalt
 		cd
 		git clone https://github.com/Frogging-Family/wine-tkg-git.git
-		cd wine-tkg-git/
+		cd wine-tkg-git/wine-tkg-git/
 		makepkg -si
 		cd
 	fi
