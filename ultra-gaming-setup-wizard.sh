@@ -1,29 +1,39 @@
 #!/bin/bash
 
-clear
-echo "╔═══════════════════════════════════════════════════╗"
-echo "║This script only works on Arch&Ubuntu based distros║"
-echo "║                                                   ║"
-echo "║                                                   ║"
-echo "╚═══════════════════════════════════════════════════╝"
-echo ""
-read -p "To continue press [ENTER], ^C to Abort."
+which apt >/dev/null 2>&1
+if [ $? -eq 0 ]; then
+        clear
+        echo -e "╔═══════════════════════════════════════════════════╗"
+        echo -e "║YURIN'S | ultimate-gaming-setup-wizard | Greetings!║"
+        echo -e "║                                                   ║"
+        echo -e "╚═══════════════════════════════════════════════════╝"
 
-title_bar() {
-	clear
-	echo "╔═══════════════════════════════════════════════════╗"
-	echo "║YURIN'S | ultimate-gaming-setup-wizard | Greetings!║"
-	echo "╚═══════════════════════════════════════════════════╝"
+fi
+which pacman >/dev/null 2>&1
+if [ $? -eq 0 ]; then
+        clear
+        echo -e "╔═══════════════════════════════════════════════════╗"
+        echo -e "║YURIN'S | ultimate-gaming-setup-wizard | Greetings!║"
+        echo -e "║                                                   ║"
+        echo -e "╚═══════════════════════════════════════════════════╝"
 
-}
-title_bar
+else
+        clear
+        echo -e "╔═══════════════════════════════════════════════════╗"
+        echo -e "║THIS SCRIPT ONLY WORKS ON ARCH&UBUNTU BASED DISTROS║"
+        echo -e "║                                                   ║"
+        echo -e "╚═══════════════════════════════════════════════════╝"
+        echo -e ""
+	exit 1
 
-multiarch() {
+fi
+
+32bit() {
 	which apt >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
 		sudo dpkg --add-architecture i386
 		sudo apt update
-		sudo apt install ubuntu-restricted-extras -y
+		sudo apt install --install-recommends ubuntu-restricted-extras -y
 	fi
 	which pacman >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
@@ -38,9 +48,7 @@ multiarch() {
 		fi
 	fi
 }
-read -p "YOU'LL NEED TO BE ABLE SURE 32-BIT LIBRARIES ENABLED[ENTER], ^C to Abort: "
-
-multiarch
+32bit
 
 amd() {
 	which apt >/dev/null 2>&1
@@ -75,16 +83,14 @@ nvidia() {
 	fi
 }
 prompt_0() {
-	echo "Choose what compatible which is in below with your hardware."
-	echo "1. : AMD"
-	echo "2. : NVIDIA"
-	read -p ">: " noc
+	echo -e "CHOOSE WHAT COMPATIBLE WHICH IS IN BELOW WITH YOUR HARDWARE."
+	echo -e "1. : AMD"
+	echo -e "2. : NVIDIA"
+	read -p '>_: ' noc
 	if [[ "$noc" == "1" ]]; then
-		printf 'INSTALLING...' && clear
 		amd
 	fi
 	if [[ "$noc" == "2" ]]; then
-		printf 'INSTALLING...' && clear
 		nvidia
 	fi
 
@@ -97,7 +103,9 @@ xanmod() {
 		sudo apt update && sudo apt install --install-recommends linux-xanmod-rt -y
 		echo -e 'net.core.default_qdisc = fq_pie' | sudo tee -a /etc/sysctl.d/90-override.conf
 		clear
-		read -p "You better reboot right now [r], or reboot (l)ater: " nock
+		echo -e '[r]EBOOT NOW OR [l]ATER?'
+		read -p '>_: 'nock
+
 		if [[ "$nock" == "r" ]]; then
 			sudo reboot
 		fi
@@ -111,7 +119,9 @@ xanmod() {
 		yay -S --needed --noconfirm linux-xanmod-rt linux-xanmod-headers
 		echo -e 'net.core.default_qdisc = fq_pie' | sudo tee -a /etc/sysctl.d/90-override.conf
 		clear
-		read -p "You better reboot right now [r], or reboot (l)ater: " nock
+                echo -e '[r]EBOOT NOW OR [l]ATER?'
+                read -p '>_: 'nock
+
 		if [[ "$nock" == "r" ]]; then
 			sudo reboot
 		fi
@@ -152,12 +162,12 @@ linux-tkg() {
 	fi
 }
 prompt_1() {
-	echo "You might want to customize your regular kernel as well, here is a couple of kernels(XANMOD is currently recommended) or you might (s)kip this step simply..."
-	echo "1. : XANMOD(BOTH)"
-	echo "2. : LIQUARIX(UBUNTUONLY)"
-	echo "3. : ZEN(ARCHONLY)"
-	echo "4. : LINUX-TKG((BOTH) Nvidia not for sure)"
-	read -p ">: " nockl
+	echo -e "FIND IN BELOW CUSTOM KERNELS ACROSS OF THEM BENEFITS..."
+	echo -e "1. : XANMOD(BOTH)"
+	echo -e "2. : LIQUARIX(UBUNTUONLY)"
+	echo -e "3. : ZEN(ARCHONLY)"
+	echo -e "4. : LINUX-TKG(BOTH)"
+	read -p '>_: ' nockl
 	if [[ "$nockl" == "1" ]]; then
 		printf 'INSTALLING...' && clear
 		xanmod
@@ -174,15 +184,15 @@ prompt_1() {
 		printf 'INSTALLING...' && clear
 		linux-tkg
 	fi
-	if [[ "$nockl" == "s" ]]; then
-		printf 'SKIPPING...' && clear
+	if [[ "$nockl" == "" ]]; then
+		clear
 	fi
 
 }
 prompt_1
 prompt_2() {
-	echo "Now you must install WINE and Dependencies either.[ENTER]"
-	read -p ">: "
+	echo -e "NOW YOU GOTTA INSTALL WINE EITHER. [ENTER]"
+	read -p '>_: '
 	which apt >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
 		wget -nc https://dl.winehq.org/wine-builds/winehq.key
@@ -192,7 +202,7 @@ prompt_2() {
 		sudo apt update
 		sudo apt-get install --install-recommends winehq-staging -y
 		sudo apt-get install libgnutls30:i386 libldap-2.4-2:i386 libgpg-error0:i386 libxml2:i386 libasound2-plugins:i386 libsdl2-2.0-0:i386 libfreetype6:i386 libdbus-1-3:i386 libsqlite3-0:i386 -y
-		sudo apt-get install --install-recommends dxvk lutris -y
+		sudo apt-get install --install-recommends dxvk steam lutris -y
 		sudo apt-get install --install-recommends build-essential manpages-dev libx11-dev ninja xorg-dev meson glslang systemd git dbus base-devel -y
 		cd
 		git clone https://github.com/DadSchoorse/vkBasalt.git
@@ -200,14 +210,10 @@ prompt_2() {
 		meson --buildtype=release --prefix=/usr builddir
 		ninja -C builddir install
 		cd
-		git clone https://github.com/Frogging-Family/wine-tkg-git.git
-		cd wine-tkg-git/wine-tkg-git/
-		./non-makepkg-build.sh
-		cd
 	fi
 	which pacman >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
-		sudo pacman -S --needed wine-staging giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse libgpg-error lib32-libgpg-error alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo sqlite lib32-sqlite libxcomposite lib32-libxcomposite libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader lutris -y
+		sudo pacman -S --needed wine-staging giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse libgpg-error lib32-libgpg-error alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo sqlite lib32-sqlite libxcomposite lib32-libxcomposite libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader steam lutris -y
 		yay -S --needed --noconfirm ninja meson glslang systemd git dbus base-devel dxvk-bin vkbasalt
 		cd
 		git clone https://github.com/Frogging-Family/wine-tkg-git.git
@@ -220,16 +226,16 @@ prompt_2
 prompt_3() {
 	clear
 	ulimit -Hn
-	echo "If this above returns more than 500,000 than ESYNC IS ENABLED! (s)kip this step... If not than dig in![y]"
-	read -p ">: " nocklb
-	if [[ "$nocklb" == "y" ]]; then
+	echo -e "IF THIS ABOVE RETURNS MORE THAN 500,000 THEN ESYNC IS ENABLED!"
+	read -p 'true\false? >_: ' nocklb
+	if [[ "$nocklb" == "false" ]]; then
 		echo -e 'DefaultLimitNOFILE=524288' | sudo tee -a /etc/systemd/system.conf && echo -e 'DefaultLimitNOFILE=524288' | sudo tee -a /etc/systemd/user.conf
 		echo -e $USER 'hard nofile 524288' | sudo tee -a /etc/security/limits.conf
 		sleep 1s
 		printf "DONE."
 	fi
-	if [[ "$nocklb" == "s" ]]; then
-		printf 'SKIPPING...' && clear
+	if [[ "$nocklb" == "true" ]]; then
+		clear
 	fi
 
 }
@@ -239,25 +245,25 @@ utilities() {
 	if [ $? -eq 0 ]; then
 		sudo add-apt-repository ppa:linrunner/tlp
 		sudo apt update
-		sudo apt install gamemode earlyoom steam preload tlp tlp-rdw -y
+		sudo apt install gamemode earlyoom preload tlp tlp-rdw -y
 		sudo tlp start
 		echo -e 'Acquire::Languages "none";' | sudo tee -a /etc/apt/apt.conf.d/00aptitude
 		clear
 	fi
 	which pacman >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
-		yay -S --needed --noconfirm gamemode lib32-gamemode earlyoom steam preload tlp tlp-rdw
+		yay -S --needed --noconfirm gamemode lib32-gamemode earlyoom preload tlp tlp-rdw
 		sudo tlp start
 		clear
 	fi
 }
 prompt_4() {
-	echo "Do you want install also Utility wares? gamemode, earlyoom and steam etc.(AS I PERSONALLY RECOMMEND THAT[y]) (s)kip this step"
-	read -p ">: " nocklby
+	echo -e "DO YOU ALSO WANT INSTALL UTILITY WARES? gamemode, earlyoom and tlp etc."
+	read -p 'y\n >_: ' nocklby
 	if [[ "$nocklby" == "y" ]]; then
 		utilities
 	fi
-	if [[ "$nocklby" == "s" ]]; then
+	if [[ "$nocklby" == "n" ]]; then
 		clear
 	fi
 
@@ -267,33 +273,22 @@ prompt_4
 extra() {
 	curl https://raw.githubusercontent.com/YurinDoctrine/secure-linux/master/secure.sh >secure.sh &&
 	 chmod 755 secure.sh &&
-	 sudo ./secure.sh
+	 ./secure.sh
 
 }
 
-prompt_5() {
-	echo "Okay here is final step: Do you also want to run the author's secure-linux script? (y)es or (n)o."
-	read -p ">: " nocklbye
-	if [[ "$nocklbye" == "y" ]]; then
-		which apt >/dev/null 2>&1
-		if [ $? -eq 0 ]; then
-			clear
-			extra
-		fi
-		which pacman >/dev/null 2>&1
-		if [ $? -eq 0 ]; then
-			clear
-			extra
-		fi
-	fi
-	if [[ "$nocklbye" == "n" ]]; then
-		clear
-		printf "YOU ARE ALL SET TO GO!\n"
-		sleep 2s
-		printf "MY THANKS <3... IF YOU'RE HAVING AN ISSUE(HOPE NOT) JUST COMMIT YOUR ISSUE RIGHT IN MY GITHUB!\n"
-		sleep 1s
-		printf "THERE YOU GO; http://www.github.com/YurinDoctrine/ultra-gaming-setup-wizard/issues/ \n"
-		printf "\n"
-	fi
+final() {
+	echo -e "FINAL: DO YOU ALSO WANT TO RUN THE AUTHOR'S secure-linux?"
+	read -p "yes\no >_: " nocklbye
+    if [[ "$nocklbye" == "yes" ]]; then
+        printf 'RUNNING...\n'
+        extra
+    elif [[ "$nocklbye" == "no" ]]; then
+        printf 'LEAVING...\n'
+        exit 1
+    else
+        printf 'INVALID VALUE!\n'
+        final
+    fi
 }
-prompt_5
+final
