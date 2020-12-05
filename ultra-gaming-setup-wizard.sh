@@ -2,28 +2,28 @@
 
 which apt >/dev/null 2>&1
 if [ $? -eq 0 ]; then
-        clear
-        echo -e "╔═══════════════════════════════════════════════════╗"
-        echo -e "║YURIN'S | ultimate-gaming-setup-wizard | Greetings!║"
-        echo -e "║                                                   ║"
-        echo -e "╚═══════════════════════════════════════════════════╝"
+	clear
+	echo -e "╔═══════════════════════════════════════════════════╗"
+	echo -e "║YURIN'S | ultimate-gaming-setup-wizard | Greetings!║"
+	echo -e "║                                                   ║"
+	echo -e "╚═══════════════════════════════════════════════════╝"
 
 fi
 which pacman >/dev/null 2>&1
 if [ $? -eq 0 ]; then
-        clear
-        echo -e "╔═══════════════════════════════════════════════════╗"
-        echo -e "║YURIN'S | ultimate-gaming-setup-wizard | Greetings!║"
-        echo -e "║                                                   ║"
-        echo -e "╚═══════════════════════════════════════════════════╝"
+	clear
+	echo -e "╔═══════════════════════════════════════════════════╗"
+	echo -e "║YURIN'S | ultimate-gaming-setup-wizard | Greetings!║"
+	echo -e "║                                                   ║"
+	echo -e "╚═══════════════════════════════════════════════════╝"
 
 else
-        clear
-        echo -e "╔═══════════════════════════════════════════════════╗"
-        echo -e "║THIS SCRIPT ONLY WORKS ON ARCH&UBUNTU BASED DISTROS║"
-        echo -e "║                                                   ║"
-        echo -e "╚═══════════════════════════════════════════════════╝"
-        echo -e ""
+	clear
+	echo -e "╔═══════════════════════════════════════════════════╗"
+	echo -e "║THIS SCRIPT ONLY WORKS ON ARCH&UBUNTU BASED DISTROS║"
+	echo -e "║                                                   ║"
+	echo -e "╚═══════════════════════════════════════════════════╝"
+	echo -e ""
 	exit 1
 
 fi
@@ -119,8 +119,8 @@ xanmod() {
 		yay -S --needed --noconfirm linux-xanmod-rt linux-xanmod-headers
 		echo -e 'net.core.default_qdisc = fq_pie' | sudo tee -a /etc/sysctl.d/90-override.conf
 		clear
-                echo -e '[r]EBOOT NOW OR [l]ATER?'
-                read -p '>_: 'nock
+		echo -e '[r]EBOOT NOW OR [l]ATER?'
+		read -p '>_: 'nock
 
 		if [[ "$nock" == "r" ]]; then
 			sudo reboot
@@ -267,23 +267,23 @@ prompt_4
 
 extra() {
 	curl https://raw.githubusercontent.com/YurinDoctrine/secure-linux/master/secure.sh >secure.sh &&
-	 chmod 755 secure.sh &&
-	 ./secure.sh
+		chmod 755 secure.sh &&
+		./secure.sh
 
 }
 
 final() {
 	echo -e "FINAL: DO YOU ALSO WANT TO RUN THE AUTHOR'S secure-linux?"
 	read -p "yes\no >_: " nocklbye
-    if [[ "$nocklbye" == "yes" ]]; then
-        printf 'RUNNING...\n'
-        extra
-    elif [[ "$nocklbye" == "no" ]]; then
-        printf 'LEAVING...\n'
-        exit 1
-    else
-        printf 'INVALID VALUE!\n'
-        final
-    fi
+	if [[ "$nocklbye" == "yes" ]]; then
+		printf 'RUNNING...\n'
+		extra
+	elif [[ "$nocklbye" == "no" ]]; then
+		printf 'LEAVING...\n'
+		exit 1
+	else
+		printf 'INVALID VALUE!\n'
+		final
+	fi
 }
 final
