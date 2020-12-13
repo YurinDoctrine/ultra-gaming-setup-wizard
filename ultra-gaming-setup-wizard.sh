@@ -167,19 +167,19 @@ prompt_1() {
 	echo -e "4. : LINUX-TKG(BOTH)"
 	read -p $'>_: ' nockl
 	if [[ "$nockl" == "1" ]]; then
-		printf 'INSTALLING...' && clear
+		printf 'INSTALLING ...' && clear
 		xanmod
 	fi
 	if [[ "$nockl" == "2" ]]; then
-		printf 'INSTALLING...' && clear
+		printf 'INSTALLING ...' && clear
 		liquarix
 	fi
 	if [[ "$nockl" == "3" ]]; then
-		printf 'INSTALLING...' && clear
+		printf 'INSTALLING ...' && clear
 		zen
 	fi
 	if [[ "$nockl" == "4" ]]; then
-		printf 'INSTALLING...' && clear
+		printf 'INSTALLING ...' && clear
 		linux-tkg
 	fi
 	if [[ "$nockl" == "" ]]; then
@@ -274,10 +274,10 @@ final() {
 	echo -e "FINAL: DO YOU ALSO WANT TO RUN THE AUTHOR'S secure-linux?"
 	read -p $'yes\no >_: ' nocklbye
 	if [[ "$nocklbye" == "yes" ]]; then
-		printf 'RUNNING...\n'
+		printf 'RUNNING ...\n'
 		extra
 	elif [[ "$nocklbye" == "no" ]]; then
-		printf 'LEAVING...\n'
+		printf 'LEAVING ...\n'
 		exit 1
 	else
 		printf 'INVALID VALUE!\n'
