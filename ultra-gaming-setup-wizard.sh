@@ -84,7 +84,7 @@ prompt_0() {
 	echo -e "CHOOSE WHAT COMPATIBLE WHICH IS IN BELOW WITH YOUR HARDWARE."
 	echo -e "1. : AMD"
 	echo -e "2. : NVIDIA"
-	read -p '>_: ' noc
+	read -p $'>_: ' noc
 	if [[ "$noc" == "1" ]]; then
 		amd
 	fi
@@ -102,7 +102,7 @@ xanmod() {
 		echo -e 'net.core.default_qdisc = fq_pie' | sudo tee -a /etc/sysctl.d/90-override.conf
 		clear
 		echo -e '[r]EBOOT NOW OR [l]ATER?'
-		read -p '>_: 'nock
+		read -p $'>_: 'nock
 
 		if [[ "$nock" == "r" ]]; then
 			sudo reboot
@@ -118,7 +118,7 @@ xanmod() {
 		echo -e 'net.core.default_qdisc = fq_pie' | sudo tee -a /etc/sysctl.d/90-override.conf
 		clear
 		echo -e '[r]EBOOT NOW OR [l]ATER?'
-		read -p '>_: 'nock
+		read -p $'>_: 'nock
 
 		if [[ "$nock" == "r" ]]; then
 			sudo reboot
@@ -165,7 +165,7 @@ prompt_1() {
 	echo -e "2. : LIQUARIX(UBUNTUONLY)"
 	echo -e "3. : ZEN(ARCHONLY)"
 	echo -e "4. : LINUX-TKG(BOTH)"
-	read -p '>_: ' nockl
+	read -p $'>_: ' nockl
 	if [[ "$nockl" == "1" ]]; then
 		printf 'INSTALLING...' && clear
 		xanmod
@@ -190,7 +190,7 @@ prompt_1() {
 prompt_1
 prompt_2() {
 	echo -e "NOW YOU GOTTA INSTALL WINE EITHER. [RETURN]"
-	read -p '>_: '
+	read -p $'>_: '
 	which apt >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
 		wget -nc https://dl.winehq.org/wine-builds/winehq.key
@@ -220,7 +220,7 @@ prompt_3() {
 	clear
 	ulimit -Hn
 	echo -e "IF THIS ABOVE RETURNS MORE THAN 500,000 THEN ESYNC IS ENABLED!"
-	read -p 'true\false? >_: ' nocklb
+	read -p $'true\false? >_: ' nocklb
 	if [[ "$nocklb" == "false" ]]; then
 		echo -e 'DefaultLimitNOFILE=524288' | sudo tee -a /etc/systemd/system.conf && echo -e 'DefaultLimitNOFILE=524288' | sudo tee -a /etc/systemd/user.conf
 		echo -e $USER 'hard nofile 524288' | sudo tee -a /etc/security/limits.conf
@@ -252,7 +252,7 @@ utilities() {
 }
 prompt_4() {
 	echo -e "DO YOU ALSO WANT INSTALL UTILITY WARES? gamemode, earlyoom and tlp etc."
-	read -p 'y\n >_: ' nocklby
+	read -p $'y\n >_: ' nocklby
 	if [[ "$nocklby" == "y" ]]; then
 		utilities
 	fi
@@ -272,7 +272,7 @@ extra() {
 
 final() {
 	echo -e "FINAL: DO YOU ALSO WANT TO RUN THE AUTHOR'S secure-linux?"
-	read -p "yes\no >_: " nocklbye
+	read -p $'yes\no >_: ' nocklbye
 	if [[ "$nocklbye" == "yes" ]]; then
 		printf 'RUNNING...\n'
 		extra
