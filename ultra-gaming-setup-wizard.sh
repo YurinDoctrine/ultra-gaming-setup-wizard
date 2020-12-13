@@ -8,6 +8,14 @@ if [ $? -eq 0 ]; then
 	echo -e "║                                                   ║"
 	echo -e "╚═══════════════════════════════════════════════════╝"
 
+else
+        clear
+        echo -e "╔═══════════════════════════════════════════════════╗"
+        echo -e "║THIS SCRIPT ONLY WORKS ON ARCH&UBUNTU BASED DISTROS║"
+        echo -e "║                                                   ║"
+        echo -e "╚═══════════════════════════════════════════════════╝"
+        echo -e ""
+        exit 1
 fi
 which pacman >/dev/null 2>&1
 if [ $? -eq 0 ]; then
@@ -16,16 +24,6 @@ if [ $? -eq 0 ]; then
 	echo -e "║YURIN'S | ultimate-gaming-setup-wizard | Greetings!║"
 	echo -e "║                                                   ║"
 	echo -e "╚═══════════════════════════════════════════════════╝"
-
-else
-	clear
-	echo -e "╔═══════════════════════════════════════════════════╗"
-	echo -e "║THIS SCRIPT ONLY WORKS ON ARCH&UBUNTU BASED DISTROS║"
-	echo -e "║                                                   ║"
-	echo -e "╚═══════════════════════════════════════════════════╝"
-	echo -e ""
-	exit 1
-
 fi
 
 32bit() {
