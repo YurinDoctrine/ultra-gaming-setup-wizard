@@ -160,7 +160,7 @@ linux-tkg() {
 	fi
 }
 prompt_1() {
-	echo -e "FIND IN BELOW CUSTOM KERNELS ACROSS OF THEM BENEFITS..."
+	echo -e "FIND IN BELOW CUSTOM KERNELS ACROSS OF THEM BENEFITS...(RETURN IS: NONE)"
 	echo -e "1. : XANMOD(BOTH)"
 	echo -e "2. : LIQUARIX(UBUNTUONLY)"
 	echo -e "3. : ZEN(ARCHONLY)"
