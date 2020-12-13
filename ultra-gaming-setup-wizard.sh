@@ -189,7 +189,7 @@ prompt_1() {
 }
 prompt_1
 prompt_2() {
-	echo -e "NOW YOU GOTTA INSTALL WINE EITHER. [ENTER]"
+	echo -e "NOW YOU GOTTA INSTALL WINE EITHER. [RETURN]"
 	read -p '>_: '
 	which apt >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
