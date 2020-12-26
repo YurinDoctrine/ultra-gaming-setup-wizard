@@ -220,7 +220,7 @@ prompt_3() {
 	clear
 	ulimit -Hn
 	echo -e "IF THIS ABOVE RETURNS MORE THAN 500,000 THEN ESYNC IS ENABLED!"
-	read -p $'true\false? >_: ' nocklb
+	read -p $'true/false? >_: ' nocklb
 	if [[ "$nocklb" == "false" ]]; then
 		echo -e 'DefaultLimitNOFILE=524288' | sudo tee -a /etc/systemd/system.conf && echo -e 'DefaultLimitNOFILE=524288' | sudo tee -a /etc/systemd/user.conf
 		echo -e $USER 'hard nofile 524288' | sudo tee -a /etc/security/limits.conf
@@ -272,7 +272,7 @@ extra() {
 
 final() {
 	echo -e "FINAL: DO YOU ALSO WANT TO RUN THE AUTHOR'S secure-linux?"
-	read -p $'yes\no >_: ' nocklbye
+	read -p $'yes/no >_: ' nocklbye
 	if [[ "$nocklbye" == "yes" ]]; then
 		echo -e 'RUNNING ...\n'
 		extra
