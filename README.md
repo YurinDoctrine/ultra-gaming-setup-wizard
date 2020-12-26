@@ -1,6 +1,6 @@
 # ultra-gaming-setup-wizard
 
-## CLONING and RUNNING
+## CLONNING and RUNNING
 
 ```sh
 curl https://raw.githubusercontent.com/YurinDoctrine/ultra-gaming-setup-wizard/main/ultra-gaming-setup-wizard.sh >ultra-gaming-setup-wizard.sh &&
