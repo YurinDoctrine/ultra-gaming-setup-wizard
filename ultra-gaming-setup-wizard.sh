@@ -97,8 +97,10 @@ prompt_0
 xanmod() {
 	which apt >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
-		echo -e 'deb http://deb.xanmod.org releases main' | sudo tee -a /etc/apt/sources.list.d/xanmod-kernel.list && wget -qO - https://dl.xanmod.org/gpg.key | sudo apt-key add -
-		sudo apt update && sudo apt install --install-recommends linux-xanmod-rt -y
+		echo -e 'deb http://deb.xanmod.org releases main' | sudo tee -a /etc/apt/sources.list.d/xanmod-kernel.list &&
+			wget -qO - https://dl.xanmod.org/gpg.key | sudo apt-key add -
+		sudo apt update &&
+			sudo apt install --install-recommends linux-xanmod-rt -y
 		echo -e 'net.core.default_qdisc = fq_pie' | sudo tee -a /etc/sysctl.d/90-override.conf
 		clear
 		echo -e '[r]EBOOT NOW OR [l]ATER?'
@@ -131,7 +133,8 @@ xanmod() {
 liquarix() {
 	which apt >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
-		sudo add-apt-repository ppa:damentz/liquorix && sudo apt-get update
+		sudo add-apt-repository ppa:damentz/liquorix &&
+			sudo apt-get update
 		sudo apt-get install --install-recommends linux-image-liquorix-amd64 linux-headers-liquorix-amd64
 		clear
 	fi
@@ -167,19 +170,23 @@ prompt_1() {
 	echo -e "4. : LINUX-TKG(BOTH)"
 	read -p $'>_: ' nockl
 	if [[ "$nockl" == "1" ]]; then
-		echo -e 'INSTALLING ...' && clear
+		echo -e 'INSTALLING ...' &&
+			clear
 		xanmod
 	fi
 	if [[ "$nockl" == "2" ]]; then
-		echo -e 'INSTALLING ...' && clear
+		echo -e 'INSTALLING ...' &&
+			clear
 		liquarix
 	fi
 	if [[ "$nockl" == "3" ]]; then
-		echo -e 'INSTALLING ...' && clear
+		echo -e 'INSTALLING ...' &&
+			clear
 		zen
 	fi
 	if [[ "$nockl" == "4" ]]; then
-		echo -e 'INSTALLING ...' && clear
+		echo -e 'INSTALLING ...' &&
+			clear
 		linux-tkg
 	fi
 	if [[ "$nockl" == "" ]]; then
@@ -222,7 +229,8 @@ prompt_3() {
 	echo -e "IF THIS ABOVE RETURNS MORE THAN 500,000 THEN ESYNC IS ENABLED!"
 	read -p $'true/false? >_: ' nocklb
 	if [[ "$nocklb" == "false" ]]; then
-		echo -e 'DefaultLimitNOFILE=524288' | sudo tee -a /etc/systemd/system.conf && echo -e 'DefaultLimitNOFILE=524288' | sudo tee -a /etc/systemd/user.conf
+		echo -e 'DefaultLimitNOFILE=524288' | sudo tee -a /etc/systemd/system.conf &&
+			echo -e 'DefaultLimitNOFILE=524288' | sudo tee -a /etc/systemd/user.conf
 		echo -e $USER 'hard nofile 524288' | sudo tee -a /etc/security/limits.conf
 		sleep 1s
 		echo -e "DONE."
