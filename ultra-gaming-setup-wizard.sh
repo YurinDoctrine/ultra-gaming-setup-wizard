@@ -29,6 +29,7 @@ fi
 32bit() {
 	which apt >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
+                echo -e 'Acquire::Languages "none";' | sudo tee -a /etc/apt/apt.conf.d/00aptitude
 		sudo dpkg --add-architecture i386
 		sudo apt update
 		sudo apt install --install-recommends ubuntu-restricted-extras -y
@@ -247,9 +248,9 @@ utilities() {
 	if [ $? -eq 0 ]; then
 		sudo add-apt-repository ppa:linrunner/tlp
 		sudo apt update
-		sudo apt install gamemode earlyoom preload tlp tlp-rdw -y
+		sudo apt install gamemode -y
+		sudo apt install earlyoom preload tlp tlp-rdw -y
 		sudo tlp start
-		echo -e 'Acquire::Languages "none";' | sudo tee -a /etc/apt/apt.conf.d/00aptitude
 		clear
 	fi
 	which pacman >/dev/null 2>&1
