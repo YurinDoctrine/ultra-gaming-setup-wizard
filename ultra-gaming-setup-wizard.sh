@@ -32,6 +32,7 @@ fi
 		sudo dpkg --add-architecture i386
 		sudo apt update
 		sudo apt install --install-recommends ubuntu-restricted-extras -y
+		sudo apt install --install-recommends software-properties-common -y
 	fi
 	which pacman >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
