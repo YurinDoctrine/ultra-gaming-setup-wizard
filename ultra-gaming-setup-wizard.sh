@@ -137,7 +137,7 @@ liquarix() {
 	if [ $? -eq 0 ]; then
 		sudo add-apt-repository ppa:damentz/liquorix &&
 			sudo apt-get update
-		sudo apt-get install --install-recommends linux-image-liquorix-amd64 linux-headers-liquorix-amd64
+		sudo apt-get install --install-recommends linux-image-liquorix-amd64 linux-headers-liquorix-amd64 -y
 		clear
 	fi
 }
