@@ -260,7 +260,7 @@ utilities() {
 }
 prompt_4() {
 	echo -e "DO YOU ALSO WANT INSTALL UTILITY WARES? gamemode, earlyoom and tlp etc."
-	read -p $'y\n >_: ' nocklby
+	read -p $'y/n >_: ' nocklby
 	if [[ "$nocklby" == "y" ]]; then
 		utilities
 	fi
