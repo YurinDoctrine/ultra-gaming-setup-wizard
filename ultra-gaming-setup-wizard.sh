@@ -4,7 +4,7 @@ which apt >/dev/null 2>&1
 if [ $? -eq 0 ]; then
 	clear
 	echo -e "╔═══════════════════════════════════════════════════╗"
-	echo -e "║YURIN'S | ultimate-gaming-setup-wizard | Greetings!║"
+	echo -e "║YURIN's | ultimate-gaming-setup-wizard | greetings!║"
 	echo -e "║                                                   ║"
 	echo -e "╚═══════════════════════════════════════════════════╝"
 
@@ -21,7 +21,7 @@ which pacman >/dev/null 2>&1
 if [ $? -eq 0 ]; then
 	clear
 	echo -e "╔═══════════════════════════════════════════════════╗"
-	echo -e "║YURIN'S | ultimate-gaming-setup-wizard | Greetings!║"
+	echo -e "║YURIN's | ultimate-gaming-setup-wizard | greetings!║"
 	echo -e "║                                                   ║"
 	echo -e "╚═══════════════════════════════════════════════════╝"
 fi
