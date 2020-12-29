@@ -2,27 +2,41 @@
 
 which apt >/dev/null 2>&1
 if [ $? -eq 0 ]; then
+	which apt >/dev/null 2>&1
+	if [ $? != 0 ]; then
+        	clear
+	        echo -e "╔═══════════════════════════════════════════════════╗"
+	        echo -e "║THIS SCRIPT ONLY WORKS ON ARCH&UBUNTU BASED DISTROS║"
+	        echo -e "║                                                   ║"
+	        echo -e "╚═══════════════════════════════════════════════════╝"
+	        echo -e ""
+	        exit 1
+	fi
+else
 	clear
 	echo -e "╔═══════════════════════════════════════════════════╗"
 	echo -e "║YURIN's | ultimate-gaming-setup-wizard | greetings!║"
 	echo -e "║                                                   ║"
 	echo -e "╚═══════════════════════════════════════════════════╝"
 fi
+
 which pacman >/dev/null 2>&1
 if [ $? -eq 0 ]; then
-	clear
-	echo -e "╔═══════════════════════════════════════════════════╗"
-	echo -e "║YURIN's | ultimate-gaming-setup-wizard | greetings!║"
-	echo -e "║                                                   ║"
-	echo -e "╚═══════════════════════════════════════════════════╝"
-elif [ $? -eq 1 ]; then
+	if [ $? != 0 ]; then
+	        clear
+	        echo -e "╔═══════════════════════════════════════════════════╗"
+	        echo -e "║THIS SCRIPT ONLY WORKS ON ARCH&UBUNTU BASED DISTROS║"
+	        echo -e "║                                                   ║"
+	        echo -e "╚═══════════════════════════════════════════════════╝"
+	        echo -e ""
+	        exit 1
+	fi
+else
         clear
         echo -e "╔═══════════════════════════════════════════════════╗"
-        echo -e "║THIS SCRIPT ONLY WORKS ON ARCH&UBUNTU BASED DISTROS║"
+        echo -e "║YURIN's | ultimate-gaming-setup-wizard | greetings!║"
         echo -e "║                                                   ║"
         echo -e "╚═══════════════════════════════════════════════════╝"
-        echo -e ""
-        exit 1
 fi
 
 32bit() {
