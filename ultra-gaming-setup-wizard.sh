@@ -7,15 +7,6 @@ if [ $? -eq 0 ]; then
 	echo -e "║YURIN's | ultimate-gaming-setup-wizard | greetings!║"
 	echo -e "║                                                   ║"
 	echo -e "╚═══════════════════════════════════════════════════╝"
-
-else
-	clear
-	echo -e "╔═══════════════════════════════════════════════════╗"
-	echo -e "║THIS SCRIPT ONLY WORKS ON ARCH&UBUNTU BASED DISTROS║"
-	echo -e "║                                                   ║"
-	echo -e "╚═══════════════════════════════════════════════════╝"
-	echo -e ""
-	exit 1
 fi
 which pacman >/dev/null 2>&1
 if [ $? -eq 0 ]; then
@@ -24,6 +15,14 @@ if [ $? -eq 0 ]; then
 	echo -e "║YURIN's | ultimate-gaming-setup-wizard | greetings!║"
 	echo -e "║                                                   ║"
 	echo -e "╚═══════════════════════════════════════════════════╝"
+elif [ $? -eq 1 ]; then
+        clear
+        echo -e "╔═══════════════════════════════════════════════════╗"
+        echo -e "║THIS SCRIPT ONLY WORKS ON ARCH&UBUNTU BASED DISTROS║"
+        echo -e "║                                                   ║"
+        echo -e "╚═══════════════════════════════════════════════════╝"
+        echo -e ""
+        exit 1
 fi
 
 32bit() {
@@ -61,16 +60,23 @@ amd() {
 	fi
 	which pacman >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
-		sudo pacman -S --needed yay -y
-		sudo pacman -S lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader xf86-video-amdgpu vulkan-radeon -y
+		yay -S --needed --noconfirm yay
+		which yay >/dev/null 2>&1
+		if [ $? != 0 ]; then
+			git clone https://aur.archlinux.org/yay.git
+			cd yay
+			makepkg -si
+			cd
+		fi
+		yay -S --needed --noconfirm lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader xf86-video-amdgpu vulkan-radeon
 		echo -e 'RADV_PERFTEST=aco' | sudo tee -a /etc/environment
 		clear
 	fi
 }
+
 nvidia() {
 	which apt >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
-		sudo pacman -S --needed yay -y
 		sudo add-apt-repository ppa:graphics-drivers/ppa -y
 		sudo apt update
 		sudo apt install nvidia-driver-450 libnvidia-gl-450 libnvidia-gl-450:i386 libvulkan1 libvulkan1:i386 -y
@@ -78,12 +84,21 @@ nvidia() {
 	fi
 	which pacman >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
-		sudo pacman -S nvidia opencl-nvidia lib32-opencl-nvidia lib32-nvidia-utils -y
+		yay -S --needed --noconfirm yay
+		which yay >/dev/null 2>&1
+		if [ $? != 0 ]; then
+			git clone https://aur.archlinux.org/yay.git
+			cd yay
+			makepkg -si
+			cd
+		fi
+		yay -S --needed --noconfirm nvidia opencl-nvidia lib32-opencl-nvidia lib32-nvidia-utils
 		clear
 	fi
 }
+
 prompt_0() {
-	echo -e "CHOOSE WHAT COMPATIBLE WHICH IS IN BELOW WITH YOUR HARDWARE."
+	echo -e "CHOOSE WHAT COMPATIBLE WHICH IS IN BELOW WITH YOUR HARDWARE. (RETURN IS: NONE)"
 	echo -e "1. : AMD"
 	echo -e "2. : NVIDIA"
 	read -p $'>_: ' noc
@@ -93,9 +108,13 @@ prompt_0() {
 	if [[ "$noc" == "2" ]]; then
 		nvidia
 	fi
+	if [[ "$noc" == "" ]]; then
+		clear
+	fi
 
 }
 prompt_0
+
 xanmod() {
 	which apt >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
@@ -111,9 +130,7 @@ xanmod() {
 		if [[ "$nock" == "r" ]]; then
 			sudo reboot
 		fi
-		if [[ "$nock" == "l" ]]; then
-			clear
-		fi
+		clear
 
 	fi
 	which pacman >/dev/null 2>&1
@@ -127,11 +144,10 @@ xanmod() {
 		if [[ "$nock" == "r" ]]; then
 			sudo reboot
 		fi
-		if [[ "$nock" == "l" ]]; then
-			clear
-		fi
+		clear
 	fi
 }
+
 liquarix() {
 	which apt >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
@@ -141,6 +157,7 @@ liquarix() {
 		clear
 	fi
 }
+
 zen() {
 	which pacman >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
@@ -148,6 +165,7 @@ zen() {
 		clear
 	fi
 }
+
 linux-tkg() {
 	which apt >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
@@ -164,8 +182,9 @@ linux-tkg() {
 		clear
 	fi
 }
+
 prompt_1() {
-	echo -e "FIND IN BELOW CUSTOM KERNELS ACROSS OF THEM BENEFITS...(RETURN IS: NONE)"
+	echo -e "FIND IN BELOW CUSTOM KERNELS ACROSS OF THEM BENEFITS... (RETURN IS: NONE)"
 	echo -e "1. : XANMOD(BOTH)"
 	echo -e "2. : LIQUARIX(UBUNTUONLY)"
 	echo -e "3. : ZEN(ARCHONLY)"
@@ -197,6 +216,7 @@ prompt_1() {
 
 }
 prompt_1
+
 prompt_2() {
 	echo -e "NOW YOU GOTTA INSTALL WINE EITHER. [RETURN]"
 	read -p $'>_: '
@@ -220,11 +240,12 @@ prompt_2() {
 	fi
 	which pacman >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
-		sudo pacman -S --needed wine-staging giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse libgpg-error lib32-libgpg-error alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo sqlite lib32-sqlite libxcomposite lib32-libxcomposite libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader steam lutris -y
+		yay -S --needed --noconfirm wine-staging giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse libgpg-error lib32-libgpg-error alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo sqlite lib32-sqlite libxcomposite lib32-libxcomposite libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader steam lutris
 		yay -S --needed --noconfirm ninja meson glslang systemd git dbus base-devel dxvk-bin vkbasalt
 	fi
 }
 prompt_2
+
 prompt_3() {
 	clear
 	ulimit -Hn
@@ -236,13 +257,12 @@ prompt_3() {
 		echo -e $USER 'hard nofile 524288' | sudo tee -a /etc/security/limits.conf
 		sleep 1s
 		echo -e "DONE."
-	fi
-	if [[ "$nocklb" == "true" ]]; then
 		clear
 	fi
-
+	clear
 }
 prompt_3
+
 utilities() {
 	which apt >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
@@ -255,20 +275,20 @@ utilities() {
 	fi
 	which pacman >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
-		yay -S --needed --noconfirm gamemode lib32-gamemode earlyoom preload tlp tlp-rdw
+		yay -S --needed --noconfirm gamemode lib32-gamemode
+		yay -S --needed --noconfirm earlyoom preload tlp tlp-rdw
 		sudo tlp start
 		clear
 	fi
 }
+
 prompt_4() {
 	echo -e "DO YOU ALSO WANT INSTALL UTILITY WARES? gamemode, earlyoom and tlp etc."
-	read -p $'y/n >_: ' nocklby
-	if [[ "$nocklby" == "y" ]]; then
+	read -p $'yes/no >_: ' nocklby
+	if [[ "$nocklby" == "yes" ]]; then
 		utilities
 	fi
-	if [[ "$nocklby" == "n" ]]; then
-		clear
-	fi
+	clear
 
 }
 prompt_4
