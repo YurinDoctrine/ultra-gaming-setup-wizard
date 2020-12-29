@@ -59,6 +59,15 @@ fi
 			_has_multilib=$((${_has_multilib} + 1))
 			sudo sed -i "${_has_multilib}s/^#//" /etc/pacman.conf
 		fi
+		sudo pacman -Sy
+                sudo pacman -S --needed --noconfirm yay
+                which yay >/dev/null 2>&1
+                if [ $? != 0 ]; then
+                        git clone https://aur.archlinux.org/yay.git
+                        cd yay
+                        makepkg -si
+                        cd
+                fi
 	fi
 }
 32bit
@@ -74,14 +83,6 @@ amd() {
 	fi
 	which pacman >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
-		yay -S --needed --noconfirm yay
-		which yay >/dev/null 2>&1
-		if [ $? != 0 ]; then
-			git clone https://aur.archlinux.org/yay.git
-			cd yay
-			makepkg -si
-			cd
-		fi
 		yay -S --needed --noconfirm lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader xf86-video-amdgpu vulkan-radeon
 		echo -e 'RADV_PERFTEST=aco' | sudo tee -a /etc/environment
 		clear
@@ -98,14 +99,6 @@ nvidia() {
 	fi
 	which pacman >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
-		yay -S --needed --noconfirm yay
-		which yay >/dev/null 2>&1
-		if [ $? != 0 ]; then
-			git clone https://aur.archlinux.org/yay.git
-			cd yay
-			makepkg -si
-			cd
-		fi
 		yay -S --needed --noconfirm nvidia opencl-nvidia lib32-opencl-nvidia lib32-nvidia-utils
 		clear
 	fi
