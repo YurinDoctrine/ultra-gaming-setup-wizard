@@ -257,7 +257,7 @@ prompt_3() {
 	clear
 	ulimit -Hn
 	echo -e "IF THIS ABOVE RETURNS MORE THAN 500,000 THEN ESYNC IS ENABLED!"
-	read -p $'true/false? >_: ' nocklb
+	read -p $'true/false >_: ' nocklb
 	if [[ "$nocklb" == "false" ]]; then
 		echo -e 'DefaultLimitNOFILE=524288' | sudo tee -a /etc/systemd/system.conf &&
 			echo -e 'DefaultLimitNOFILE=524288' | sudo tee -a /etc/systemd/user.conf
