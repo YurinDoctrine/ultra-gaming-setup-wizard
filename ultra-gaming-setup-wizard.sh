@@ -159,8 +159,8 @@ liquarix() {
 	which apt >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
 		sudo add-apt-repository ppa:damentz/liquorix &&
-			sudo apt-get update
-		sudo apt-get install --install-recommends linux-image-liquorix-amd64 linux-headers-liquorix-amd64 -y
+			sudo apt update
+		sudo apt install --install-recommends linux-image-liquorix-amd64 linux-headers-liquorix-amd64 -y
 		clear
 	fi
 }
@@ -234,9 +234,9 @@ prompt_2() {
 		sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main' -y
 		sudo add-apt-repository ppa:lutris-team/lutris -y
 		sudo apt update
-		sudo apt-get install --install-recommends winehq-staging -y
-		sudo apt-get install --install-recommends libgnutls30:i386 libldap-2.4-2:i386 libgpg-error0:i386 libxml2:i386 libasound2-plugins:i386 libsdl2-2.0-0:i386 libfreetype6:i386 libdbus-1-3:i386 libsqlite3-0:i386 -y
-		sudo apt-get install build-essential manpages-dev libx11-dev ninja xorg-dev meson glslang dbus dxvk steam lutris -y
+		sudo apt install --install-recommends winehq-staging -y
+		sudo apt install --install-recommends libgnutls30:i386 libldap-2.4-2:i386 libgpg-error0:i386 libxml2:i386 libasound2-plugins:i386 libsdl2-2.0-0:i386 libfreetype6:i386 libdbus-1-3:i386 libsqlite3-0:i386 -y
+		sudo apt install build-essential manpages-dev libx11-dev ninja xorg-dev meson glslang dbus dxvk steam lutris -y
 		cd
 		git clone https://github.com/DadSchoorse/vkBasalt.git
 		cd vkBasalt/
