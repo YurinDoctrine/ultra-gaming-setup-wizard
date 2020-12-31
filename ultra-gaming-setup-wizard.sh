@@ -4,13 +4,13 @@ which apt >/dev/null 2>&1
 if [ $? -eq 0 ]; then
 	which apt >/dev/null 2>&1
 	if [ $? != 0 ]; then
-        	clear
-	        echo -e "╔═══════════════════════════════════════════════════╗"
-	        echo -e "║THIS SCRIPT ONLY WORKS ON ARCH&UBUNTU BASED DISTROS║"
-	        echo -e "║                                                   ║"
-	        echo -e "╚═══════════════════════════════════════════════════╝"
-	        echo -e ""
-	        exit 1
+		clear
+		echo -e "╔═══════════════════════════════════════════════════╗"
+		echo -e "║THIS SCRIPT ONLY WORKS ON ARCH&UBUNTU BASED DISTROS║"
+		echo -e "║                                                   ║"
+		echo -e "╚═══════════════════════════════════════════════════╝"
+		echo -e ""
+		exit 1
 	fi
 else
 	clear
@@ -23,20 +23,20 @@ fi
 which pacman >/dev/null 2>&1
 if [ $? -eq 0 ]; then
 	if [ $? != 0 ]; then
-	        clear
-	        echo -e "╔═══════════════════════════════════════════════════╗"
-	        echo -e "║THIS SCRIPT ONLY WORKS ON ARCH&UBUNTU BASED DISTROS║"
-	        echo -e "║                                                   ║"
-	        echo -e "╚═══════════════════════════════════════════════════╝"
-	        echo -e ""
-	        exit 1
+		clear
+		echo -e "╔═══════════════════════════════════════════════════╗"
+		echo -e "║THIS SCRIPT ONLY WORKS ON ARCH&UBUNTU BASED DISTROS║"
+		echo -e "║                                                   ║"
+		echo -e "╚═══════════════════════════════════════════════════╝"
+		echo -e ""
+		exit 1
 	fi
 else
-        clear
-        echo -e "╔═══════════════════════════════════════════════════╗"
-        echo -e "║YURIN's | ultimate-gaming-setup-wizard | greetings!║"
-        echo -e "║                                                   ║"
-        echo -e "╚═══════════════════════════════════════════════════╝"
+	clear
+	echo -e "╔═══════════════════════════════════════════════════╗"
+	echo -e "║YURIN's | ultimate-gaming-setup-wizard | greetings!║"
+	echo -e "║                                                   ║"
+	echo -e "╚═══════════════════════════════════════════════════╝"
 fi
 
 32bit() {
@@ -59,14 +59,14 @@ fi
 			sudo sed -i "${_has_multilib}s/^#//" /etc/pacman.conf
 		fi
 		sudo pacman -Sy
-                sudo pacman -S --needed --noconfirm yay
-                which yay >/dev/null 2>&1
-                if [ $? != 0 ]; then
-                        git clone https://aur.archlinux.org/yay.git
-                        cd yay
-                        makepkg -si
-                        cd
-                fi
+		sudo pacman -S --needed --noconfirm yay
+		which yay >/dev/null 2>&1
+		if [ $? != 0 ]; then
+			git clone https://aur.archlinux.org/yay.git
+			cd yay
+			makepkg -si
+			cd
+		fi
 	fi
 }
 32bit
