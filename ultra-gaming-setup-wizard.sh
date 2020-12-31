@@ -132,7 +132,7 @@ xanmod() {
 		echo -e 'net.core.default_qdisc = fq_pie' | sudo tee -a /etc/sysctl.d/90-override.conf
 		clear
 		echo -e '[r]EBOOT NOW OR [l]ATER?'
-		read -p $'>_: 'nock
+		read -p $'>_: ' nock
 
 		if [[ "$nock" == "r" ]]; then
 			sudo reboot
@@ -146,7 +146,7 @@ xanmod() {
 		echo -e 'net.core.default_qdisc = fq_pie' | sudo tee -a /etc/sysctl.d/90-override.conf
 		clear
 		echo -e '[r]EBOOT NOW OR [l]ATER?'
-		read -p $'>_: 'nock
+		read -p $'>_: ' nock
 
 		if [[ "$nock" == "r" ]]; then
 			sudo reboot
