@@ -42,7 +42,6 @@ fi
 32bit() {
 	which apt >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
-		echo -e 'Acquire::Languages "none";' | sudo tee -a /etc/apt/apt.conf.d/00aptitude
 		sudo dpkg --add-architecture i386
 		sudo apt update
 		sudo apt install --install-recommends ubuntu-restricted-extras -y
