@@ -284,14 +284,16 @@ prompt_4() {
 		sudo add-apt-repository ppa:linrunner/tlp
 		sudo apt update
 		sudo apt install gamemode -y
-		sudo apt install earlyoom preload tlp tlp-rdw -y
+		sudo apt install earlyoom preload tlp tlp-rdw powertop -y
+		sudo powertop --auto-tune
 		sudo tlp start
 		clear
 	fi
 	which pacman >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
 		yay -S --needed --noconfirm gamemode lib32-gamemode
-		yay -S --needed --noconfirm earlyoom preload tlp tlp-rdw
+		yay -S --needed --noconfirm earlyoom preload tlp tlp-rdw powertop
+		sudo powertop --auto-tune
 		sudo tlp start
 		clear
 	fi
