@@ -18,6 +18,7 @@ else
 	echo -e "║YURIN's | ultimate-gaming-setup-wizard | greetings!║"
 	echo -e "║                                                   ║"
 	echo -e "╚═══════════════════════════════════════════════════╝"
+	echo -e ""
 fi
 
 which pacman >/dev/null 2>&1
@@ -37,6 +38,7 @@ else
 	echo -e "║YURIN's | ultimate-gaming-setup-wizard | greetings!║"
 	echo -e "║                                                   ║"
 	echo -e "╚═══════════════════════════════════════════════════╝"
+	echo -e ""
 fi
 
 32bit() {
@@ -44,8 +46,6 @@ fi
 	if [ $? -eq 0 ]; then
 		sudo dpkg --add-architecture i386
 		sudo apt update
-		sudo apt install --install-recommends ubuntu-restricted-extras -y
-		sudo apt install --install-recommends software-properties-common -y
 	fi
 	which pacman >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
@@ -64,8 +64,8 @@ fi
 		if [ $? != 0 ]; then
 			git clone https://aur.archlinux.org/yay.git
 			cd yay
-			makepkg -si
-			cd
+			makepkg -si &&
+				cd
 		fi
 	fi
 }
@@ -76,14 +76,14 @@ amd() {
 	if [ $? -eq 0 ]; then
 		sudo add-apt-repository ppa:kisak/kisak-mesa -y
 		sudo apt update
-		sudo apt install libgl1-mesa-dri:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386 -y
-		echo -e 'RADV_PERFTEST=aco' | sudo tee -a /etc/environment
+		sudo apt install libgl1-mesa-dri:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386 -y &&
+			echo -e 'RADV_PERFTEST=aco' | sudo tee -a /etc/environment
 		clear
 	fi
 	which pacman >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
-		yay -S --needed --noconfirm lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader xf86-video-amdgpu vulkan-radeon
-		echo -e 'RADV_PERFTEST=aco' | sudo tee -a /etc/environment
+		yay -S --needed --noconfirm lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader xf86-video-amdgpu vulkan-radeon &&
+			echo -e 'RADV_PERFTEST=aco' | sudo tee -a /etc/environment
 		clear
 	fi
 }
@@ -158,8 +158,13 @@ liquarix() {
 	which apt >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
 		sudo add-apt-repository ppa:damentz/liquorix &&
-			sudo apt update
+			sudo apt-get update
 		sudo apt install --install-recommends linux-image-liquorix-amd64 linux-headers-liquorix-amd64 -y
+		clear
+	fi
+	which pacman >/dev/null 2>&1
+	if [ $? -eq 0 ]; then
+		yay -S --needed --noconfirm linux-lqx linux-lqx-headers
 		clear
 	fi
 }
@@ -177,14 +182,16 @@ linux-tkg() {
 	if [ $? -eq 0 ]; then
 		git clone https://github.com/Frogging-Family/linux-tkg.git
 		cd linux-tkg/
-		./install.sh install
+		./install.sh install &&
+			cd
 		clear
 	fi
 	which pacman >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
 		git clone https://github.com/Frogging-Family/linux-tkg.git
 		cd linux-tkg/
-		makepkg -si
+		makepkg -si &&
+			cd
 		clear
 	fi
 }
@@ -192,7 +199,7 @@ linux-tkg() {
 prompt_1() {
 	echo -e "FIND IN BELOW CUSTOM KERNELS ACROSS OF THEM BENEFITS... (RETURN IS: NONE)"
 	echo -e "1. : XANMOD(BOTH)"
-	echo -e "2. : LIQUARIX(UBUNTUONLY)"
+	echo -e "2. : LIQUARIX(BOTH)"
 	echo -e "3. : ZEN(ARCHONLY)"
 	echo -e "4. : LINUX-TKG(BOTH)"
 	read -p $'>_: ' nockl
@@ -224,7 +231,7 @@ prompt_1() {
 prompt_1
 
 prompt_2() {
-	echo -e "NOW YOU GOTTA INSTALL WINE EITHER. [RETURN]"
+	echo -e "NOW YOU GOTTA INSTALL WINE THOUGH. [RETURN]"
 	read -p $'>_: '
 	which apt >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
@@ -240,8 +247,8 @@ prompt_2() {
 		git clone https://github.com/DadSchoorse/vkBasalt.git
 		cd vkBasalt/
 		meson --buildtype=release --prefix=/usr builddir
-		ninja -C builddir install
-		cd
+		ninja -C builddir install &&
+			cd
 	fi
 	which pacman >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
@@ -258,9 +265,9 @@ prompt_3() {
 	read -p $'true/false >_: ' nocklb
 	if [[ "$nocklb" == "false" ]]; then
 		echo -e 'DefaultLimitNOFILE=524288' | sudo tee -a /etc/systemd/system.conf &&
-			echo -e 'DefaultLimitNOFILE=524288' | sudo tee -a /etc/systemd/user.conf
-		echo -e $USER 'hard nofile 524288' | sudo tee -a /etc/security/limits.conf
-		sleep 1s
+			echo -e 'DefaultLimitNOFILE=524288' | sudo tee -a /etc/systemd/user.conf &&
+			echo -e $USER 'hard nofile 524288' | sudo tee -a /etc/security/limits.conf
+		sleep 0.8
 		echo -e "DONE."
 		clear
 	fi
@@ -268,7 +275,9 @@ prompt_3() {
 }
 prompt_3
 
-utilities() {
+prompt_4() {
+	echo -e "NEXT YOU GOTTA INSTALL A COUPLE OF DAEMON EITHER (gamemode, earlyoom ..). [RETURN]"
+	read -p $'>_: '
 	which apt >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
 		sudo add-apt-repository ppa:linrunner/tlp
@@ -286,32 +295,21 @@ utilities() {
 		clear
 	fi
 }
-
-prompt_4() {
-	echo -e "DO YOU ALSO WANT INSTALL UTILITY WARES? gamemode, earlyoom and tlp etc."
-	read -p $'yes/no >_: ' nocklby
-	if [[ "$nocklby" == "yes" ]]; then
-		utilities
-	fi
-	clear
-
-}
 prompt_4
 
 extra() {
 	curl https://raw.githubusercontent.com/YurinDoctrine/secure-linux/master/secure.sh >secure.sh &&
 		chmod 755 secure.sh &&
 		./secure.sh
-
 }
 
 final() {
 	echo -e "FINAL: DO YOU ALSO WANT TO RUN THE AUTHOR'S secure-linux?"
-	read -p $'yes/no >_: ' nocklbye
-	if [[ "$nocklbye" == "yes" ]]; then
+	read -p $'yes/no >_: ' nocklby
+	if [[ "$nocklby" == "yes" ]]; then
 		echo -e 'RUNNING ...\n'
 		extra
-	elif [[ "$nocklbye" == "no" ]]; then
+	elif [[ "$nocklby" == "no" ]]; then
 		echo -e 'LEAVING ...\n'
 		exit 1
 	else
