@@ -127,7 +127,7 @@ xanmod() {
 		echo -e 'deb http://deb.xanmod.org releases main' | sudo tee -a /etc/apt/sources.list.d/xanmod-kernel.list &&
 			wget -qO - https://dl.xanmod.org/gpg.key | sudo apt-key add -
 		sudo apt update &&
-			sudo apt install --install-recommends linux-xanmod-rt -y
+			sudo apt install linux-xanmod-rt -y
 		echo -e 'net.core.default_qdisc = fq_pie' | sudo tee -a /etc/sysctl.d/90-override.conf
 		clear
 		echo -e '[r]EBOOT NOW OR [l]ATER?'
@@ -159,7 +159,7 @@ liquarix() {
 	if [ $? -eq 0 ]; then
 		sudo add-apt-repository ppa:damentz/liquorix &&
 			sudo apt-get update
-		sudo apt install --install-recommends linux-image-liquorix-amd64 linux-headers-liquorix-amd64 -y
+		sudo apt install linux-image-liquorix-amd64 linux-headers-liquorix-amd64 -y
 		clear
 	fi
 	which pacman >/dev/null 2>&1
@@ -240,9 +240,9 @@ prompt_2() {
 		sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main' -y
 		sudo add-apt-repository ppa:lutris-team/lutris -y
 		sudo apt update
-		sudo apt install --install-recommends winehq-staging -y
-		sudo apt install --install-recommends libgnutls30:i386 libldap-2.4-2:i386 libgpg-error0:i386 libxml2:i386 libasound2-plugins:i386 libsdl2-2.0-0:i386 libfreetype6:i386 libdbus-1-3:i386 libsqlite3-0:i386 -y
-		sudo apt install --install-recommends build-essential manpages-dev libx11-dev ninja-build xorg-dev meson dbus dxvk steam lutris -y
+		sudo apt install winehq-staging -y
+		sudo apt install libgnutls30:i386 libldap-2.4-2:i386 libgpg-error0:i386 libxml2:i386 libasound2-plugins:i386 libsdl2-2.0-0:i386 libfreetype6:i386 libdbus-1-3:i386 libsqlite3-0:i386 -y
+		sudo apt install build-essential manpages-dev libx11-dev ninja-build xorg-dev meson dbus dxvk steam lutris -y
 		sudo apt install glslang -y
 		cd
 		git clone https://github.com/DadSchoorse/vkBasalt.git
