@@ -78,13 +78,11 @@ amd() {
         sudo apt update
         sudo apt install libgl1-mesa-dri:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386 -y &&
             echo -e 'RADV_PERFTEST=aco' | sudo tee -a /etc/environment
-        clear
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         yay -S --needed --noconfirm lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader xf86-video-amdgpu vulkan-radeon &&
             echo -e 'RADV_PERFTEST=aco' | sudo tee -a /etc/environment
-        clear
     fi
 }
 
@@ -94,12 +92,10 @@ nvidia() {
         sudo add-apt-repository ppa:graphics-drivers/ppa -y
         sudo apt update
         sudo apt install nvidia-driver-450 libnvidia-gl-450 libnvidia-gl-450:i386 libvulkan1 libvulkan1:i386 -y
-        clear
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         yay -S --needed --noconfirm nvidia opencl-nvidia lib32-opencl-nvidia lib32-nvidia-utils
-        clear
     fi
 }
 
@@ -129,28 +125,24 @@ xanmod() {
         sudo apt update &&
             sudo apt install linux-xanmod-rt -y
         echo -e 'net.core.default_qdisc = fq_pie' | sudo tee -a /etc/sysctl.d/90-override.conf
-        clear
         echo -e '[r]EBOOT NOW OR [l]ATER?'
         read -p $'>_: ' nock
 
         if [[ "$nock" == "r" ]]; then
             sudo reboot
         fi
-        clear
 
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         yay -S --needed --noconfirm linux-xanmod-rt linux-xanmod-headers
         echo -e 'net.core.default_qdisc = fq_pie' | sudo tee -a /etc/sysctl.d/90-override.conf
-        clear
         echo -e '[r]EBOOT NOW OR [l]ATER?'
         read -p $'>_: ' nock
 
         if [[ "$nock" == "r" ]]; then
             sudo reboot
         fi
-        clear
     fi
 }
 
@@ -160,12 +152,10 @@ liquarix() {
         sudo add-apt-repository ppa:damentz/liquorix &&
             sudo apt-get update
         sudo apt install linux-image-liquorix-amd64 linux-headers-liquorix-amd64 -y
-        clear
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         yay -S --needed --noconfirm linux-lqx linux-lqx-headers
-        clear
     fi
 }
 
@@ -173,7 +163,6 @@ zen() {
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         yay -S --needed --noconfirm linux-zen linux-zen-headers
-        clear
     fi
 }
 
@@ -181,18 +170,16 @@ linux-tkg() {
     which apt >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         git clone https://github.com/Frogging-Family/linux-tkg.git
-        cd linux-tkg/
-        ./install.sh install &&
+        cd linux-tkg/ &&
+            ./install.sh install &&
             cd
-        clear
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         git clone https://github.com/Frogging-Family/linux-tkg.git
-        cd linux-tkg/
-        makepkg -si &&
+        cd linux-tkg/ &&
+            makepkg -si &&
             cd
-        clear
     fi
 }
 
@@ -205,23 +192,19 @@ prompt_1() {
     read -p $'>_: ' nockl
     if [[ "$nockl" == "1" ]]; then
         echo -e 'INSTALLING ...' &&
-            clear
-        xanmod
+            xanmod
     fi
     if [[ "$nockl" == "2" ]]; then
         echo -e 'INSTALLING ...' &&
-            clear
-        liquarix
+            liquarix
     fi
     if [[ "$nockl" == "3" ]]; then
         echo -e 'INSTALLING ...' &&
-            clear
-        zen
+            zen
     fi
     if [[ "$nockl" == "4" ]]; then
         echo -e 'INSTALLING ...' &&
-            clear
-        linux-tkg
+            linux-tkg
     fi
     if [[ "$nockl" == "" ]]; then
         clear
@@ -244,11 +227,11 @@ prompt_2() {
         sudo apt install libgnutls30:i386 libldap-2.4-2:i386 libgpg-error0:i386 libxml2:i386 libasound2-plugins:i386 libsdl2-2.0-0:i386 libfreetype6:i386 libdbus-1-3:i386 libsqlite3-0:i386 -y
         sudo apt install build-essential manpages-dev libx11-dev ninja-build xorg-dev meson dbus dxvk steam lutris -y
         sudo apt install glslang -y
-        cd
-        git clone https://github.com/DadSchoorse/vkBasalt.git
-        cd vkBasalt/
-        meson --buildtype=release --prefix=/usr builddir
-        ninja -C builddir install &&
+        cd &&
+            git clone https://github.com/DadSchoorse/vkBasalt.git &&
+            cd vkBasalt/ &&
+            meson --buildtype=release --prefix=/usr builddir &&
+            ninja -C builddir install &&
             cd
     fi
     which pacman >/dev/null 2>&1
@@ -260,7 +243,6 @@ prompt_2() {
 prompt_2
 
 prompt_3() {
-    clear
     ulimit -Hn
     echo -e "IF THIS ABOVE RETURNS MORE THAN 500,000 THEN ESYNC IS ENABLED!"
     read -p $'true/false >_: ' nocklb
@@ -270,9 +252,7 @@ prompt_3() {
             echo -e $USER 'hard nofile 524288' | sudo tee -a /etc/security/limits.conf
         sleep 0.8
         echo -e "DONE."
-        clear
     fi
-    clear
 }
 prompt_3
 
@@ -294,7 +274,6 @@ prompt_4() {
         sudo service tlp start
         sudo service tlp enable
         sudo auto-cpufreq --install
-        clear
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
@@ -305,7 +284,6 @@ prompt_4() {
         sudo service tlp enable
         sudo service auto-cpufreq start
         sudo service auto-cpufreq enable
-        clear
     fi
 }
 prompt_4
