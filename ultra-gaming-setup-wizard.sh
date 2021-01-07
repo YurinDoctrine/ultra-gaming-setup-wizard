@@ -51,8 +51,8 @@ fi
     if [ $? -eq 0 ]; then
         _has_multilib=$(grep -n "\[multilib\]" /etc/pacman.conf | cut -f1 -d:)
         if [[ -z $_has_multilib ]]; then
-            echo -e '\n[multilib]\nInclude = /etc/pacman.d/mirrorlist' | sudo tee -a /etc/pacman.conf
-            echo -e 'Multilib repository successfully added into pacman.conf file\n'
+            echo -e "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist" | sudo tee -a /etc/pacman.conf
+            echo -e "Multilib repository successfully added into pacman.conf file\n"
         else
             sudo sed -i "${_has_multilib}s/^#//" /etc/pacman.conf
             _has_multilib=$((${_has_multilib} + 1))
@@ -77,12 +77,12 @@ amd() {
         sudo add-apt-repository ppa:kisak/kisak-mesa -y
         sudo apt update
         sudo apt install libgl1-mesa-dri:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386 -y &&
-            echo -e 'RADV_PERFTEST=aco' | sudo tee -a /etc/environment
+            echo -e "RADV_PERFTEST=aco" | sudo tee -a /etc/environment
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         yay -S --needed --noconfirm lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader xf86-video-amdgpu vulkan-radeon &&
-            echo -e 'RADV_PERFTEST=aco' | sudo tee -a /etc/environment
+            echo -e "RADV_PERFTEST=aco" | sudo tee -a /etc/environment
     fi
 }
 
@@ -120,12 +120,12 @@ prompt_0
 xanmod() {
     which apt >/dev/null 2>&1
     if [ $? -eq 0 ]; then
-        echo -e 'deb http://deb.xanmod.org releases main' | sudo tee -a /etc/apt/sources.list.d/xanmod-kernel.list &&
+        echo -e "deb http://deb.xanmod.org releases main" | sudo tee -a /etc/apt/sources.list.d/xanmod-kernel.list &&
             wget -qO - https://dl.xanmod.org/gpg.key | sudo apt-key add -
         sudo apt update &&
             sudo apt install linux-xanmod-rt -y
-        echo -e 'net.core.default_qdisc = fq_pie' | sudo tee -a /etc/sysctl.d/90-override.conf
-        echo -e '[r]EBOOT NOW OR [l]ATER?'
+        echo -e "net.core.default_qdisc = fq_pie" | sudo tee /etc/sysctl.d/90-override.conf
+        echo -e "[r]EBOOT NOW OR [l]ATER?"
         read -p $'>_: ' nock
 
         if [[ "$nock" == "r" ]]; then
@@ -136,8 +136,8 @@ xanmod() {
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         yay -S --needed --noconfirm linux-xanmod-rt linux-xanmod-headers
-        echo -e 'net.core.default_qdisc = fq_pie' | sudo tee -a /etc/sysctl.d/90-override.conf
-        echo -e '[r]EBOOT NOW OR [l]ATER?'
+        echo -e "net.core.default_qdisc = fq_pie" | sudo tee /etc/sysctl.d/90-override.conf
+        echo -e "[r]EBOOT NOW OR [l]ATER?"
         read -p $'>_: ' nock
 
         if [[ "$nock" == "r" ]]; then
@@ -191,19 +191,19 @@ prompt_1() {
     echo -e "4. : LINUX-TKG(BOTH)"
     read -p $'>_: ' nockl
     if [[ "$nockl" == "1" ]]; then
-        echo -e 'INSTALLING ...' &&
+        echo -e "INSTALLING ..." &&
             xanmod
     fi
     if [[ "$nockl" == "2" ]]; then
-        echo -e 'INSTALLING ...' &&
+        echo -e "INSTALLING ..." &&
             liquarix
     fi
     if [[ "$nockl" == "3" ]]; then
-        echo -e 'INSTALLING ...' &&
+        echo -e "INSTALLING ..." &&
             zen
     fi
     if [[ "$nockl" == "4" ]]; then
-        echo -e 'INSTALLING ...' &&
+        echo -e "INSTALLING ..." &&
             linux-tkg
     fi
     if [[ "$nockl" == "" ]]; then
@@ -247,9 +247,9 @@ prompt_3() {
     echo -e "IF THIS ABOVE RETURNS MORE THAN 500,000 THEN ESYNC IS ENABLED!"
     read -p $'true/false >_: ' nocklb
     if [[ "$nocklb" == "false" ]]; then
-        echo -e 'DefaultLimitNOFILE=524288' | sudo tee -a /etc/systemd/system.conf &&
-            echo -e 'DefaultLimitNOFILE=524288' | sudo tee -a /etc/systemd/user.conf &&
-            echo -e $USER 'hard nofile 524288' | sudo tee -a /etc/security/limits.conf
+		sudo sed -i 's/^#DefaultLimitNOFILE/DefaultLimitNOFILE/' /etc/systemd/system.conf
+		sudo sed -i 's/^#DefaultLimitNOFILE/DefaultLimitNOFILE/' /etc/systemd/user.conf
+        echo -e $USER "hard nofile 524288" | sudo tee -a /etc/security/limits.conf
         sleep 0.8
         echo -e "DONE."
     fi
@@ -298,13 +298,13 @@ final() {
     echo -e "FINAL: DO YOU ALSO WANT TO RUN THE AUTHOR'S secure-linux?"
     read -p $'yes/no >_: ' nocklby
     if [[ "$nocklby" == "yes" ]]; then
-        echo -e 'RUNNING ...\n'
+        echo -e "RUNNING ...\n"
         extra
     elif [[ "$nocklby" == "no" ]]; then
-        echo -e 'LEAVING ...\n'
+        echo -e "LEAVING ...\n"
         exit 1
     else
-        echo -e 'INVALID VALUE!\n'
+        echo -e "INVALID VALUE!\n"
         final
     fi
 }
