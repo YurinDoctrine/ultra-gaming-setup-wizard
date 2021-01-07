@@ -264,7 +264,7 @@ prompt_4() {
         sudo add-apt-repository ppa:linrunner/tlp
         sudo apt update
         sudo apt install gamemode -y
-        sudo apt install earlyoom preload tlp tlp-rdw powertop -y
+        sudo apt install earlyoom preload tlp tlp-rdw thermald powertop -y
         cd &&
             git clone https://github.com/AdnanHodzic/auto-cpufreq.git &&
             cd auto-cpufreq/ &&
@@ -278,7 +278,7 @@ prompt_4() {
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         yay -S --needed --noconfirm gamemode lib32-gamemode
-        yay -S --needed --noconfirm earlyoom preload tlp tlp-rdw powertop auto-cpufreq
+        yay -S --needed --noconfirm earlyoom preload tlp tlp-rdw thermald powertop auto-cpufreq
         sudo service tlp start
         sudo service tlp enable
         sudo service auto-cpufreq start
