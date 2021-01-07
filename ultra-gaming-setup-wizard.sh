@@ -270,20 +270,20 @@ prompt_4() {
             cd auto-cpufreq/ &&
             sudo ./auto-cpufreq-installer &&
             cd
-        sudo powertop --auto-tune
         sudo service tlp start
         sudo service tlp enable
         sudo auto-cpufreq --install
+        sudo powertop --auto-tune
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         yay -S --needed --noconfirm gamemode lib32-gamemode
         yay -S --needed --noconfirm earlyoom preload tlp tlp-rdw powertop auto-cpufreq
-        sudo powertop --auto-tune
         sudo service tlp start
         sudo service tlp enable
         sudo service auto-cpufreq start
         sudo service auto-cpufreq enable
+        sudo powertop --auto-tune
     fi
 }
 prompt_4
