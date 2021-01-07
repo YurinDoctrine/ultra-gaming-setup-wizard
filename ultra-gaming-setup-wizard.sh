@@ -59,14 +59,6 @@ fi
             sudo sed -i "${_has_multilib}s/^#//" /etc/pacman.conf
         fi
         sudo pacman -Sy
-        sudo pacman -S --needed --noconfirm yay
-        which yay >/dev/null 2>&1
-        if [ $? != 0 ]; then
-            git clone https://aur.archlinux.org/yay.git
-            cd yay
-            makepkg -si &&
-                cd
-        fi
     fi
 }
 32bit
@@ -150,7 +142,7 @@ liquarix() {
     which apt >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         sudo add-apt-repository ppa:damentz/liquorix &&
-            sudo apt-get update
+            sudo apt update
         sudo apt install linux-image-liquorix-amd64 linux-headers-liquorix-amd64 -y
     fi
     which pacman >/dev/null 2>&1
@@ -257,7 +249,7 @@ prompt_3() {
 prompt_3
 
 prompt_4() {
-    echo -e "NEXT YOU GOTTA INSTALL A COUPLE OF DAEMON EITHER (gamemode, earlyoom ..). [RETURN]"
+    echo -e "NEXT YOU GOTTA INSTALL A COUPLE OF DAEMON EITHER (gamemode, earlyoom ..). [HIT RETURN]"
     read -p $'>_: '
     which apt >/dev/null 2>&1
     if [ $? -eq 0 ]; then
