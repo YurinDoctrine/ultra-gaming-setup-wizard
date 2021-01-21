@@ -95,14 +95,14 @@ prompt_0() {
     echo -e "CHOOSE WHAT COMPATIBLE WHICH IS IN BELOW WITH YOUR HARDWARE. (RETURN IS: NONE)"
     echo -e "1. : AMD"
     echo -e "2. : NVIDIA"
-    read -p $'>_: ' noc
-    if [[ "$noc" == "1" ]]; then
+    read -p $'>_: ' nock
+    if [[ "$nock" == "1" ]]; then
         amd
     fi
-    if [[ "$noc" == "2" ]]; then
+    if [[ "$nock" == "2" ]]; then
         nvidia
     fi
-    if [[ "$noc" == "" ]]; then
+    if [[ "$nock" == "" ]]; then
         clear
     fi
 
@@ -117,24 +117,11 @@ xanmod() {
         sudo apt update &&
             sudo apt install linux-xanmod-rt -y
         echo -e "net.core.default_qdisc = fq_pie" | sudo tee /etc/sysctl.d/90-override.conf
-        echo -e "[r]EBOOT NOW OR [l]ATER?"
-        read -p $'>_: ' nock
-
-        if [[ "$nock" == "r" ]]; then
-            sudo reboot
-        fi
-
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         yay -S --needed --noconfirm linux-xanmod-rt linux-xanmod-headers
         echo -e "net.core.default_qdisc = fq_pie" | sudo tee /etc/sysctl.d/90-override.conf
-        echo -e "[r]EBOOT NOW OR [l]ATER?"
-        read -p $'>_: ' nock
-
-        if [[ "$nock" == "r" ]]; then
-            sudo reboot
-        fi
     fi
 }
 
