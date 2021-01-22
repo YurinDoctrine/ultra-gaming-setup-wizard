@@ -257,8 +257,8 @@ prompt_4() {
         yay -S --needed --noconfirm preload
         yay -S --needed --noconfirm earlyoom thermald powertop auto-cpufreq
         sudo powertop --auto-tune
-	sudo systemctl start auto-cpufreq.service
-	sudo systemctl enable auto-cpufreq.service
+        sudo systemctl start auto-cpufreq.service
+        sudo systemctl enable auto-cpufreq.service
     fi
 }
 prompt_4
