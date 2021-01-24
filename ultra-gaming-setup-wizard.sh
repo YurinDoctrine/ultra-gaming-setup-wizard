@@ -10,7 +10,7 @@ if [ $? -eq 0 ]; then
         echo -e "║                                                   ║"
         echo -e "╚═══════════════════════════════════════════════════╝"
         echo -e ""
-        exit 1
+        exit 0
     fi
 else
     clear
@@ -30,7 +30,7 @@ if [ $? -eq 0 ]; then
         echo -e "║                                                   ║"
         echo -e "╚═══════════════════════════════════════════════════╝"
         echo -e ""
-        exit 1
+        exit 0
     fi
 else
     clear
@@ -277,7 +277,7 @@ final() {
         extra
     elif [[ "$nocklby" == "no" ]]; then
         echo -e "LEAVING ...\n"
-        exit 1
+        exit 0
     else
         echo -e "INVALID VALUE!\n"
         final
