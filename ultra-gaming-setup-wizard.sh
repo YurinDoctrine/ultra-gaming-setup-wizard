@@ -242,6 +242,7 @@ prompt_4() {
     if [ $? -eq 0 ]; then
         sudo apt install gamemode -y
         sudo apt install preload -y
+	sudo apt install zram -y
         sudo apt install earlyoom thermald powertop -y
         cd &&
             git clone https://github.com/AdnanHodzic/auto-cpufreq.git &&
@@ -255,7 +256,7 @@ prompt_4() {
     if [ $? -eq 0 ]; then
         yay -S --needed --noconfirm gamemode lib32-gamemode
         yay -S --needed --noconfirm preload
-        yay -S --needed --noconfirm earlyoom thermald powertop auto-cpufreq
+        yay -S --needed --noconfirm earlyoom thermald powertop auto-cpufreq zram
         sudo powertop --auto-tune
         sudo systemctl start auto-cpufreq.service
         sudo systemctl enable auto-cpufreq.service
