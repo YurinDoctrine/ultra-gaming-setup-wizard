@@ -256,7 +256,8 @@ prompt_4() {
     if [ $? -eq 0 ]; then
         yay -S --needed --noconfirm gamemode lib32-gamemode
         yay -S --needed --noconfirm preload
-        yay -S --needed --noconfirm earlyoom thermald powertop auto-cpufreq zram
+	yay -S --needed --noconfirm systemd-zram
+        yay -S --needed --noconfirm earlyoom thermald powertop auto-cpufreq
         sudo powertop --auto-tune
         sudo systemctl start auto-cpufreq.service
         sudo systemctl enable auto-cpufreq.service
