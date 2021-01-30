@@ -242,7 +242,7 @@ prompt_4() {
     if [ $? -eq 0 ]; then
         sudo apt install gamemode -y
         sudo apt install preload -y
-	sudo apt install zram -y
+	  sudo apt install zram-config -y
         sudo apt install earlyoom thermald powertop -y
         cd &&
             git clone https://github.com/AdnanHodzic/auto-cpufreq.git &&
