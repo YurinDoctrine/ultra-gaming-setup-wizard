@@ -251,7 +251,7 @@ prompt_4() {
     if [ $? -eq 0 ]; then
         yay -S --needed --noconfirm gamemode lib32-gamemode
         yay -S --needed --noconfirm preload
-        yay -S --needed --noconfirm performance-tweaks
+        yay -S --needed -y performance-tweaks
         yay -S --needed --noconfirm earlyoom powertop
         sudo powertop --auto-tune
     fi
