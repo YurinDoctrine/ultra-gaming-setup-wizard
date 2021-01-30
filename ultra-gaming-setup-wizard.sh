@@ -203,19 +203,14 @@ prompt_2() {
         sudo add-apt-repository ppa:lutris-team/lutris -y
         sudo apt update
         sudo apt install winehq-staging -y
-        sudo apt install libgnutls30:i386 libldap-2.4-2:i386 libgpg-error0:i386 libxml2:i386 libasound2-plugins:i386 libsdl2-2.0-0:i386 libfreetype6:i386 libdbus-1-3:i386 libsqlite3-0:i386 steam -y
-        sudo apt install build-essential manpages-dev libx11-dev xorg-dev dbus dxvk lutris -y
-        cd &&
-            git clone https://github.com/DadSchoorse/vkBasalt.git &&
-            cd vkBasalt/ &&
-            meson --buildtype=release --prefix=/usr builddir &&
-            ninja -C builddir install &&
-            cd
+        sudo apt install libgnutls30:i386 libldap-2.4-2:i386 libgpg-error0:i386 libxml2:i386 libasound2-plugins:i386 libsdl2-2.0-0:i386 libfreetype6:i386 libdbus-1-3:i386 libsqlite3-0:i386 -y
+        sudo apt install build-essential manpages-dev libx11-dev xorg-dev dbus steam lutris -y
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
+        yay -S --needed --noconfirm wine-staging
         yay -S --needed --noconfirm giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse libgpg-error lib32-libgpg-error alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo sqlite lib32-sqlite libxcomposite lib32-libxcomposite libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader
-        yay -S --needed --noconfirm dbus wine-staging vkbasalt dxvk-bin steam lutris
+        yay -S --needed --noconfirm dbus steam lutris
     fi
 }
 prompt_2
@@ -242,7 +237,6 @@ prompt_4() {
     if [ $? -eq 0 ]; then
         sudo apt install gamemode -y
         sudo apt install preload -y
-	  sudo apt install zram-config -y
         sudo apt install earlyoom thermald powertop -y
         cd &&
             git clone https://github.com/AdnanHodzic/auto-cpufreq.git &&
@@ -256,7 +250,6 @@ prompt_4() {
     if [ $? -eq 0 ]; then
         yay -S --needed --noconfirm gamemode lib32-gamemode
         yay -S --needed --noconfirm preload
-	  yay -S --needed --noconfirm systemd-zram
         yay -S --needed --noconfirm earlyoom thermald powertop auto-cpufreq
         sudo powertop --auto-tune
         sudo systemctl start auto-cpufreq.service
