@@ -218,6 +218,7 @@ prompt_2
 prompt_3() {
     echo -e ""
     ulimit -Hn
+    echo -e ""
     echo -e "IF THIS ABOVE RETURNS MORE THAN 500,000 THEN ESYNC IS ENABLED!"
     read -p $'true/false >_: ' nocklb
     if [[ "$nocklb" == "false" ]]; then
@@ -250,10 +251,9 @@ prompt_4() {
     if [ $? -eq 0 ]; then
         yay -S --needed --noconfirm gamemode lib32-gamemode
         yay -S --needed --noconfirm preload
-        yay -S --needed --noconfirm earlyoom thermald powertop auto-cpufreq
+        yay -S --needed --noconfirm performance-tweaks
+        yay -S --needed --noconfirm earlyoom powertop
         sudo powertop --auto-tune
-        sudo systemctl start auto-cpufreq.service
-        sudo systemctl enable auto-cpufreq.service
     fi
 }
 prompt_4
