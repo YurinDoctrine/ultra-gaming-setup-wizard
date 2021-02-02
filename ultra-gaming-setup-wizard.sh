@@ -105,7 +105,6 @@ prompt_0() {
     if [[ "$nock" == "" ]]; then
         clear
     fi
-
 }
 prompt_0
 
@@ -188,7 +187,6 @@ prompt_1() {
     if [[ "$nockl" == "" ]]; then
         clear
     fi
-
 }
 prompt_1
 
