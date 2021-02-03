@@ -147,17 +147,19 @@ zen() {
 linux-tkg() {
     which apt >/dev/null 2>&1
     if [ $? -eq 0 ]; then
-        git clone https://github.com/Frogging-Family/linux-tkg.git
-        cd linux-tkg/ &&
+        cd /tmp &&
+            git clone https://github.com/Frogging-Family/linux-tkg.git &&
+            cd linux-tkg/ &&
             ./install.sh install &&
-            cd
+            cd /tmp
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
-        git clone https://github.com/Frogging-Family/linux-tkg.git
-        cd linux-tkg/ &&
+        cd /tmp &&
+            git clone https://github.com/Frogging-Family/linux-tkg.git &&
+            cd linux-tkg/ &&
             makepkg -si &&
-            cd
+            cd /tmp
     fi
 }
 
@@ -241,18 +243,18 @@ prompt_4() {
             sudo apt update &&
             sudo apt install -y nohang &&
             sudo systemctl enable --now nohang-desktop.service
-        cd &&
+        cd /tmp &&
             git clone https://github.com/AdnanHodzic/auto-cpufreq.git &&
             cd auto-cpufreq/ &&
             sudo ./auto-cpufreq-installer &&
             sudo auto-cpufreq --install &&
-            cd
+            cd /tmp
         git clone https://github.com/hakavlad/memavaild.git &&
             cd memavaild/ &&
             deb/build.sh &&
             sudo apt install -y --reinstall ./deb/package.deb &&
             sudo systemctl enable --now memavaild.service &&
-            cd
+            cd /tmp
         git clone https://github.com/Nefelim4ag/Ananicy.git &&
             ./Ananicy/package.sh debian &&
             sudo dpkg -i ./Ananicy/ananicy-*.deb &&
@@ -262,7 +264,7 @@ prompt_4() {
             deb/build.sh &&
             sudo apt install -y --reinstall ./deb/package.deb &&
             sudo systemctl enable --now prelockd.service &&
-            cd
+            cd /tmp
         git clone https://github.com/Nefelim4ag/systemd-swap.git &&
             cd systemd-swap &&
             make deb &&
