@@ -230,28 +230,54 @@ prompt_3() {
 prompt_3
 
 prompt_4() {
-    echo -e "NEXT YOU GOTTA INSTALL A COUPLE OF DAEMON EITHER (gamemode, earlyoom ..). [HIT RETURN]"
+    echo -e "NEXT YOU GOTTA INSTALL A COUPLE OF DAEMON EITHER (gamemode, powertop, thermald etc.) [HIT RETURN]"
     read -p $'>_: '
     which apt >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         sudo apt install gamemode -y
-        sudo apt install preload -y
-        sudo apt install earlyoom thermald powertop -y
+        sudo apt install thermald powertop irqbalance haveged profile-sync-daemon schedtool -y
+        sudo powertop --auto-tune
+        sudo add-apt-repository ppa:oibaf/test -y &&
+            sudo apt update &&
+            sudo apt install -y nohang &&
+            sudo systemctl enable --now nohang-desktop.service
         cd &&
             git clone https://github.com/AdnanHodzic/auto-cpufreq.git &&
             cd auto-cpufreq/ &&
             sudo ./auto-cpufreq-installer &&
+            sudo auto-cpufreq --install &&
             cd
-        sudo powertop --auto-tune
-        sudo auto-cpufreq --install
+        git clone https://github.com/hakavlad/memavaild.git &&
+            cd memavaild/ &&
+            deb/build.sh &&
+            sudo apt install -y --reinstall ./deb/package.deb &&
+            sudo systemctl enable --now memavaild.service &&
+            cd
+        git clone https://github.com/Nefelim4ag/Ananicy.git &&
+            ./Ananicy/package.sh debian &&
+            sudo dpkg -i ./Ananicy/ananicy-*.deb &&
+            sudo systemctl enable --now ananicy
+        git clone https://github.com/hakavlad/prelockd.git &&
+            cd prelockd/ &&
+            deb/build.sh &&
+            sudo apt install -y --reinstall ./deb/package.deb &&
+            sudo systemctl enable --now prelockd.service &&
+            cd
+        git clone https://github.com/Nefelim4ag/systemd-swap.git &&
+            cd systemd-swap &&
+            make deb &&
+            sudo apt install -y ./systemd-swap_*_all.deb &&
+            cd
+        sudo add-apt-repository ppa:x3n0m0rph59/precached -y &&
+            sudo apt update &&
+            sudo apt install -y precached
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         yay -S --needed --noconfirm gamemode lib32-gamemode
-        yay -S --needed --noconfirm preload
-        yay -S --needed -y performance-tweaks
-        yay -S --needed --noconfirm earlyoom powertop
+        yay -S --needed --noconfirm powertop
         sudo powertop --auto-tune
+        yay -S --needed performance-tweaks
     fi
 }
 prompt_4
