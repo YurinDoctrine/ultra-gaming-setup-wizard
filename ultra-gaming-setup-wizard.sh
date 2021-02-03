@@ -266,10 +266,10 @@ final() {
     echo -e "FINAL: DO YOU ALSO WANT TO RUN THE AUTHOR'S secure-linux?"
     read -p $'yes/no >_: ' nocklby
     if [[ "$nocklby" == "yes" ]]; then
-        echo -e "RUNNING ...\n"
+        echo -e "RUNNING ..."
         extra
     elif [[ "$nocklby" == "no" ]]; then
-        echo -e "LEAVING ...\n"
+        echo -e "LEAVING ..."
         exit 0
     else
         echo -e "INVALID VALUE!\n"
