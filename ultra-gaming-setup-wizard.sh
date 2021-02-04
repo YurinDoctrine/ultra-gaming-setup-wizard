@@ -69,12 +69,16 @@ amd() {
         sudo add-apt-repository ppa:kisak/kisak-mesa -y
         sudo apt update
         sudo apt install libgl1-mesa-dri:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386 -y &&
-            echo -e "RADV_PERFTEST=aco" | sudo tee -a /etc/environment
+            echo -e "RADV_PERFTEST=aco" | sudo tee -a /etc/environment &&
+            echo -e "mesa_glthread=true" | sudo tee -a /etc/environment &&
+            echo -e "vblank_mode=0" | sudo tee -a /etc/environment
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         yay -S --needed --noconfirm lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader xf86-video-amdgpu vulkan-radeon &&
-            echo -e "RADV_PERFTEST=aco" | sudo tee -a /etc/environment
+            echo -e "RADV_PERFTEST=aco" | sudo tee -a /etc/environment &&
+            echo -e "mesa_glthread=true" | sudo tee -a /etc/environment &&
+            echo -e "vblank_mode=0" | sudo tee -a /etc/environment
     fi
 }
 
