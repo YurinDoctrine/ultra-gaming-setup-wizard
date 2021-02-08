@@ -203,9 +203,9 @@ prompt_2() {
     if [ $? -eq 0 ]; then
         cd /tmp &&
         wget -nc https://dl.winehq.org/wine-builds/winehq.key &&
+        sudo apt-key add winehq.key &&
+        sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main' -y &&
         cd
-        sudo apt-key add winehq.key
-        sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main' -y
         sudo add-apt-repository ppa:lutris-team/lutris -y
         sudo apt update
         sudo apt install winehq-staging -y
