@@ -201,7 +201,9 @@ prompt_2() {
     read -p $'>_: '
     which apt >/dev/null 2>&1
     if [ $? -eq 0 ]; then
-        wget -nc https://dl.winehq.org/wine-builds/winehq.key
+        cd /tmp &&
+        wget -nc https://dl.winehq.org/wine-builds/winehq.key &&
+        cd
         sudo apt-key add winehq.key
         sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main' -y
         sudo add-apt-repository ppa:lutris-team/lutris -y
