@@ -242,7 +242,8 @@ prompt_4() {
     read -p $'>_: '
     which apt >/dev/null 2>&1
     if [ $? -eq 0 ]; then
-        sudo apt install gamemode -y
+        sudo apt install gamemode -y &&
+        curl https://raw.githubusercontent.com/FeralInteractive/gamemode/master/example/gamemode.ini> ~/gamemode.ini && sudo mv ~/gamemode.ini /etc/gamemode.ini
         sudo apt install thermald powertop irqbalance haveged profile-sync-daemon schedtool -y
         sudo powertop --auto-tune
         sudo add-apt-repository ppa:oibaf/test -y &&
@@ -282,7 +283,8 @@ prompt_4() {
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
-        yay -S --needed --noconfirm gamemode lib32-gamemode
+        yay -S --needed --noconfirm gamemode lib32-gamemode &&
+        curl https://raw.githubusercontent.com/FeralInteractive/gamemode/master/example/gamemode.ini> ~/gamemode.ini && sudo mv ~/gamemode.ini /etc/gamemode.ini
         yay -S --needed --noconfirm powertop
         sudo powertop --auto-tune
         yay -S --needed performance-tweaks
