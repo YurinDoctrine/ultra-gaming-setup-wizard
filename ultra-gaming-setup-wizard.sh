@@ -96,7 +96,7 @@ nvidia() {
 }
 
 prompt_0() {
-    echo -e "CHOOSE WHAT COMPATIBLE WHICH IS IN BELOW WITH YOUR HARDWARE. (RETURN IS: NONE)"
+    echo -e "CHOOSE THE COMPATIBLE WHICH IS IN BELOW WITH YOUR HARDWARE. (RETURN IS: NONE)"
     echo -e "1. : AMD"
     echo -e "2. : NVIDIA"
     read -p $'>_: ' nock
