@@ -68,7 +68,7 @@ amd() {
     if [ $? -eq 0 ]; then
         sudo add-apt-repository ppa:kisak/kisak-mesa -y
         sudo apt update
-        sudo apt install libgl1-mesa-dri:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386 -y &&
+        sudo apt install --install-recommends libgl1-mesa-dri:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386 -y &&
             echo -e "RADV_PERFTEST=aco" | sudo tee -a /etc/environment &&
             echo -e "mesa_glthread=true" | sudo tee -a /etc/environment &&
             echo -e "vblank_mode=0" | sudo tee -a /etc/environment
@@ -87,7 +87,7 @@ nvidia() {
     if [ $? -eq 0 ]; then
         sudo add-apt-repository ppa:graphics-drivers/ppa -y
         sudo apt update
-        sudo apt install nvidia-driver-450 libnvidia-gl-450 libnvidia-gl-450:i386 libvulkan1 libvulkan1:i386 -y
+        sudo apt install --install-recommends nvidia-driver-450 libnvidia-gl-450 libnvidia-gl-450:i386 libvulkan1 libvulkan1:i386 -y
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
@@ -118,7 +118,7 @@ xanmod() {
         echo -e "deb http://deb.xanmod.org releases main" | sudo tee -a /etc/apt/sources.list.d/xanmod-kernel.list &&
             wget -qO - https://dl.xanmod.org/gpg.key | sudo apt-key add -
         sudo apt update &&
-            sudo apt install linux-xanmod-rt -y
+            sudo apt install --install-recommends linux-xanmod-rt -y
         echo -e "net.core.default_qdisc = fq_pie" | sudo tee /etc/sysctl.d/90-override.conf
     fi
     which pacman >/dev/null 2>&1
@@ -133,7 +133,7 @@ liquarix() {
     if [ $? -eq 0 ]; then
         sudo add-apt-repository ppa:damentz/liquorix -y &&
             sudo apt update
-        sudo apt install linux-image-liquorix-amd64 linux-headers-liquorix-amd64 -y
+        sudo apt install --install-recommends linux-image-liquorix-amd64 linux-headers-liquorix-amd64 -y
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
@@ -208,9 +208,9 @@ prompt_2() {
             cd
         sudo add-apt-repository ppa:lutris-team/lutris -y
         sudo apt update
-        sudo apt install winehq-staging -y
-        sudo apt install libgnutls30:i386 libldap-2.4-2:i386 libgpg-error0:i386 libxml2:i386 libasound2-plugins:i386 libsdl2-2.0-0:i386 libfreetype6:i386 libdbus-1-3:i386 libsqlite3-0:i386 -y
-        sudo apt install build-essential manpages-dev libx11-dev xorg-dev dbus steam lutris -y
+        sudo apt install --install-recommends winehq-staging -y
+        sudo apt install --install-recommends libgnutls30:i386 libldap-2.4-2:i386 libgpg-error0:i386 libxml2:i386 libasound2-plugins:i386 libsdl2-2.0-0:i386 libfreetype6:i386 libdbus-1-3:i386 libsqlite3-0:i386 -y
+        sudo apt install --install-recommends build-essential manpages-dev libx11-dev xorg-dev dbus steam lutris -y
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
@@ -242,13 +242,13 @@ prompt_4() {
     read -p $'>_: '
     which apt >/dev/null 2>&1
     if [ $? -eq 0 ]; then
-        sudo apt install gamemode -y &&
+        sudo apt install --install-recommends gamemode -y &&
             curl https://raw.githubusercontent.com/FeralInteractive/gamemode/master/example/gamemode.ini >~/gamemode.ini && sudo mv ~/gamemode.ini /etc/gamemode.ini
-        sudo apt install thermald powertop irqbalance haveged profile-sync-daemon schedtool -y
+        sudo apt install --install-recommends thermald powertop irqbalance haveged profile-sync-daemon schedtool -y
         sudo powertop --auto-tune
         sudo add-apt-repository ppa:oibaf/test -y &&
             sudo apt update &&
-            sudo apt install -y nohang &&
+            sudo apt install --install-recommends -y nohang &&
             sudo systemctl enable --now nohang-desktop.service
         cd /tmp &&
             git clone https://github.com/AdnanHodzic/auto-cpufreq.git &&
@@ -259,7 +259,7 @@ prompt_4() {
         git clone https://github.com/hakavlad/memavaild.git &&
             cd memavaild/ &&
             deb/build.sh &&
-            sudo apt install -y --reinstall ./deb/package.deb &&
+            sudo apt install --install-recommends -y --reinstall ./deb/package.deb &&
             sudo systemctl enable --now memavaild.service &&
             cd /tmp
         git clone https://github.com/Nefelim4ag/Ananicy.git &&
@@ -269,17 +269,17 @@ prompt_4() {
         git clone https://github.com/hakavlad/prelockd.git &&
             cd prelockd/ &&
             deb/build.sh &&
-            sudo apt install -y --reinstall ./deb/package.deb &&
+            sudo apt install --install-recommends -y --reinstall ./deb/package.deb &&
             sudo systemctl enable --now prelockd.service &&
             cd /tmp
         git clone https://github.com/Nefelim4ag/systemd-swap.git &&
             cd systemd-swap &&
             make deb &&
-            sudo apt install -y ./systemd-swap_*_all.deb &&
+            sudo apt install --install-recommends -y ./systemd-swap_*_all.deb &&
             cd
         sudo add-apt-repository ppa:x3n0m0rph59/precached -y &&
             sudo apt update &&
-            sudo apt install -y precached
+            sudo apt install --install-recommends -y precached
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
