@@ -202,10 +202,10 @@ prompt_2() {
     which apt >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         cd /tmp &&
-        wget -nc https://dl.winehq.org/wine-builds/winehq.key &&
-        sudo apt-key add winehq.key &&
-        sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main' -y &&
-        cd
+            wget -nc https://dl.winehq.org/wine-builds/winehq.key &&
+            sudo apt-key add winehq.key &&
+            sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main' -y &&
+            cd
         sudo add-apt-repository ppa:lutris-team/lutris -y
         sudo apt update
         sudo apt install winehq-staging -y
@@ -243,7 +243,7 @@ prompt_4() {
     which apt >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         sudo apt install gamemode -y &&
-        curl https://raw.githubusercontent.com/FeralInteractive/gamemode/master/example/gamemode.ini> ~/gamemode.ini && sudo mv ~/gamemode.ini /etc/gamemode.ini
+            curl https://raw.githubusercontent.com/FeralInteractive/gamemode/master/example/gamemode.ini >~/gamemode.ini && sudo mv ~/gamemode.ini /etc/gamemode.ini
         sudo apt install thermald powertop irqbalance haveged profile-sync-daemon schedtool -y
         sudo powertop --auto-tune
         sudo add-apt-repository ppa:oibaf/test -y &&
@@ -284,7 +284,7 @@ prompt_4() {
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         yay -S --needed --noconfirm gamemode lib32-gamemode &&
-        curl https://raw.githubusercontent.com/FeralInteractive/gamemode/master/example/gamemode.ini> ~/gamemode.ini && sudo mv ~/gamemode.ini /etc/gamemode.ini
+            curl https://raw.githubusercontent.com/FeralInteractive/gamemode/master/example/gamemode.ini >~/gamemode.ini && sudo mv ~/gamemode.ini /etc/gamemode.ini
         yay -S --needed --noconfirm powertop
         sudo powertop --auto-tune
         yay -S --needed performance-tweaks
