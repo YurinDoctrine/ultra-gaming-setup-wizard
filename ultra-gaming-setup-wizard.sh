@@ -23,6 +23,7 @@ fi
 
 which pacman >/dev/null 2>&1
 if [ $? -eq 0 ]; then
+    which pacman >/dev/null 2>&1
     if [ $? != 0 ]; then
         clear
         echo -e "╔═══════════════════════════════════════════════════╗"
