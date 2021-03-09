@@ -243,16 +243,12 @@ prompt_4() {
     read -p $'>_: '
     which apt >/dev/null 2>&1
     if [ $? -eq 0 ]; then
-        sudo apt install --install-recommends gamemode -y &&
-            wget -qnc https://raw.githubusercontent.com/YurinDoctrine/ultra-gaming-setup-wizard/main/gamemode.ini &&
-            sudo mv ~/gamemode.ini /etc/gamemode.ini
+        sudo apt install --install-recommends gamemode -y
         sudo apt install --install-recommends thermald powertop -y
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
-        yay -S --needed --noconfirm gamemode lib32-gamemode &&
-            wget -qnc https://raw.githubusercontent.com/YurinDoctrine/ultra-gaming-setup-wizard/main/gamemode.ini &&
-            sudo mv ~/gamemode.ini /etc/gamemode.ini
+        yay -S --needed --noconfirm gamemode lib32-gamemode
         yay -S --needed --noconfirm powertop thermald
     fi
 }
