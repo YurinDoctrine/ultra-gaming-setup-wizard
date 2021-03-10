@@ -239,17 +239,17 @@ prompt_3() {
 prompt_3
 
 prompt_4() {
-    echo -e "NEXT YOU GOTTA INSTALL A COUPLE OF DAEMON EITHER (gamemode, powertop, thermald etc.) [HIT RETURN]"
+    echo -e "NEXT YOU GOTTA INSTALL A COUPLE OF DAEMON EITHER (gamemode, thermald etc.) [HIT RETURN]"
     read -p $'>_: '
     which apt >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         sudo apt install --install-recommends gamemode -y
-        sudo apt install --install-recommends thermald powertop -y
+        sudo apt install --install-recommends thermald -y
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         yay -S --needed --noconfirm gamemode lib32-gamemode
-        yay -S --needed --noconfirm powertop thermald
+        yay -S --needed --noconfirm thermald
     fi
 }
 prompt_4
