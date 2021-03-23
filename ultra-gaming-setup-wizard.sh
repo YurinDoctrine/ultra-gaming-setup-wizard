@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/usr/bin/env bash
 
 which apt >/dev/null 2>&1
 if [ $? -eq 0 ]; then
