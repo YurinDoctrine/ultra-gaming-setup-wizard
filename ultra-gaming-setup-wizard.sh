@@ -260,7 +260,13 @@ extra() {
 }
 
 final() {
-    echo -e "FINAL: DO YOU ALSO WANT TO RUN THE AUTHOR'S secure-linux?"
+
+    sleep 0.3 && clear
+    echo -e "
+###############################################################################
+# FINAL: DO YOU ALSO WANT TO RUN THE AUTHOR'S secure-linux?
+###############################################################################"
+
     read -p $'yes/no >_: ' nocklby
     if [[ "$nocklby" == "yes" ]]; then
         echo -e "RUNNING ..."
@@ -269,7 +275,7 @@ final() {
         echo -e "LEAVING ..."
         exit 0
     else
-        echo -e "INVALID VALUE!\n"
+        echo -e "INVALID VALUE!"
         final
     fi
 }
