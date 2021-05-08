@@ -10,7 +10,7 @@ if [ $? -eq 0 ]; then
         echo -e "║                                                   ║"
         echo -e "╚═══════════════════════════════════════════════════╝"
         echo -e ""
-        exit 0
+        exit 1
     fi
 else
     clear
@@ -31,7 +31,7 @@ if [ $? -eq 0 ]; then
         echo -e "║                                                   ║"
         echo -e "╚═══════════════════════════════════════════════════╝"
         echo -e ""
-        exit 0
+        exit 1
     fi
 else
     clear
