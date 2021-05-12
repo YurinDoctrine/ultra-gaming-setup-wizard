@@ -55,9 +55,9 @@ fi
             echo -e "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist" | sudo tee -a /etc/pacman.conf
             echo -e "Multilib repository successfully added into pacman.conf file\n"
         else
-            sudo sed -i "${_has_multilib}s/^#//" /etc/pacman.conf
+            sudo sed -i -e "${_has_multilib}s/^#//" /etc/pacman.conf
             _has_multilib=$((${_has_multilib} + 1))
-            sudo sed -i "${_has_multilib}s/^#//" /etc/pacman.conf
+            sudo sed -i -e "${_has_multilib}s/^#//" /etc/pacman.conf
         fi
         sudo pacman -Sy
     fi
@@ -228,8 +228,8 @@ prompt_3() {
     echo -e "IF THIS ABOVE RETURNS MORE THAN 500,000 THEN ESYNC IS ENABLED!"
     read -p $'true/false >_: ' nocklb
     if [[ "$nocklb" == "false" ]]; then
-        sudo sed -i 's/^#DefaultLimitNOFILE/DefaultLimitNOFILE/' /etc/systemd/system.conf
-        sudo sed -i 's/^#DefaultLimitNOFILE/DefaultLimitNOFILE/' /etc/systemd/user.conf
+        sudo sed -i -e 's/^#DefaultLimitNOFILE/DefaultLimitNOFILE/' /etc/systemd/system.conf
+        sudo sed -i -e 's/^#DefaultLimitNOFILE/DefaultLimitNOFILE/' /etc/systemd/user.conf
         echo -e $USER "hard nofile 524288" | sudo tee -a /etc/security/limits.conf
         sleep 0.8
         echo -e "DONE."
