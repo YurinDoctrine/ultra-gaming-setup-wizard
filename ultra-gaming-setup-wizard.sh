@@ -69,7 +69,7 @@ amd() {
     if [ $? -eq 0 ]; then
         sudo add-apt-repository ppa:kisak/kisak-mesa -y
         sudo apt-get update
-        sudo apt install --install-recommends libgl1-mesa-dri:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386 -y &&
+        sudo apt install --no-install-recommends -y libgl1-mesa-dri:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386 &&
             echo -e "RADV_PERFTEST=aco" | sudo tee -a /etc/environment &&
             echo -e "mesa_glthread=true" | sudo tee -a /etc/environment &&
             echo -e "vblank_mode=0" | sudo tee -a /etc/environment
@@ -88,7 +88,7 @@ nvidia() {
     if [ $? -eq 0 ]; then
         sudo add-apt-repository ppa:graphics-drivers/ppa -y
         sudo apt-get update
-        sudo apt install --install-recommends nvidia-driver-450 libnvidia-gl-450 libnvidia-gl-450:i386 libvulkan1 libvulkan1:i386 -y
+        sudo apt install --no-install-recommends -y nvidia-driver-450 libnvidia-gl-450 libnvidia-gl-450:i386 libvulkan1 libvulkan1:i386
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
@@ -208,9 +208,9 @@ prompt_2() {
             sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main' -y &&
             sudo add-apt-repository ppa:lutris-team/lutris -y
         sudo apt-get update
-        sudo apt install --install-recommends winehq-staging -y
-        sudo apt install --install-recommends libgnutls30:i386 libldap-2.4-2:i386 libgpg-error0:i386 libxml2:i386 libasound2-plugins:i386 libsdl2-2.0-0:i386 libfreetype6:i386 libdbus-1-3:i386 libsqlite3-0:i386 -y
-        sudo apt install --install-recommends build-essential manpages-dev libx11-dev xorg-dev dbus steam lutris -y
+        sudo apt install winehq-staging -y
+        sudo apt install --install-recommends -y libgnutls30:i386 libldap-2.4-2:i386 libgpg-error0:i386 libxml2:i386 libasound2-plugins:i386 libsdl2-2.0-0:i386 libfreetype6:i386 libdbus-1-3:i386 libsqlite3-0:i386
+        sudo apt install --no-install-recommends -y build-essential manpages-dev libx11-dev xorg-dev dbus steam lutris
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
