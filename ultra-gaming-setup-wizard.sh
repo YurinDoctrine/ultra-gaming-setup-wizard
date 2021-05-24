@@ -242,11 +242,13 @@ prompt_4() {
     read -p $'>_: '
     which apt >/dev/null 2>&1
     if [ $? -eq 0 ]; then
+        sudo apt install --install-recommends earlyoom -y
         sudo apt install --install-recommends gamemode -y
         sudo apt install --install-recommends thermald -y
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
+        yay -S --needed --noconfirm earlyoom
         yay -S --needed --noconfirm gamemode lib32-gamemode
         yay -S --needed --noconfirm thermald
     fi
