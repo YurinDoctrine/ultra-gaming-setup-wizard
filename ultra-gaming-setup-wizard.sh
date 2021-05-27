@@ -118,8 +118,8 @@ xanmod() {
     if [ $? -eq 0 ]; then
         echo -e "deb http://deb.xanmod.org releases main" | sudo tee -a /etc/apt/sources.list.d/xanmod-kernel.list &&
             wget -qO - https://dl.xanmod.org/gpg.key | sudo apt-key add -
-        sudo apt-get update &&
-            sudo apt install --install-recommends linux-xanmod-rt -y
+        sudo apt-get update
+        sudo apt install --install-recommends linux-xanmod-rt -y
         echo -e "net.core.default_qdisc = fq_pie" | sudo tee /etc/sysctl.d/90-override.conf
     fi
     which pacman >/dev/null 2>&1
