@@ -69,14 +69,14 @@ amd() {
     if [ $? -eq 0 ]; then
         sudo add-apt-repository ppa:kisak/kisak-mesa -y
         sudo apt-get update
-        sudo apt install -y --no-install-recommends libgl1-mesa-dri:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386 &&
+        sudo apt install -y --no-install-recommends libgl1-mesa-dri:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386 libgnutls30:i386 libldap-2.4-2:i386 libgpg-error0:i386 libxml2:i386 libasound2-plugins:i386 libsdl2-2.0-0:i386 libfreetype6:i386 libdbus-1-3:i386 libsqlite3-0:i386 &&
             echo -e "RADV_PERFTEST=aco" | sudo tee -a /etc/environment &&
             echo -e "mesa_glthread=true" | sudo tee -a /etc/environment &&
             echo -e "vblank_mode=0" | sudo tee -a /etc/environment
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
-        yay -S --needed --noconfirm lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader xf86-video-amdgpu vulkan-radeon &&
+        yay -S --needed --noconfirm lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader xf86-video-amdgpu vulkan-radeon giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse libgpg-error lib32-libgpg-error alsa-plugin lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo sqlite lib32-sqlite libxcomposite lib32-libxcomposite libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader &&
             echo -e "RADV_PERFTEST=aco" | sudo tee -a /etc/environment &&
             echo -e "mesa_glthread=true" | sudo tee -a /etc/environment &&
             echo -e "vblank_mode=0" | sudo tee -a /etc/environment
@@ -88,11 +88,11 @@ nvidia() {
     if [ $? -eq 0 ]; then
         sudo add-apt-repository ppa:graphics-drivers/ppa -y
         sudo apt-get update
-        sudo apt install -y --no-install-recommends nvidia-driver-450 libnvidia-gl-450 libnvidia-gl-450:i386 libvulkan1 libvulkan1:i386
+        sudo apt install -y --no-install-recommends nvidia-driver-450 libnvidia-gl-450 libnvidia-gl-450:i386 libvulkan1 libvulkan1:i386 giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse libgpg-error lib32-libgpg-error alsa-plugin lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo sqlite lib32-sqlite libxcomposite lib32-libxcomposite libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
-        yay -S --needed --noconfirm nvidia opencl-nvidia lib32-opencl-nvidia lib32-nvidia-utils
+        yay -S --needed --noconfirm nvidia opencl-nvidia lib32-opencl-nvidia lib32-nvidia-utils giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse libgpg-error lib32-libgpg-error alsa-plugin lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo sqlite lib32-sqlite libxcomposite lib32-libxcomposite libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader
     fi
 }
 
@@ -116,7 +116,7 @@ prompt_0
 xanmod() {
     which apt >/dev/null 2>&1
     if [ $? -eq 0 ]; then
-        echo -e "deb http://deb.xanmod.org releases main" | sudo tee -a /etc/apt/sources.list.d/xanmod-kernel.list &&
+        echo -e "deb http://deb.xanmod.org releases main" | sudo tee /etc/apt/sources.list.d/xanmod-kernel.list &&
             wget -qO - https://dl.xanmod.org/gpg.key | sudo apt-key add -
         sudo apt-get update
         sudo apt install --install-recommends linux-xanmod-rt -y
@@ -209,13 +209,11 @@ prompt_2() {
             sudo add-apt-repository ppa:lutris-team/lutris -y
         sudo apt-get update
         sudo apt install winehq-staging -y
-        sudo apt install --install-recommends -y libgnutls30:i386 libldap-2.4-2:i386 libgpg-error0:i386 libxml2:i386 libasound2-plugins:i386 libsdl2-2.0-0:i386 libfreetype6:i386 libdbus-1-3:i386 libsqlite3-0:i386
         sudo apt install -y --no-install-recommends build-essential manpages-dev libx11-dev xorg-dev dbus steam lutris
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         yay -S --needed --noconfirm wine-staging
-        yay -S --needed --noconfirm giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse libgpg-error lib32-libgpg-error alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo sqlite lib32-sqlite libxcomposite lib32-libxcomposite libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader
         yay -S --needed --noconfirm dbus steam lutris
     fi
 }
