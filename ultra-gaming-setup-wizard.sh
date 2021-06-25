@@ -69,14 +69,14 @@ amd() {
     if [ $? -eq 0 ]; then
         sudo add-apt-repository ppa:kisak/kisak-mesa -y
         sudo apt-get update
-        sudo apt install -y --no-install-recommends libgl1-mesa-dri:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386 &&
+        sudo apt install -y --no-install-recommends firmware-amd-graphics libgl1-mesa-dri libglx-mesa0 libglx-mesa0:i386 mesa-vulkan-drivers xserver-xorg-video-all libglx-mesa0:i386 libgl1-mesa-dri:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386 &&
             echo -e "RADV_PERFTEST=aco" | sudo tee -a /etc/environment &&
             echo -e "mesa_glthread=true" | sudo tee -a /etc/environment &&
             echo -e "vblank_mode=0" | sudo tee -a /etc/environment
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
-        yay -S --needed --noconfirm lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader xf86-video-amdgpu vulkan-radeon &&
+        yay -S --needed --noconfirm mesa xf86-video-amdgpu xf86-video-ati libva-mesa-driver lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader xf86-video-amdgpu vulkan-radeon &&
             echo -e "RADV_PERFTEST=aco" | sudo tee -a /etc/environment &&
             echo -e "mesa_glthread=true" | sudo tee -a /etc/environment &&
             echo -e "vblank_mode=0" | sudo tee -a /etc/environment
@@ -88,7 +88,7 @@ nvidia() {
     if [ $? -eq 0 ]; then
         sudo add-apt-repository ppa:graphics-drivers/ppa -y
         sudo apt-get update
-        sudo apt install -y --no-install-recommends nvidia-driver-450 libnvidia-gl-450 libnvidia-gl-450:i386 libvulkan1 libvulkan1:i386
+        sudo apt install -y --no-install-recommends libgl1-mesa-dri libglx-mesa0 libglx-mesa0:i386 mesa-vulkan-drivers xserver-xorg-video-all xf86-video-nouveau libva-mesa-driver nvidia-driver-450 libnvidia-gl-450 libnvidia-gl-450:i386 libvulkan1 libvulkan1:i386 
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
