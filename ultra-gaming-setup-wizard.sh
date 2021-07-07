@@ -69,7 +69,7 @@ amd() {
     if [ $? -eq 0 ]; then
         sudo add-apt-repository ppa:kisak/kisak-mesa -y
         sudo apt-get update
-        sudo apt install -fy --no-install-recommends libgl1-mesa-dri libglx-mesa0 libglx-mesa0:i386 mesa-vulkan-drivers xserver-xorg-video-all libglx-mesa0:i386 libgl1-mesa-dri:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386 &&
+        sudo apt install -fy --assume-yes --no-install-recommends libgl1-mesa-dri libglx-mesa0 libglx-mesa0:i386 mesa-vulkan-drivers xserver-xorg-video-all libglx-mesa0:i386 libgl1-mesa-dri:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386 &&
             echo -e "RADV_PERFTEST=aco" | sudo tee -a /etc/environment &&
             echo -e "mesa_glthread=true" | sudo tee -a /etc/environment &&
             echo -e "vblank_mode=0" | sudo tee -a /etc/environment
@@ -88,7 +88,7 @@ nvidia() {
     if [ $? -eq 0 ]; then
         sudo add-apt-repository ppa:graphics-drivers/ppa -y
         sudo apt-get update
-        sudo apt install -fy --no-install-recommends libgl1-mesa-dri libglx-mesa0 libglx-mesa0:i386 mesa-vulkan-drivers xserver-xorg-video-all nvidia-driver-450 libnvidia-gl-450 libnvidia-gl-450:i386 libvulkan1 libvulkan1:i386 
+        sudo apt install -fy --assume-yes --no-install-recommends libgl1-mesa-dri libglx-mesa0 libglx-mesa0:i386 mesa-vulkan-drivers xserver-xorg-video-all nvidia-driver-450 libnvidia-gl-450 libnvidia-gl-450:i386 libvulkan1 libvulkan1:i386 
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
@@ -119,7 +119,7 @@ xanmod() {
         echo -e "deb http://deb.xanmod.org releases main" | sudo tee /etc/apt/sources.list.d/xanmod-kernel.list &&
             wget -qO - https://dl.xanmod.org/gpg.key | sudo apt-key add -
         sudo apt-get update
-        sudo apt install --install-recommends linux-xanmod-rt -fy
+        sudo apt install --assume-yes --install-recommends linux-xanmod-rt -fy
         echo -e "net.core.default_qdisc = fq_pie" | sudo tee /etc/sysctl.d/90-override.conf
     fi
     which pacman >/dev/null 2>&1
@@ -134,7 +134,7 @@ liquarix() {
     if [ $? -eq 0 ]; then
         sudo add-apt-repository ppa:damentz/liquorix -y &&
             sudo apt-get update
-        sudo apt install --install-recommends linux-image-liquorix-amd64 linux-headers-liquorix-amd64 -fy
+        sudo apt install --assume-yes --install-recommends linux-image-liquorix-amd64 linux-headers-liquorix-amd64 -fy
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
@@ -208,8 +208,8 @@ prompt_2() {
             sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main' -y &&
             sudo add-apt-repository ppa:lutris-team/lutris -y
         sudo apt-get update
-        sudo apt install winehq-staging libgnutls30:i386 libldap-2.4-2:i386 libgpg-error0:i386 libxml2:i386 libasound2-plugins:i386 libsdl2-2.0-0:i386 libfreetype6:i386 libdbus-1-3:i386 libsqlite3-0:i386 -fy
-        sudo apt install -fy --no-install-recommends build-essential manpages-dev libx11-dev xorg-dev dialog dbus steam lutris
+        sudo apt install --assume-yes winehq-staging libgnutls30:i386 libldap-2.4-2:i386 libgpg-error0:i386 libxml2:i386 libasound2-plugins:i386 libsdl2-2.0-0:i386 libfreetype6:i386 libdbus-1-3:i386 libsqlite3-0:i386 -fy
+        sudo apt install -fy --assume-yes --no-install-recommends build-essential manpages-dev libx11-dev xorg-dev dialog dbus steam lutris
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
@@ -240,9 +240,9 @@ prompt_4() {
     read -p $'>_: '
     which apt >/dev/null 2>&1
     if [ $? -eq 0 ]; then
-        sudo apt install --install-recommends earlyoom -fy
-        sudo apt install --install-recommends gamemode -fy
-        sudo apt install --install-recommends thermald -fy
+        sudo apt install --assume-yes --install-recommends earlyoom -fy
+        sudo apt install --assume-yes --install-recommends gamemode -fy
+        sudo apt install --assume-yes --install-recommends thermald -fy
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
