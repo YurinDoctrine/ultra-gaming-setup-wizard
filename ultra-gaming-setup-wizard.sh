@@ -76,7 +76,7 @@ amd() {
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
-        yay -S --needed --noconfirm mesa xf86-video-amdgpu xf86-video-ati libva-mesa-driver lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader xf86-video-amdgpu vulkan-radeon &&
+        yay -S --needed --noconfirm mesa xf86-video-amdgpu xf86-video-ati libva-mesa-driver lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader xf86-video-amdgpu vulkan-radeon linux-firmware &&
             echo -e "RADV_PERFTEST=aco" | sudo tee -a /etc/environment &&
             echo -e "mesa_glthread=true" | sudo tee -a /etc/environment &&
             echo -e "vblank_mode=0" | sudo tee -a /etc/environment
@@ -92,7 +92,7 @@ nvidia() {
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
-        yay -S --needed --noconfirm mesa nvidia opencl-nvidia lib32-opencl-nvidia lib32-nvidia-utils xf86-video-nouveau libva-mesa-driver
+        yay -S --needed --noconfirm mesa nvidia opencl-nvidia lib32-opencl-nvidia lib32-nvidia-utils xf86-video-nouveau libva-mesa-driver linux-firmware
     fi
 }
 
@@ -236,7 +236,7 @@ prompt_3() {
 prompt_3
 
 prompt_4() {
-    echo -e "NEXT YOU GOTTA INSTALL A COUPLE OF DAEMON EITHER (gamemode, thermald etc.) [HIT RETURN]"
+    echo -e "NEXT YOU GOTTA INSTALL A COUPLE OF DAEMON EITHER (earlyoom, gamemode, thermald etc.) [HIT RETURN]"
     read -p $'>_: '
     which apt >/dev/null 2>&1
     if [ $? -eq 0 ]; then
