@@ -45,8 +45,8 @@ fi
 32bit() {
     which apt >/dev/null 2>&1
     if [ $? -eq 0 ]; then
-        sudo add-apt-repository universe
-        sudo add-apt-repository multiverse
+        sudo add-apt-repository universe -y &&
+            sudo add-apt-repository multiverse -y
         sudo dpkg --add-architecture i386
         sudo apt-get update
     fi
