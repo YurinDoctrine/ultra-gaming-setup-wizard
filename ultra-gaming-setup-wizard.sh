@@ -69,6 +69,7 @@ fi
 amd() {
     which apt >/dev/null 2>&1
     if [ $? -eq 0 ]; then
+        sudo ubuntu-drivers autoinstall
         sudo add-apt-repository ppa:kisak/kisak-mesa -y
         sudo apt-get update
         sudo apt install -f --assume-yes --no-install-recommends libgl1-mesa-dri libglx-mesa0 libglx-mesa0:i386 mesa-vulkan-drivers libglx-mesa0:i386 libgl1-mesa-dri:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386 mesa-utils &&
@@ -88,6 +89,7 @@ amd() {
 nvidia() {
     which apt >/dev/null 2>&1
     if [ $? -eq 0 ]; then
+        sudo ubuntu-drivers autoinstall
         sudo add-apt-repository ppa:graphics-drivers/ppa -y
         sudo apt-get update
         sudo apt install -f --assume-yes --no-install-recommends libgl1-mesa-dri libglx-mesa0 libglx-mesa0:i386 mesa-vulkan-drivers nvidia-driver-450 libnvidia-gl-450 libnvidia-gl-450:i386 libvulkan1 libvulkan1:i386
