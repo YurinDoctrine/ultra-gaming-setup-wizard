@@ -69,6 +69,8 @@ fi
 amd() {
     which apt >/dev/null 2>&1
     if [ $? -eq 0 ]; then
+        ubuntu-drivers devices
+        ubuntu-drivers list
         sudo ubuntu-drivers autoinstall
         sudo add-apt-repository ppa:kisak/kisak-mesa -y
         sudo apt-get update
@@ -89,6 +91,8 @@ amd() {
 nvidia() {
     which apt >/dev/null 2>&1
     if [ $? -eq 0 ]; then
+        ubuntu-drivers devices
+        ubuntu-drivers list
         sudo ubuntu-drivers autoinstall
         sudo add-apt-repository ppa:graphics-drivers/ppa -y
         sudo apt-get update
