@@ -237,7 +237,7 @@ prompt_3() {
         sudo sed -i -e 's/^#DefaultLimitNOFILE/DefaultLimitNOFILE/' /etc/systemd/system.conf
         sudo sed -i -e 's/^#DefaultLimitNOFILE/DefaultLimitNOFILE/' /etc/systemd/user.conf
         echo -e $USER "hard nofile 524288" | sudo tee -a /etc/security/limits.conf
-        sleep 0.8
+        sleep 0.2
         echo -e "DONE."
     fi
 }
@@ -270,7 +270,7 @@ extra() {
 
 final() {
 
-    sleep 0.3 && clear
+    sleep 0.2 && clear
     echo -e "
 ###############################################################################
 # FINAL: DO YOU ALSO WANT TO RUN THE AUTHOR'S secure-linux?
