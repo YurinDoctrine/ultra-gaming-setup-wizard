@@ -236,7 +236,7 @@ prompt_3() {
     if [[ "$nocklb" == "false" ]]; then
         sudo sed -i -e 's/^#DefaultLimitNOFILE/DefaultLimitNOFILE/' /etc/systemd/system.conf
         sudo sed -i -e 's/^#DefaultLimitNOFILE/DefaultLimitNOFILE/' /etc/systemd/user.conf
-        echo -e $USER "hard nofile 524288" | sudo tee -a /etc/security/limits.conf
+        echo -e $USER "hard nofile 1048576" | sudo tee -a /etc/security/limits.conf
         sleep 0.2
         echo -e "DONE."
     fi
