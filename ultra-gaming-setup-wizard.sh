@@ -252,12 +252,14 @@ prompt_4() {
         sudo apt install --assume-yes --install-recommends earlyoom -f
         sudo apt install --assume-yes --install-recommends gamemode -f
         sudo apt install --assume-yes --install-recommends thermald -f
+        sudo apt install --assume-yes --install-recommends irqbalance -f
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         yay -S --needed --noconfirm earlyoom
         yay -S --needed --noconfirm gamemode lib32-gamemode
         yay -S --needed --noconfirm thermald
+        yay -S --needed --noconfirm irqbalance
     fi
 }
 prompt_4
