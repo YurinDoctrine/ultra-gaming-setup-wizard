@@ -128,12 +128,14 @@ xanmod() {
             wget -qO - https://dl.xanmod.org/gpg.key | sudo apt-key add -
         sudo apt-get update
         sudo apt install --assume-yes --install-recommends linux-xanmod-rt -f
-        echo -e "net.core.default_qdisc = fq_pie" | sudo tee /etc/sysctl.d/90-override.conf
+        echo -e "net.core.default_qdisc = fq_pie
+        net.ipv4.tcp_congestion_control = bbr" | sudo tee /etc/sysctl.d/90-override.conf
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         yay -S --needed --noconfirm linux-xanmod-rt linux-xanmod-headers
-        echo -e "net.core.default_qdisc = fq_pie" | sudo tee /etc/sysctl.d/90-override.conf
+        echo -e "net.core.default_qdisc = fq_pie
+        net.ipv4.tcp_congestion_control = bbr" | sudo tee /etc/sysctl.d/90-override.conf
     fi
 }
 
