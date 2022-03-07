@@ -232,6 +232,7 @@ prompt_2() {
 prompt_2
 
 prompt_3() {
+    clear
     ulimit -n 1048576
     ulimit -Hn
     echo -e ""
