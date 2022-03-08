@@ -257,6 +257,7 @@ prompt_4() {
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
+        yay -S --needed --noconfirm schedtool
         yay -S --needed --noconfirm ananicy-git
         yay -S --needed --noconfirm gamemode lib32-gamemode
         yay -S --needed --noconfirm thermald
