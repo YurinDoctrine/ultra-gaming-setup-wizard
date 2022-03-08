@@ -240,7 +240,7 @@ prompt_3() {
     read -p $'true/false >_: ' nocklb
     if [[ "$nocklb" == "false" ]]; then
         echo -e $USER "hard nofile 1048576" | sudo tee -a /etc/security/limits.conf
-        sudo sed -i -e 's/^#DefaultLimitNOFILE/DefaultLimitNOFILE/' /etc/systemd/system.conf
+        sudo sed -i -e 's/^#DefaultLimitNOFILE.*/DefaultLimitNOFILE=1048576/' /etc/systemd/system.conf
     else
         sudo sed -i -e 's/^#DefaultLimitNOFILE/DefaultLimitNOFILE/' /etc/systemd/system.conf
     fi
