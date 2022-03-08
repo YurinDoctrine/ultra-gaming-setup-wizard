@@ -240,8 +240,10 @@ prompt_3() {
     read -p $'true/false >_: ' nocklb
     if [[ "$nocklb" == "false" ]]; then
         sudo sed -i -e 's/^#DefaultLimitNOFILE/DefaultLimitNOFILE/' /etc/systemd/system.conf
-        echo -e "DONE"
+    else
+        sudo sed -i -e 's/^#DefaultLimitNOFILE/DefaultLimitNOFILE/' /etc/systemd/system.conf
     fi
+    echo -e "DONE!"
 }
 prompt_3
 
