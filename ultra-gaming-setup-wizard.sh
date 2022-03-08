@@ -254,15 +254,12 @@ prompt_4() {
     if [ $? -eq 0 ]; then
         sudo apt install --assume-yes --install-recommends gamemode -f
         sudo apt install --assume-yes --install-recommends thermald -f
-        sudo apt install --assume-yes --install-recommends irqbalance -f
-        sudo apt install --assume-yes --install-recommends schedtool -f
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
+        yay -S --needed --noconfirm ananicy-git
         yay -S --needed --noconfirm gamemode lib32-gamemode
         yay -S --needed --noconfirm thermald
-        yay -S --needed --noconfirm irqbalance
-        yay -S --needed --noconfirm schedtool
     fi
 }
 prompt_4
