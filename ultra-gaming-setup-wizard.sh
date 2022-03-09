@@ -253,6 +253,9 @@ prompt_4() {
     read -p $'>_: '
     which apt >/dev/null 2>&1
     if [ $? -eq 0 ]; then
+        git clone https://github.com/Nefelim4ag/Ananicy.git
+        ./Ananicy/package.sh debian
+        sudo dpkg -i ./Ananicy/ananicy-*.deb
         sudo apt install --assume-yes --install-recommends gamemode -f
         sudo apt install --assume-yes --install-recommends thermald -f
     fi
