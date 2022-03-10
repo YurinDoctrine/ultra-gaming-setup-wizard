@@ -253,11 +253,15 @@ prompt_4() {
     read -p $'>_: '
     which apt >/dev/null 2>&1
     if [ $? -eq 0 ]; then
+        sudo apt install --assume-yes --install-recommends schedtool -f
         git clone https://github.com/Nefelim4ag/Ananicy.git
         ./Ananicy/package.sh debian
         sudo dpkg -i ./Ananicy/ananicy-*.deb
         sudo apt install --assume-yes --install-recommends gamemode -f
         sudo apt install --assume-yes --install-recommends thermald -f
+
+        sudo systemctl enable ananicy
+        sudo systemctl start ananicy
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
@@ -265,6 +269,9 @@ prompt_4() {
         yay -S --needed --noconfirm ananicy-git
         yay -S --needed --noconfirm gamemode lib32-gamemode
         yay -S --needed --noconfirm thermald
+
+        sudo systemctl enable ananicy
+        sudo systemctl start ananicy
     fi
 }
 prompt_4
