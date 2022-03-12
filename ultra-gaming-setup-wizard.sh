@@ -61,7 +61,7 @@ fi
             _has_multilib=$((${_has_multilib} + 1))
             sudo sed -i -e "${_has_multilib}s/^#//" /etc/pacman.conf
         fi
-        sudo pacman -Sy
+        sudo pacman -Syy
     fi
 }
 32bit
