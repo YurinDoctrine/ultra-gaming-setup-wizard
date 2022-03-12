@@ -74,14 +74,14 @@ amd() {
         sudo ubuntu-drivers autoinstall
         sudo add-apt-repository ppa:kisak/kisak-mesa -y
         sudo apt-get update
-        sudo apt install -f --assume-yes --no-install-recommends libgl1-mesa-dri libglx-mesa0 libglx-mesa0:i386 mesa-vulkan-drivers libglx-mesa0:i386 libgl1-mesa-dri:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386 mesa-utils vulkan-tools &&
+        sudo apt install -f --assume-yes --no-install-recommends libgl1-mesa-dri libglx-mesa0 libglx-mesa0:i386 mesa-vulkan-drivers libglx-mesa0:i386 libgl1-mesa-dri:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386 mesa-va-drivers mesa-va-drivers:i386 libvulkan-dev libvulkan-dev:i386 mesa-utils vulkan-tools mesa-common-dev &&
             echo -e "RADV_PERFTEST=aco" | sudo tee -a /etc/environment &&
             echo -e "mesa_glthread=true" | sudo tee -a /etc/environment &&
             echo -e "vblank_mode=0" | sudo tee -a /etc/environment
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
-        yay -S --needed --noconfirm mesa xf86-video-amdgpu xf86-video-ati libva-mesa-driver lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader xf86-video-amdgpu vulkan-radeon linux-firmware vulkan-tools &&
+        yay -S --needed --noconfirm mesa xf86-video-amdgpu xf86-video-ati libva-mesa-driver lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader xf86-video-amdgpu vulkan-radeon vulkan-tools &&
             echo -e "RADV_PERFTEST=aco" | sudo tee -a /etc/environment &&
             echo -e "mesa_glthread=true" | sudo tee -a /etc/environment &&
             echo -e "vblank_mode=0" | sudo tee -a /etc/environment
@@ -96,11 +96,11 @@ nvidia() {
         sudo ubuntu-drivers autoinstall
         sudo add-apt-repository ppa:graphics-drivers/ppa -y
         sudo apt-get update
-        sudo apt install -f --assume-yes --no-install-recommends libgl1-mesa-dri libglx-mesa0 libglx-mesa0:i386 mesa-vulkan-drivers nvidia-driver-450 libnvidia-gl-450 libnvidia-gl-450:i386 libvulkan1 libvulkan1:i386 vulkan-tools
+        sudo apt install -f --assume-yes --no-install-recommends libgl1-mesa-dri libglx-mesa0 libglx-mesa0:i386 mesa-vulkan-drivers nvidia-driver-510 libnvidia-gl-510 libnvidia-gl-510:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386 mesa-va-drivers mesa-va-drivers:i386 libvulkan-dev libvulkan-dev:i386 mesa-utils vulkan-tools mesa-common-dev
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
-        yay -S --needed --noconfirm mesa lib32-mesa nvidia nvidia-dkms opencl-nvidia lib32-opencl-nvidia nvidia-utils lib32-nvidia-utils xf86-video-nouveau libva-mesa-driver linux-firmware vulkan-tools
+        yay -S --needed --noconfirm mesa lib32-mesa nvidia nvidia-dkms opencl-nvidia lib32-opencl-nvidia nvidia-utils lib32-nvidia-utils xf86-video-nouveau libva-mesa-driver vulkan-tools
     fi
 }
 
