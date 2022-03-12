@@ -254,6 +254,7 @@ prompt_4() {
     which apt >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         sudo apt install --assume-yes --install-recommends schedtool -f
+        sudo apt install --assume-yes --install-recommends acpi-support -f
         git clone https://github.com/Nefelim4ag/Ananicy.git
         ./Ananicy/package.sh debian
         sudo dpkg -i ./Ananicy/ananicy-*.deb
@@ -270,6 +271,7 @@ prompt_4() {
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         yay -S --needed --noconfirm schedtool
+        yay -S --needed --noconfirm acpid
         yay -S --needed --noconfirm ananicy-git
         yay -S --needed --noconfirm auto-cpufreq-git
         yay -S --needed --noconfirm gamemode lib32-gamemode
