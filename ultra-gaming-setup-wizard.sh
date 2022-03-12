@@ -257,21 +257,28 @@ prompt_4() {
         git clone https://github.com/Nefelim4ag/Ananicy.git
         ./Ananicy/package.sh debian
         sudo dpkg -i ./Ananicy/ananicy-*.deb
+        git clone https://github.com/AdnanHodzic/auto-cpufreq.git
+        sudo ./auto-cpufreq/auto-cpufreq-installer
         sudo apt install --assume-yes --install-recommends gamemode -f
         sudo apt install --assume-yes --install-recommends thermald -f
 
         sudo systemctl enable ananicy
         sudo systemctl start ananicy
+        sudo systemctl enable auto-cpufreq
+        sudo systemctl start auto-cpufreq
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         yay -S --needed --noconfirm schedtool
         yay -S --needed --noconfirm ananicy-git
+        yay -S --needed --noconfirm auto-cpufreq-git
         yay -S --needed --noconfirm gamemode lib32-gamemode
         yay -S --needed --noconfirm thermald
 
         sudo systemctl enable ananicy
         sudo systemctl start ananicy
+        sudo systemctl enable auto-cpufreq
+        sudo systemctl start auto-cpufreq
     fi
 }
 prompt_4
