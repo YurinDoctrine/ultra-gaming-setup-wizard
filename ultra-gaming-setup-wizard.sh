@@ -157,6 +157,8 @@ nvidia() {
         yay -S --needed --noconfirm mesa lib32-mesa nvidia nvidia-dkms opencl-nvidia lib32-opencl-nvidia nvidia-utils lib32-nvidia-utils xf86-video-nouveau libva-mesa-driver vulkan-tools &&
             echo -e "WINEFSYNC_SPINCOUNT=24" | sudo tee -a /etc/environment &&
             echo -e "WINEFSYNC=1" | sudo tee -a /etc/environment &&
+            echo -e "WINE_SKIP_GECKO_INSTALLATION=1" | sudo tee -a /etc/environment &&
+            echo -e "WINE_SKIP_MONO_INSTALLATION=1" | sudo tee -a /etc/environment &&
             echo -e "STAGING_WRITECOPY=1" | sudo tee -a /etc/environment &&
             echo -e "STAGING_SHARED_MEMORY=1" | sudo tee -a /etc/environment &&
             echo -e "STAGING_RT_PRIORITY_SERVER=75" | sudo tee -a /etc/environment &&
