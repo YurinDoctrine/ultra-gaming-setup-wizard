@@ -86,6 +86,7 @@ amd() {
             echo -e "WINE_FULLSCREEN_FSR=1" | sudo tee -a /etc/environment &&
             echo -e "WINE_FULLSCREEN_FSR_STRENGTH=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_HUD=compile" | sudo tee -a /etc/environment &&
+            echo -e "MESA_NO_ERROR=1" | sudo tee -a /etc/environment &&
             echo -e "mesa_glthread=true" | sudo tee -a /etc/environment &&
             echo -e "__GL_THREADED_OPTIMIZATIONS=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_SYNC_TO_VBLANK=0" | sudo tee -a /etc/environment &&
@@ -105,6 +106,7 @@ amd() {
             echo -e "WINE_FULLSCREEN_FSR=1" | sudo tee -a /etc/environment &&
             echo -e "WINE_FULLSCREEN_FSR_STRENGTH=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_HUD=compile" | sudo tee -a /etc/environment &&
+            echo -e "MESA_NO_ERROR=1" | sudo tee -a /etc/environment &&
             echo -e "mesa_glthread=true" | sudo tee -a /etc/environment &&
             echo -e "__GL_THREADED_OPTIMIZATIONS=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_SYNC_TO_VBLANK=0" | sudo tee -a /etc/environment &&
@@ -127,6 +129,7 @@ nvidia() {
             echo -e "STAGING_RT_PRIORITY_SERVER=75" | sudo tee -a /etc/environment &&
             echo -e "STAGING_RT_PRIORITY_BASE=75" | sudo tee -a /etc/environment &&
             echo -e "DXVK_HUD=compile" | sudo tee -a /etc/environment &&
+            echo -e "MESA_NO_ERROR=1" | sudo tee -a /etc/environment &&
             echo -e "mesa_glthread=true" | sudo tee -a /etc/environment &&
             echo -e "__GL_THREADED_OPTIMIZATIONS=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_SYNC_TO_VBLANK=0" | sudo tee -a /etc/environment &&
@@ -141,6 +144,7 @@ nvidia() {
             echo -e "STAGING_RT_PRIORITY_SERVER=75" | sudo tee -a /etc/environment &&
             echo -e "STAGING_RT_PRIORITY_BASE=75" | sudo tee -a /etc/environment &&
             echo -e "DXVK_HUD=compile" | sudo tee -a /etc/environment &&
+            echo -e "MESA_NO_ERROR=1" | sudo tee -a /etc/environment &&
             echo -e "mesa_glthread=true" | sudo tee -a /etc/environment &&
             echo -e "__GL_THREADED_OPTIMIZATIONS=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_SYNC_TO_VBLANK=0" | sudo tee -a /etc/environment &&
