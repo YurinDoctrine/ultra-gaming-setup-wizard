@@ -100,11 +100,21 @@ nvidia() {
         sudo ubuntu-drivers autoinstall
         sudo add-apt-repository ppa:graphics-drivers/ppa -y
         sudo apt-get update
-        sudo apt install -f --assume-yes --no-install-recommends libgl1-mesa-dri libglx-mesa0 libglx-mesa0:i386 mesa-vulkan-drivers nvidia-driver-510 libnvidia-gl-510 libnvidia-gl-510:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386 mesa-va-drivers mesa-va-drivers:i386 libvulkan-dev libvulkan-dev:i386 mesa-utils vulkan-tools mesa-common-dev
+        sudo apt install -f --assume-yes --no-install-recommends libgl1-mesa-dri libglx-mesa0 libglx-mesa0:i386 mesa-vulkan-drivers nvidia-driver-510 libnvidia-gl-510 libnvidia-gl-510:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386 mesa-va-drivers mesa-va-drivers:i386 libvulkan-dev libvulkan-dev:i386 mesa-utils vulkan-tools mesa-common-dev &&
+            echo -e "RADV_PERFTEST=aco" | sudo tee -a /etc/environment &&
+            echo -e "mesa_glthread=true" | sudo tee -a /etc/environment &&
+            echo -e "__GL_THREADED_OPTIMIZATIONS=1" | sudo tee -a /etc/environment &&
+            echo -e "__GL_SYNC_TO_VBLANK=0" | sudo tee -a /etc/environment &&
+            echo -e "vblank_mode=0" | sudo tee -a /etc/environment
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
-        yay -S --needed --noconfirm mesa lib32-mesa nvidia nvidia-dkms opencl-nvidia lib32-opencl-nvidia nvidia-utils lib32-nvidia-utils xf86-video-nouveau libva-mesa-driver vulkan-tools
+        yay -S --needed --noconfirm mesa lib32-mesa nvidia nvidia-dkms opencl-nvidia lib32-opencl-nvidia nvidia-utils lib32-nvidia-utils xf86-video-nouveau libva-mesa-driver vulkan-tools &&
+            echo -e "RADV_PERFTEST=aco" | sudo tee -a /etc/environment &&
+            echo -e "mesa_glthread=true" | sudo tee -a /etc/environment &&
+            echo -e "__GL_THREADED_OPTIMIZATIONS=1" | sudo tee -a /etc/environment &&
+            echo -e "__GL_SYNC_TO_VBLANK=0" | sudo tee -a /etc/environment &&
+            echo -e "vblank_mode=0" | sudo tee -a /etc/environment
     fi
 }
 
