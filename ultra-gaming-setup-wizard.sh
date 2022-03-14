@@ -96,7 +96,7 @@ amd() {
             echo -e "__GL_THREADED_OPTIMIZATIONS=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_SYNC_TO_VBLANK=0" | sudo tee -a /etc/environment &&
             echo -e "__GL_MaxFramesAllowed=1" | sudo tee -a /etc/environment &&
-            echo -e "vblank_mode=0" | sudo tee -a /etc/environment
+            echo -e "vblank_mode=1" | sudo tee -a /etc/environment
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
@@ -122,7 +122,7 @@ amd() {
             echo -e "__GL_THREADED_OPTIMIZATIONS=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_SYNC_TO_VBLANK=0" | sudo tee -a /etc/environment &&
             echo -e "__GL_MaxFramesAllowed=1" | sudo tee -a /etc/environment &&
-            echo -e "vblank_mode=0" | sudo tee -a /etc/environment
+            echo -e "vblank_mode=1" | sudo tee -a /etc/environment
     fi
 }
 
@@ -150,7 +150,7 @@ nvidia() {
             echo -e "__GL_THREADED_OPTIMIZATIONS=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_SYNC_TO_VBLANK=0" | sudo tee -a /etc/environment &&
             echo -e "__GL_MaxFramesAllowed=1" | sudo tee -a /etc/environment &&
-            echo -e "vblank_mode=0" | sudo tee -a /etc/environment
+            echo -e "vblank_mode=1" | sudo tee -a /etc/environment
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
@@ -170,7 +170,7 @@ nvidia() {
             echo -e "__GL_THREADED_OPTIMIZATIONS=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_SYNC_TO_VBLANK=0" | sudo tee -a /etc/environment &&
             echo -e "__GL_MaxFramesAllowed=1" | sudo tee -a /etc/environment &&
-            echo -e "vblank_mode=0" | sudo tee -a /etc/environment
+            echo -e "vblank_mode=1" | sudo tee -a /etc/environment
     fi
 }
 
