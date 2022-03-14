@@ -78,6 +78,10 @@ amd() {
             echo -e "AMD_VULKAN_ICD=amdvlk" | sudo tee -a /etc/environment &&
             echo -e "RADV_PERFTEST=aco" | sudo tee -a /etc/environment &&
             echo -e "WINEESYNC=1" | sudo tee -a /etc/environment &&
+            echo -e "STAGING_WRITECOPY=1" | sudo tee -a /etc/environment &&
+            echo -e "STAGING_SHARED_MEMORY=1" | sudo tee -a /etc/environment &&
+            echo -e "STAGING_RT_PRIORITY_SERVER=75" | sudo tee -a /etc/environment &&
+            echo -e "STAGING_RT_PRIORITY_BASE=75" | sudo tee -a /etc/environment &&
             echo -e "WINE_FSR_OVERRIDE=1" | sudo tee -a /etc/environment &&
             echo -e "WINE_FULLSCREEN_FSR=1" | sudo tee -a /etc/environment &&
             echo -e "WINE_FULLSCREEN_FSR_STRENGTH=1" | sudo tee -a /etc/environment &&
@@ -93,6 +97,10 @@ amd() {
             echo -e "AMD_VULKAN_ICD=amdvlk" | sudo tee -a /etc/environment &&
             echo -e "RADV_PERFTEST=aco" | sudo tee -a /etc/environment &&
             echo -e "WINEESYNC=1" | sudo tee -a /etc/environment &&
+            echo -e "STAGING_WRITECOPY=1" | sudo tee -a /etc/environment &&
+            echo -e "STAGING_SHARED_MEMORY=1" | sudo tee -a /etc/environment &&
+            echo -e "STAGING_RT_PRIORITY_SERVER=75" | sudo tee -a /etc/environment &&
+            echo -e "STAGING_RT_PRIORITY_BASE=75" | sudo tee -a /etc/environment &&
             echo -e "WINE_FSR_OVERRIDE=1" | sudo tee -a /etc/environment &&
             echo -e "WINE_FULLSCREEN_FSR=1" | sudo tee -a /etc/environment &&
             echo -e "WINE_FULLSCREEN_FSR_STRENGTH=1" | sudo tee -a /etc/environment &&
@@ -114,6 +122,10 @@ nvidia() {
         sudo apt-get update
         sudo apt install -f --assume-yes --no-install-recommends libgl1-mesa-dri libglx-mesa0 libglx-mesa0:i386 mesa-vulkan-drivers nvidia-driver-510 libnvidia-gl-510 libnvidia-gl-510:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386 mesa-va-drivers mesa-va-drivers:i386 libvulkan-dev libvulkan-dev:i386 mesa-utils vulkan-tools mesa-common-dev &&
             echo -e "WINEESYNC=1" | sudo tee -a /etc/environment &&
+            echo -e "STAGING_WRITECOPY=1" | sudo tee -a /etc/environment &&
+            echo -e "STAGING_SHARED_MEMORY=1" | sudo tee -a /etc/environment &&
+            echo -e "STAGING_RT_PRIORITY_SERVER=75" | sudo tee -a /etc/environment &&
+            echo -e "STAGING_RT_PRIORITY_BASE=75" | sudo tee -a /etc/environment &&
             echo -e "DXVK_HUD=compile" | sudo tee -a /etc/environment &&
             echo -e "mesa_glthread=true" | sudo tee -a /etc/environment &&
             echo -e "__GL_THREADED_OPTIMIZATIONS=1" | sudo tee -a /etc/environment &&
@@ -124,6 +136,10 @@ nvidia() {
     if [ $? -eq 0 ]; then
         yay -S --needed --noconfirm mesa lib32-mesa nvidia nvidia-dkms opencl-nvidia lib32-opencl-nvidia nvidia-utils lib32-nvidia-utils xf86-video-nouveau libva-mesa-driver vulkan-tools &&
             echo -e "WINEESYNC=1" | sudo tee -a /etc/environment &&
+            echo -e "STAGING_WRITECOPY=1" | sudo tee -a /etc/environment &&
+            echo -e "STAGING_SHARED_MEMORY=1" | sudo tee -a /etc/environment &&
+            echo -e "STAGING_RT_PRIORITY_SERVER=75" | sudo tee -a /etc/environment &&
+            echo -e "STAGING_RT_PRIORITY_BASE=75" | sudo tee -a /etc/environment &&
             echo -e "DXVK_HUD=compile" | sudo tee -a /etc/environment &&
             echo -e "mesa_glthread=true" | sudo tee -a /etc/environment &&
             echo -e "__GL_THREADED_OPTIMIZATIONS=1" | sudo tee -a /etc/environment &&
