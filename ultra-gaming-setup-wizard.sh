@@ -74,7 +74,7 @@ amd() {
         sudo ubuntu-drivers autoinstall
         sudo add-apt-repository ppa:kisak/kisak-mesa -y
         sudo apt-get update
-        sudo apt install -f --assume-yes --no-install-recommends libgl1-mesa-dri libglx-mesa0 libglx-mesa0:i386 mesa-vulkan-drivers libglx-mesa0:i386 libgl1-mesa-dri:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386 mesa-va-drivers mesa-va-drivers:i386 libvulkan-dev libvulkan-dev:i386 mesa-utils vulkan-tools mesa-common-dev &&
+        sudo apt install -f --assume-yes --no-install-recommends libglx-mesa0 libglx-mesa0:i386 libgl1-mesa-dri libgl1-mesa-dri:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386 mesa-va-drivers mesa-va-drivers:i386 libvulkan-dev libvulkan-dev:i386 mesa-utils vulkan-tools mesa-common-dev &&
             echo -e "DRI_PRIME=1" | sudo tee -a /etc/environment &&
             echo -e "AMD_VULKAN_ICD=amdvlk" | sudo tee -a /etc/environment &&
             echo -e "RADV_PERFTEST=aco" | sudo tee -a /etc/environment &&
@@ -134,7 +134,7 @@ nvidia() {
         sudo ubuntu-drivers autoinstall
         sudo add-apt-repository ppa:graphics-drivers/ppa -y
         sudo apt-get update
-        sudo apt install -f --assume-yes --no-install-recommends libgl1-mesa-dri libglx-mesa0 libglx-mesa0:i386 mesa-vulkan-drivers nvidia-driver-510 libnvidia-gl-510 libnvidia-gl-510:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386 mesa-va-drivers mesa-va-drivers:i386 libvulkan-dev libvulkan-dev:i386 mesa-utils vulkan-tools mesa-common-dev &&
+        sudo apt install -f --assume-yes --no-install-recommends libglx-mesa0 libglx-mesa0:i386 libgl1-mesa-dri libgl1-mesa-dri:i386 nvidia-driver-510 libnvidia-gl-510 libnvidia-gl-510:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386 mesa-va-drivers mesa-va-drivers:i386 libvulkan-dev libvulkan-dev:i386 mesa-utils vulkan-tools mesa-common-dev &&
             echo -e "WINEFSYNC_SPINCOUNT=24" | sudo tee -a /etc/environment &&
             echo -e "WINEFSYNC=1" | sudo tee -a /etc/environment &&
             echo -e "WINE_SKIP_GECKO_INSTALLATION=1" | sudo tee -a /etc/environment &&
