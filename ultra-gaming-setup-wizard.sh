@@ -79,6 +79,7 @@ amd() {
             echo -e "AMD_VULKAN_ICD=amdvlk" | sudo tee -a /etc/environment &&
             echo -e "RADV_PERFTEST=aco" | sudo tee -a /etc/environment &&
             echo -e "RADV_TEX_ANISO=16" | sudo tee -a /etc/environment &&
+            echo -e "WINE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
             echo -e "WINEFSYNC_SPINCOUNT=24" | sudo tee -a /etc/environment &&
             echo -e "WINEFSYNC=1" | sudo tee -a /etc/environment &&
             echo -e "WINE_SKIP_GECKO_INSTALLATION=1" | sudo tee -a /etc/environment &&
@@ -107,6 +108,7 @@ amd() {
             echo -e "AMD_VULKAN_ICD=amdvlk" | sudo tee -a /etc/environment &&
             echo -e "RADV_PERFTEST=aco" | sudo tee -a /etc/environment &&
             echo -e "RADV_TEX_ANISO=16" | sudo tee -a /etc/environment &&
+            echo -e "WINE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
             echo -e "WINEFSYNC_SPINCOUNT=24" | sudo tee -a /etc/environment &&
             echo -e "WINEFSYNC=1" | sudo tee -a /etc/environment &&
             echo -e "WINE_SKIP_GECKO_INSTALLATION=1" | sudo tee -a /etc/environment &&
@@ -139,6 +141,7 @@ nvidia() {
         sudo add-apt-repository ppa:graphics-drivers/ppa -y
         sudo apt-get update
         sudo apt install -f --assume-yes --no-install-recommends libglx-mesa0 libglx-mesa0:i386 libgl1-mesa-dri libgl1-mesa-dri:i386 nvidia-driver-510 libnvidia-gl-510 libnvidia-gl-510:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386 mesa-va-drivers mesa-va-drivers:i386 libvulkan-dev libvulkan-dev:i386 mesa-utils vulkan-tools mesa-common-dev &&
+            echo -e "WINE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
             echo -e "WINEFSYNC_SPINCOUNT=24" | sudo tee -a /etc/environment &&
             echo -e "WINEFSYNC=1" | sudo tee -a /etc/environment &&
             echo -e "WINE_SKIP_GECKO_INSTALLATION=1" | sudo tee -a /etc/environment &&
@@ -161,6 +164,7 @@ nvidia() {
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         yay -S --needed --noconfirm mesa lib32-mesa nvidia nvidia-dkms opencl-nvidia lib32-opencl-nvidia nvidia-utils lib32-nvidia-utils xf86-video-nouveau libva-mesa-driver vulkan-tools vulkan-intel lib32-vulkan-intel &&
+            echo -e "WINE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
             echo -e "WINEFSYNC_SPINCOUNT=24" | sudo tee -a /etc/environment &&
             echo -e "WINEFSYNC=1" | sudo tee -a /etc/environment &&
             echo -e "WINE_SKIP_GECKO_INSTALLATION=1" | sudo tee -a /etc/environment &&
