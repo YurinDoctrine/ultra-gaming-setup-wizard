@@ -390,6 +390,8 @@ prompt_2() {
     fi
     which dnf >/dev/null 2>&1
     if [ $? -eq 0 ]; then
+        sudo dnf config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/$(rpm -E %fedora)/winehq.repo &&
+            sudo dnf install winehq-staging -y
         sudo dnf install steam lutris -y
     fi
     echo -e "abi.vsyscall32 = 0" | sudo tee -a /etc/sysctl.d/99-swappiness.conf
