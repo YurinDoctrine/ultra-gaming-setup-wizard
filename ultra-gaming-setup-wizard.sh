@@ -6,7 +6,7 @@ if [ $? -eq 0 ]; then
     if [ $? != 0 ]; then
         clear
         echo -e "╔═══════════════════════════════════════════════════╗"
-        echo -e "║THIS SCRIPT ONLY WORKS ON ARCH&UBUNTU BASED DISTROS║"
+        echo -e "║ THIS SCRIPT ONLY WORKS ON ARCH, UBUNTU AND FEDORA ║"
         echo -e "║                                                   ║"
         echo -e "╚═══════════════════════════════════════════════════╝"
         echo -e ""
@@ -27,7 +27,7 @@ if [ $? -eq 0 ]; then
     if [ $? != 0 ]; then
         clear
         echo -e "╔═══════════════════════════════════════════════════╗"
-        echo -e "║THIS SCRIPT ONLY WORKS ON ARCH&UBUNTU BASED DISTROS║"
+        echo -e "║ THIS SCRIPT ONLY WORKS ON ARCH, UBUNTU AND FEDORA ║"
         echo -e "║                                                   ║"
         echo -e "╚═══════════════════════════════════════════════════╝"
         echo -e ""
@@ -42,7 +42,28 @@ else
     echo -e ""
 fi
 
-32bit() {
+which dnf >/dev/null 2>&1
+if [ $? -eq 0 ]; then
+    which dnf >/dev/null 2>&1
+    if [ $? != 0 ]; then
+        clear
+        echo -e "╔═══════════════════════════════════════════════════╗"
+        echo -e "║ THIS SCRIPT ONLY WORKS ON ARCH, UBUNTU AND FEDORA ║"
+        echo -e "║                                                   ║"
+        echo -e "╚═══════════════════════════════════════════════════╝"
+        echo -e ""
+        exit 1
+    fi
+else
+    clear
+    echo -e "╔═══════════════════════════════════════════════════╗"
+    echo -e "║YURIN's | ultimate-gaming-setup-wizard | greetings!║"
+    echo -e "║                                                   ║"
+    echo -e "╚═══════════════════════════════════════════════════╝"
+    echo -e ""
+fi
+
+multilib() {
     which apt >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         sudo add-apt-repository universe -y &&
@@ -63,8 +84,14 @@ fi
         fi
         sudo pacman -Syy
     fi
+    which dnf >/dev/null 2>&1
+    if [ $? -eq 0 ]; then
+        sudo dnf search u
+        sudo dnf install dnf-plugins-core -y
+        sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+    fi
 }
-32bit
+multilib
 
 amd() {
     which apt >/dev/null 2>&1
@@ -103,7 +130,36 @@ amd() {
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
-        yay -S --needed --noconfirm mesa xf86-video-amdgpu xf86-video-ati libva-mesa-driver lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader xf86-video-amdgpu vulkan-tools &&
+        yay -S --needed --noconfirm mesa lib32-mesa xf86-video-ati xf86-video-amdgpu libva-mesa-driver vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader vulkan-tools &&
+            echo -e "DRI_PRIME=1" | sudo tee -a /etc/environment &&
+            echo -e "AMD_VULKAN_ICD=amdvlk" | sudo tee -a /etc/environment &&
+            echo -e "RADV_PERFTEST=aco" | sudo tee -a /etc/environment &&
+            echo -e "RADV_TEX_ANISO=16" | sudo tee -a /etc/environment &&
+            echo -e "WINE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
+            echo -e "WINEFSYNC_SPINCOUNT=24" | sudo tee -a /etc/environment &&
+            echo -e "WINEFSYNC=1" | sudo tee -a /etc/environment &&
+            echo -e "WINE_SKIP_GECKO_INSTALLATION=1" | sudo tee -a /etc/environment &&
+            echo -e "WINE_SKIP_MONO_INSTALLATION=1" | sudo tee -a /etc/environment &&
+            echo -e "STAGING_WRITECOPY=1" | sudo tee -a /etc/environment &&
+            echo -e "STAGING_SHARED_MEMORY=1" | sudo tee -a /etc/environment &&
+            echo -e "STAGING_RT_PRIORITY_SERVER=4" | sudo tee -a /etc/environment &&
+            echo -e "STAGING_RT_PRIORITY_BASE=2" | sudo tee -a /etc/environment &&
+            echo -e "WINE_FSR_OVERRIDE=1" | sudo tee -a /etc/environment &&
+            echo -e "WINE_FULLSCREEN_FSR=1" | sudo tee -a /etc/environment &&
+            echo -e "WINE_FULLSCREEN_FSR_STRENGTH=1" | sudo tee -a /etc/environment &&
+            echo -e "DXVK_ASYNC=1" | sudo tee -a /etc/environment &&
+            echo -e "DXVK_HUD=compile" | sudo tee -a /etc/environment &&
+            echo -e "MESA_NO_ERROR=1" | sudo tee -a /etc/environment &&
+            echo -e "mesa_glthread=true" | sudo tee -a /etc/environment &&
+            echo -e "__GL_THREADED_OPTIMIZATIONS=1" | sudo tee -a /etc/environment &&
+            echo -e "__GL_SYNC_TO_VBLANK=1" | sudo tee -a /etc/environment &&
+            echo -e "__GL_MaxFramesAllowed=1" | sudo tee -a /etc/environment &&
+            echo -e "VKD3D_CONFIG=upload_hvv" | sudo tee -a /etc/environment &&
+            echo -e "vblank_mode=1" | sudo tee -a /etc/environment
+    fi
+    which dnf >/dev/null 2>&1
+    if [ $? -eq 0 ]; then
+        sudo dnf install vulkan -y &&
             echo -e "DRI_PRIME=1" | sudo tee -a /etc/environment &&
             echo -e "AMD_VULKAN_ICD=amdvlk" | sudo tee -a /etc/environment &&
             echo -e "RADV_PERFTEST=aco" | sudo tee -a /etc/environment &&
@@ -164,6 +220,29 @@ nvidia() {
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         yay -S --needed --noconfirm mesa lib32-mesa nvidia nvidia-dkms opencl-nvidia lib32-opencl-nvidia nvidia-utils lib32-nvidia-utils xf86-video-nouveau libva-mesa-driver vulkan-tools vulkan-intel lib32-vulkan-intel &&
+            echo -e "WINE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
+            echo -e "WINEFSYNC_SPINCOUNT=24" | sudo tee -a /etc/environment &&
+            echo -e "WINEFSYNC=1" | sudo tee -a /etc/environment &&
+            echo -e "WINE_SKIP_GECKO_INSTALLATION=1" | sudo tee -a /etc/environment &&
+            echo -e "WINE_SKIP_MONO_INSTALLATION=1" | sudo tee -a /etc/environment &&
+            echo -e "STAGING_WRITECOPY=1" | sudo tee -a /etc/environment &&
+            echo -e "STAGING_SHARED_MEMORY=1" | sudo tee -a /etc/environment &&
+            echo -e "STAGING_RT_PRIORITY_SERVER=4" | sudo tee -a /etc/environment &&
+            echo -e "STAGING_RT_PRIORITY_BASE=2" | sudo tee -a /etc/environment &&
+            echo -e "DXVK_ASYNC=1" | sudo tee -a /etc/environment &&
+            echo -e "DXVK_HUD=compile" | sudo tee -a /etc/environment &&
+            echo -e "MESA_NO_ERROR=1" | sudo tee -a /etc/environment &&
+            echo -e "mesa_glthread=true" | sudo tee -a /etc/environment &&
+            echo -e "__GL_THREADED_OPTIMIZATIONS=1" | sudo tee -a /etc/environment &&
+            echo -e "__GL_SYNC_TO_VBLANK=1" | sudo tee -a /etc/environment &&
+            echo -e "__GL_MaxFramesAllowed=1" | sudo tee -a /etc/environment &&
+            echo -e "__NV_PRIME_RENDER_OFFLOAD=1" | sudo tee -a /etc/environment &&
+            echo -e "VKD3D_CONFIG=upload_hvv" | sudo tee -a /etc/environment &&
+            echo -e "vblank_mode=1" | sudo tee -a /etc/environment
+    fi
+    which dnf >/dev/null 2>&1
+    if [ $? -eq 0 ]; then
+        sudo dnf install akmod-nvidia xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs -y &&
             echo -e "WINE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
             echo -e "WINEFSYNC_SPINCOUNT=24" | sudo tee -a /etc/environment &&
             echo -e "WINEFSYNC=1" | sudo tee -a /etc/environment &&
@@ -309,6 +388,10 @@ prompt_2() {
         yay -S --needed --noconfirm wine-staging giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse libgpg-error lib32-libgpg-error alsa-plugin lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo sqlite lib32-sqlite libxcomposite lib32-libxcomposite libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader
         yay -S --needed --noconfirm dialog dosbox speedtest-cli steam lutris make zenity q4wine winetricks
     fi
+    which dnf >/dev/null 2>&1
+    if [ $? -eq 0 ]; then
+        sudo dnf install steam lutris -y
+    fi
     echo -e "abi.vsyscall32 = 0" | sudo tee -a /etc/sysctl.d/99-swappiness.conf
 }
 prompt_2
@@ -358,6 +441,18 @@ prompt_4() {
         yay -S --needed --noconfirm auto-cpufreq-git
         yay -S --needed --noconfirm gamemode lib32-gamemode
         yay -S --needed --noconfirm thermald
+
+        sudo systemctl enable ananicy
+        sudo systemctl start ananicy
+        sudo systemctl enable auto-cpufreq
+        sudo systemctl start auto-cpufreq
+    fi
+    which dnf >/dev/null 2>&1
+    if [ $? -eq 0 ]; then
+        sudo dnf install schedtool -y
+        sudo dnf install acpid -y
+        sudo dnf install gamemode -y
+        sudo dnf install thermald -y
 
         sudo systemctl enable ananicy
         sudo systemctl start ananicy
