@@ -449,12 +449,7 @@ prompt_4() {
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
-        yay -S --needed --noconfirm schedtool
-        yay -S --needed --noconfirm acpid
-        yay -S --needed --noconfirm ananicy-git
-        yay -S --needed --noconfirm auto-cpufreq-git
-        yay -S --needed --noconfirm gamemode lib32-gamemode
-        yay -S --needed --noconfirm thermald
+        yay -S --needed --noconfirm schedtool acpid ananicy-git auto-cpufreq-git gamemode lib32-gamemode thermald
 
         sudo systemctl enable ananicy
         sudo systemctl start ananicy
