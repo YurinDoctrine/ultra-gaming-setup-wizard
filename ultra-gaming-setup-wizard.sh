@@ -75,8 +75,8 @@ multilib() {
     if [ $? -eq 0 ]; then
         _has_multilib=$(grep -n "\[multilib\]" /etc/pacman.conf | cut -f1 -d:)
         if [[ -z $_has_multilib ]]; then
-            echo -e "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist" | sudo tee -a /etc/pacman.conf
-            echo -e "Multilib repository successfully added into pacman.conf file\n"
+            # artix
+            echo -e "\n[lib32]\nInclude = /etc/pacman.d/mirrorlist" | sudo tee -a /etc/pacman.conf
         else
             sudo sed -i -e "${_has_multilib}s/^#//" /etc/pacman.conf
             _has_multilib=$((${_has_multilib} + 1))
