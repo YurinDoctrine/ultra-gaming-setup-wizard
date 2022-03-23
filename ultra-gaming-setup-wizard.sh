@@ -310,6 +310,13 @@ net.ipv4.tcp_congestion_control = bbr" | sudo tee /etc/sysctl.d/90-override.conf
         echo -e "net.core.default_qdisc = fq_pie
 net.ipv4.tcp_congestion_control = bbr" | sudo tee /etc/sysctl.d/90-override.conf
     fi
+    which dnf >/dev/null 2>&1
+    if [ $? -eq 0 ]; then
+        sudo dnf copr enable rmnscnce/kernel-xanmod -y &&
+        sudo dnf in kernel-xanmod-rt kernel-xanmod-exptl -y
+        echo -e "net.core.default_qdisc = fq_pie
+net.ipv4.tcp_congestion_control = bbr" | sudo tee /etc/sysctl.d/90-override.conf
+    fi
 }
 
 liquarix() {
@@ -322,6 +329,11 @@ liquarix() {
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         yay -S --needed --noconfirm linux-lqx linux-lqx-headers
+    fi
+    which dnf >/dev/null 2>&1
+    if [ $? -eq 0 ]; then
+        sudo dnf copr enable rmnscnce/kernel-lqx -y &&
+        sudo dnf install kernel-lqx kernel-lqx-headers -y
     fi
 }
 
@@ -349,14 +361,22 @@ linux-tkg() {
             makepkg -si &&
             cd /tmp
     fi
+    which dnf >/dev/null 2>&1
+    if [ $? -eq 0 ]; then
+        cd /tmp &&
+            git clone https://github.com/Frogging-Family/linux-tkg.git &&
+            cd linux-tkg/ &&
+            ./install.sh install &&
+            cd /tmp
+    fi
 }
 
 prompt_1() {
     echo -e "FIND IN BELOW CUSTOM KERNELS ACROSS OF THEM BENEFITS... (RETURN IS: NONE)"
-    echo -e "1. : XANMOD(BOTH)"
-    echo -e "2. : LIQUARIX(BOTH)"
+    echo -e "1. : XANMOD(ALL)"
+    echo -e "2. : LIQUARIX(ALL)"
     echo -e "3. : ZEN(ARCHONLY)"
-    echo -e "4. : LINUX-TKG(BOTH)"
+    echo -e "4. : LINUX-TKG(ALL)"
     read -p $'>_: ' nockl
     if [[ "$nockl" == "1" ]]; then
         echo -e "INSTALLING ..." &&
@@ -404,7 +424,7 @@ prompt_2() {
     if [ $? -eq 0 ]; then
         sudo dnf config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/$(rpm -E %fedora)/winehq.repo &&
             sudo dnf install winehq-staging -y
-        sudo dnf install steam lutris -y
+        sudo dnf install dialog dosbox speedtest-cli steam lutris make zenity q4wine winetricks -y
     fi
     echo -e "abi.vsyscall32 = 0" | sudo tee -a /etc/sysctl.d/99-swappiness.conf
 }
