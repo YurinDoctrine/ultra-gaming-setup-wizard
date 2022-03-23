@@ -478,13 +478,12 @@ prompt_4() {
     fi
     which dnf >/dev/null 2>&1
     if [ $? -eq 0 ]; then
-        sudo dnf install schedtool -y
         sudo dnf install acpid -y
+        git clone https://github.com/AdnanHodzic/auto-cpufreq.git
+        sudo ./auto-cpufreq/auto-cpufreq-installer
         sudo dnf install gamemode -y
         sudo dnf install thermald -y
 
-        sudo systemctl enable ananicy
-        sudo systemctl start ananicy
         sudo systemctl enable auto-cpufreq
         sudo systemctl start auto-cpufreq
     fi
