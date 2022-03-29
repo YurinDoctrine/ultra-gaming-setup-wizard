@@ -120,6 +120,7 @@ amd() {
             echo -e "WINE_FSR_OVERRIDE=1" | sudo tee -a /etc/environment &&
             echo -e "WINE_FULLSCREEN_FSR=1" | sudo tee -a /etc/environment &&
             echo -e "WINE_FULLSCREEN_FSR_STRENGTH=1" | sudo tee -a /etc/environment &&
+            echo -e "PROTON_USE_WINED3D=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_ASYNC=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_HUD=compile" | sudo tee -a /etc/environment &&
             echo -e "MESA_NO_ERROR=1" | sudo tee -a /etc/environment &&
@@ -153,6 +154,7 @@ amd() {
             echo -e "WINE_FSR_OVERRIDE=1" | sudo tee -a /etc/environment &&
             echo -e "WINE_FULLSCREEN_FSR=1" | sudo tee -a /etc/environment &&
             echo -e "WINE_FULLSCREEN_FSR_STRENGTH=1" | sudo tee -a /etc/environment &&
+            echo -e "PROTON_USE_WINED3D=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_ASYNC=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_HUD=compile" | sudo tee -a /etc/environment &&
             echo -e "MESA_NO_ERROR=1" | sudo tee -a /etc/environment &&
@@ -186,6 +188,7 @@ amd() {
             echo -e "WINE_FSR_OVERRIDE=1" | sudo tee -a /etc/environment &&
             echo -e "WINE_FULLSCREEN_FSR=1" | sudo tee -a /etc/environment &&
             echo -e "WINE_FULLSCREEN_FSR_STRENGTH=1" | sudo tee -a /etc/environment &&
+            echo -e "PROTON_USE_WINED3D=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_ASYNC=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_HUD=compile" | sudo tee -a /etc/environment &&
             echo -e "MESA_NO_ERROR=1" | sudo tee -a /etc/environment &&
@@ -221,6 +224,7 @@ nvidia() {
             echo -e "STAGING_RT_PRIORITY_SERVER=4" | sudo tee -a /etc/environment &&
             echo -e "STAGING_RT_PRIORITY_BASE=2" | sudo tee -a /etc/environment &&
             echo -e "STAGING_AUDIO_PERIOD=13333" | sudo tee -a /etc/environment &&
+            echo -e "PROTON_USE_WINED3D=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_ASYNC=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_HUD=compile" | sudo tee -a /etc/environment &&
             echo -e "MESA_NO_ERROR=1" | sudo tee -a /etc/environment &&
@@ -249,6 +253,7 @@ nvidia() {
             echo -e "STAGING_RT_PRIORITY_SERVER=4" | sudo tee -a /etc/environment &&
             echo -e "STAGING_RT_PRIORITY_BASE=2" | sudo tee -a /etc/environment &&
             echo -e "STAGING_AUDIO_PERIOD=13333" | sudo tee -a /etc/environment &&
+            echo -e "PROTON_USE_WINED3D=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_ASYNC=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_HUD=compile" | sudo tee -a /etc/environment &&
             echo -e "MESA_NO_ERROR=1" | sudo tee -a /etc/environment &&
@@ -277,6 +282,7 @@ nvidia() {
             echo -e "STAGING_RT_PRIORITY_SERVER=4" | sudo tee -a /etc/environment &&
             echo -e "STAGING_RT_PRIORITY_BASE=2" | sudo tee -a /etc/environment &&
             echo -e "STAGING_AUDIO_PERIOD=13333" | sudo tee -a /etc/environment &&
+            echo -e "PROTON_USE_WINED3D=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_ASYNC=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_HUD=compile" | sudo tee -a /etc/environment &&
             echo -e "MESA_NO_ERROR=1" | sudo tee -a /etc/environment &&
