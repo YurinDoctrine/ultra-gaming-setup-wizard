@@ -452,7 +452,7 @@ prompt_2() {
     if [ $? -eq 0 ]; then
         sudo dnf config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/$(rpm -E %fedora)/winehq.repo &&
             sudo dnf install winehq-staging -y
-        sudo dnf install dialog dosbox speedtest-cli steam lutris m4 make zenity q4wine winetricks -y
+        sudo dnf install dialog dosbox speedtest-cli steam lutris m4 make zenity -y
     fi
     echo -e "abi.vsyscall32 = 0" | sudo tee -a /etc/sysctl.d/99-swappiness.conf
 }
