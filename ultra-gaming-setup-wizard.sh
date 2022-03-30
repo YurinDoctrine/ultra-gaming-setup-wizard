@@ -106,7 +106,6 @@ amd() {
             echo -e "PULSE_LATENCY_MSEC=60" | sudo tee -a /etc/environment &&
             echo -e "AMD_VULKAN_ICD=amdvlk" | sudo tee -a /etc/environment &&
             echo -e "RADV_PERFTEST=aco" | sudo tee -a /etc/environment &&
-            echo -e "RADV_TEX_ANISO=16" | sudo tee -a /etc/environment &&
             echo -e "WINEPREFIX=~/.wine" | sudo tee -a /etc/environment &&
             echo -e "WINE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
             echo -e "WINEFSYNC_SPINCOUNT=24" | sudo tee -a /etc/environment &&
@@ -121,6 +120,7 @@ amd() {
             echo -e "STAGING_AUDIO_PERIOD=13333" | sudo tee -a /etc/environment &&
             echo -e "WINE_FSR_OVERRIDE=1" | sudo tee -a /etc/environment &&
             echo -e "WINE_FULLSCREEN_FSR=1" | sudo tee -a /etc/environment &&
+            echo -e "PROTON_LOG=0" | sudo tee -a /etc/environment &&
             echo -e "PROTON_USE_WINED3D=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_FORCE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
             echo -e "ENABLE_VKBASALT=1" | sudo tee -a /etc/environment &&
@@ -143,7 +143,6 @@ amd() {
             echo -e "PULSE_LATENCY_MSEC=60" | sudo tee -a /etc/environment &&
             echo -e "AMD_VULKAN_ICD=amdvlk" | sudo tee -a /etc/environment &&
             echo -e "RADV_PERFTEST=aco" | sudo tee -a /etc/environment &&
-            echo -e "RADV_TEX_ANISO=16" | sudo tee -a /etc/environment &&
             echo -e "WINEPREFIX=~/.wine" | sudo tee -a /etc/environment &&
             echo -e "WINE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
             echo -e "WINEFSYNC_SPINCOUNT=24" | sudo tee -a /etc/environment &&
@@ -158,6 +157,7 @@ amd() {
             echo -e "STAGING_AUDIO_PERIOD=13333" | sudo tee -a /etc/environment &&
             echo -e "WINE_FSR_OVERRIDE=1" | sudo tee -a /etc/environment &&
             echo -e "WINE_FULLSCREEN_FSR=1" | sudo tee -a /etc/environment &&
+            echo -e "PROTON_LOG=0" | sudo tee -a /etc/environment &&
             echo -e "PROTON_USE_WINED3D=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_FORCE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
             echo -e "ENABLE_VKBASALT=1" | sudo tee -a /etc/environment &&
@@ -180,7 +180,6 @@ amd() {
             echo -e "PULSE_LATENCY_MSEC=60" | sudo tee -a /etc/environment &&
             echo -e "AMD_VULKAN_ICD=amdvlk" | sudo tee -a /etc/environment &&
             echo -e "RADV_PERFTEST=aco" | sudo tee -a /etc/environment &&
-            echo -e "RADV_TEX_ANISO=16" | sudo tee -a /etc/environment &&
             echo -e "WINEPREFIX=~/.wine" | sudo tee -a /etc/environment &&
             echo -e "WINE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
             echo -e "WINEFSYNC_SPINCOUNT=24" | sudo tee -a /etc/environment &&
@@ -195,6 +194,7 @@ amd() {
             echo -e "STAGING_AUDIO_PERIOD=13333" | sudo tee -a /etc/environment &&
             echo -e "WINE_FSR_OVERRIDE=1" | sudo tee -a /etc/environment &&
             echo -e "WINE_FULLSCREEN_FSR=1" | sudo tee -a /etc/environment &&
+            echo -e "PROTON_LOG=0" | sudo tee -a /etc/environment &&
             echo -e "PROTON_USE_WINED3D=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_FORCE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
             echo -e "ENABLE_VKBASALT=1" | sudo tee -a /etc/environment &&
@@ -235,6 +235,7 @@ nvidia() {
             echo -e "STAGING_RT_PRIORITY_SERVER=4" | sudo tee -a /etc/environment &&
             echo -e "STAGING_RT_PRIORITY_BASE=2" | sudo tee -a /etc/environment &&
             echo -e "STAGING_AUDIO_PERIOD=13333" | sudo tee -a /etc/environment &&
+            echo -e "PROTON_LOG=0" | sudo tee -a /etc/environment &&
             echo -e "PROTON_USE_WINED3D=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_FORCE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
             echo -e "ENABLE_VKBASALT=1" | sudo tee -a /etc/environment &&
@@ -268,6 +269,7 @@ nvidia() {
             echo -e "STAGING_RT_PRIORITY_SERVER=4" | sudo tee -a /etc/environment &&
             echo -e "STAGING_RT_PRIORITY_BASE=2" | sudo tee -a /etc/environment &&
             echo -e "STAGING_AUDIO_PERIOD=13333" | sudo tee -a /etc/environment &&
+            echo -e "PROTON_LOG=0" | sudo tee -a /etc/environment &&
             echo -e "PROTON_USE_WINED3D=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_FORCE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
             echo -e "ENABLE_VKBASALT=1" | sudo tee -a /etc/environment &&
@@ -301,6 +303,7 @@ nvidia() {
             echo -e "STAGING_RT_PRIORITY_SERVER=4" | sudo tee -a /etc/environment &&
             echo -e "STAGING_RT_PRIORITY_BASE=2" | sudo tee -a /etc/environment &&
             echo -e "STAGING_AUDIO_PERIOD=13333" | sudo tee -a /etc/environment &&
+            echo -e "PROTON_LOG=0" | sudo tee -a /etc/environment &&
             echo -e "PROTON_USE_WINED3D=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_FORCE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
             echo -e "ENABLE_VKBASALT=1" | sudo tee -a /etc/environment &&
