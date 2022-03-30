@@ -197,6 +197,7 @@ amd() {
             echo -e "WINE_FULLSCREEN_FSR=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_USE_WINED3D=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_FORCE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
+            echo -e "ENABLE_VKBASALT=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_ASYNC=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_HUD=compile" | sudo tee -a /etc/environment &&
             echo -e "MESA_NO_ERROR=1" | sudo tee -a /etc/environment &&
