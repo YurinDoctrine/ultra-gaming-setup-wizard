@@ -180,7 +180,7 @@ amd() {
     fi
     which dnf >/dev/null 2>&1
     if [ $? -eq 0 ]; then
-        sudo dnf install mesa vulkan -y &&
+        sudo dnf install vulkan -y &&
             echo -e "AMD_VULKAN_ICD=amdvlk" | sudo tee -a /etc/environment &&
             echo -e "RADV_PERFTEST=aco" | sudo tee -a /etc/environment &&
             echo -e "WINEPREFIX=~/.wine" | sudo tee -a /etc/environment &&
@@ -227,7 +227,7 @@ nvidia() {
         sudo ubuntu-drivers autoinstall
         sudo add-apt-repository ppa:graphics-drivers/ppa -y
         sudo apt-get update
-        sudo apt install -f --assume-yes --no-install-recommends libglx-mesa0 libglx-mesa0:i386 libgl1-mesa-dri libgl1-mesa-dri:i386 nvidia-driver-510 libnvidia-gl-510 libnvidia-gl-510:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386 mesa-va-drivers mesa-va-drivers:i386 libvulkan-dev libvulkan-dev:i386 mesa-utils vulkan-tools mesa-common-dev &&
+        sudo apt install -f --assume-yes --no-install-recommends libglx-mesa0 libglx-mesa0:i386 libgl1-mesa-dri libgl1-mesa-dri:i386 nvidia-driver-510 libnvidia-gl-510 libnvidia-gl-510:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386 mesa-va-drivers mesa-va-drivers:i386 libvulkan-dev libvulkan-dev:i386 mesa-utils vulkan-tools mesa-common-dev mesa-vdpau-drivers &&
             echo -e "WINEPREFIX=~/.wine" | sudo tee -a /etc/environment &&
             echo -e "WINE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
             echo -e "WINEFSYNC_SPINCOUNT=24" | sudo tee -a /etc/environment &&
@@ -262,7 +262,7 @@ nvidia() {
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
-        yay -S --needed --noconfirm mesa lib32-mesa nvidia nvidia-dkms opencl-nvidia lib32-opencl-nvidia nvidia-utils lib32-nvidia-utils xf86-video-nouveau libva-mesa-driver vulkan-tools vulkan-intel lib32-vulkan-intel &&
+        yay -S --needed --noconfirm mesa lib32-mesa nvidia nvidia-dkms opencl-nvidia lib32-opencl-nvidia nvidia-utils lib32-nvidia-utils xf86-video-nouveau libva-mesa-driver vulkan-tools vulkan-intel lib32-vulkan-intel vulkan-mesa-layers lib32-vulkan-mesa-layers mesa-vdpau lib32-mesa-vdpau &&
             echo -e "WINEPREFIX=~/.wine" | sudo tee -a /etc/environment &&
             echo -e "WINE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
             echo -e "WINEFSYNC_SPINCOUNT=24" | sudo tee -a /etc/environment &&
@@ -297,7 +297,7 @@ nvidia() {
     fi
     which dnf >/dev/null 2>&1
     if [ $? -eq 0 ]; then
-        sudo dnf install akmod-nvidia xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs -y &&
+        sudo dnf install vulkan akmod-nvidia xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs -y &&
             echo -e "WINEPREFIX=~/.wine" | sudo tee -a /etc/environment &&
             echo -e "WINE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
             echo -e "WINEFSYNC_SPINCOUNT=24" | sudo tee -a /etc/environment &&
