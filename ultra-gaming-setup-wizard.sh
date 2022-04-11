@@ -436,18 +436,22 @@ prompt_1() {
     if [[ "$nockl" == "1" ]]; then
         echo -e "INSTALLING ..." &&
             xanmod
+            sudo grub-mkconfig -o /boot/grub/grub.cfg
     fi
     if [[ "$nockl" == "2" ]]; then
         echo -e "INSTALLING ..." &&
             liquarix
+            sudo grub-mkconfig -o /boot/grub/grub.cfg
     fi
     if [[ "$nockl" == "3" ]]; then
         echo -e "INSTALLING ..." &&
             zen
+            sudo grub-mkconfig -o /boot/grub/grub.cfg
     fi
     if [[ "$nockl" == "4" ]]; then
         echo -e "INSTALLING ..." &&
             linux-tkg
+            sudo grub-mkconfig -o /boot/grub/grub.cfg
     fi
     if [[ "$nockl" == "" ]]; then
         clear
