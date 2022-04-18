@@ -4,7 +4,6 @@ which apt >/dev/null 2>&1
 if [ $? -eq 0 ]; then
     which apt >/dev/null 2>&1
     if [ $? != 0 ]; then
-    	export DEBIAN_FRONTEND=noninteractive
         clear
         echo -e "╔═══════════════════════════════════════════════════╗"
         echo -e "║ THIS SCRIPT ONLY WORKS ON ARCH, UBUNTU AND FEDORA ║"
@@ -14,6 +13,7 @@ if [ $? -eq 0 ]; then
         exit 1
     fi
 else
+    export DEBIAN_FRONTEND=noninteractive
     clear
     echo -e "╔═══════════════════════════════════════════════════╗"
     echo -e "║YURIN's | ultimate-gaming-setup-wizard | greetings!║"
