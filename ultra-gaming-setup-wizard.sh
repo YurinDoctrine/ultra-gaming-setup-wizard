@@ -523,13 +523,14 @@ prompt_4() {
         sudo dpkg -i ./Ananicy/ananicy-*.deb
         sudo apt install --assume-yes --install-recommends gamemode -f
         sudo apt install --assume-yes --install-recommends thermald -f
+        sudo apt install --assume-yes --install-recommends tuned -f
 
         sudo systemctl enable ananicy
         sudo systemctl start ananicy
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
-        yay -S --needed --noconfirm schedtool ananicy-git gamemode lib32-gamemode thermald
+        yay -S --needed --noconfirm schedtool ananicy-git gamemode lib32-gamemode thermald tuned
 
         sudo systemctl enable ananicy
         sudo systemctl start ananicy
@@ -538,6 +539,7 @@ prompt_4() {
     if [ $? -eq 0 ]; then
         sudo dnf install gamemode -y
         sudo dnf install thermald -y
+        sudo dnf install tuned -y
     fi
 }
 prompt_4
