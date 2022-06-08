@@ -128,6 +128,7 @@ amd() {
             echo -e "ENABLE_VKBASALT=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_ASYNC=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_HUD=compile" | sudo tee -a /etc/environment &&
+            echo -e "MESA_NO_DITHER=1" | sudo tee -a /etc/environment &&
             echo -e "MESA_NO_ERROR=1" | sudo tee -a /etc/environment &&
             echo -e "MESA_GLSL_CACHE_DISABLE=true" | sudo tee -a /etc/environment &&
             echo -e "mesa_glthread=true" | sudo tee -a /etc/environment &&
@@ -139,6 +140,7 @@ amd() {
             echo -e "__GL_YIELD=NOTHING" | sudo tee -a /etc/environment &&
             echo -e "LIBGL_DRI3_DISABLE=1" | sudo tee -a /etc/environment &&
             echo -e "VKD3D_CONFIG=upload_hvv" | sudo tee -a /etc/environment &&
+            echo -e "LP_PERF=no_mipmap,no_linear,no_mip_linear,no_tex,no_blend,no_depth,no_alphatest" | sudo tee -a /etc/environment &&
             echo -e "vblank_mode=1" | sudo tee -a /etc/environment
     fi
     which pacman >/dev/null 2>&1
@@ -168,6 +170,7 @@ amd() {
             echo -e "ENABLE_VKBASALT=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_ASYNC=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_HUD=compile" | sudo tee -a /etc/environment &&
+            echo -e "MESA_NO_DITHER=1" | sudo tee -a /etc/environment &&
             echo -e "MESA_NO_ERROR=1" | sudo tee -a /etc/environment &&
             echo -e "MESA_GLSL_CACHE_DISABLE=true" | sudo tee -a /etc/environment &&
             echo -e "mesa_glthread=true" | sudo tee -a /etc/environment &&
@@ -179,6 +182,7 @@ amd() {
             echo -e "__GL_YIELD=NOTHING" | sudo tee -a /etc/environment &&
             echo -e "LIBGL_DRI3_DISABLE=1" | sudo tee -a /etc/environment &&
             echo -e "VKD3D_CONFIG=upload_hvv" | sudo tee -a /etc/environment &&
+            echo -e "LP_PERF=no_mipmap,no_linear,no_mip_linear,no_tex,no_blend,no_depth,no_alphatest" | sudo tee -a /etc/environment &&
             echo -e "vblank_mode=1" | sudo tee -a /etc/environment
     fi
     which dnf >/dev/null 2>&1
@@ -208,6 +212,7 @@ amd() {
             echo -e "ENABLE_VKBASALT=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_ASYNC=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_HUD=compile" | sudo tee -a /etc/environment &&
+            echo -e "MESA_NO_DITHER=1" | sudo tee -a /etc/environment &&
             echo -e "MESA_NO_ERROR=1" | sudo tee -a /etc/environment &&
             echo -e "MESA_GLSL_CACHE_DISABLE=true" | sudo tee -a /etc/environment &&
             echo -e "mesa_glthread=true" | sudo tee -a /etc/environment &&
@@ -219,6 +224,7 @@ amd() {
             echo -e "__GL_YIELD=NOTHING" | sudo tee -a /etc/environment &&
             echo -e "LIBGL_DRI3_DISABLE=1" | sudo tee -a /etc/environment &&
             echo -e "VKD3D_CONFIG=upload_hvv" | sudo tee -a /etc/environment &&
+            echo -e "LP_PERF=no_mipmap,no_linear,no_mip_linear,no_tex,no_blend,no_depth,no_alphatest" | sudo tee -a /etc/environment &&
             echo -e "vblank_mode=1" | sudo tee -a /etc/environment
     fi
 }
@@ -251,6 +257,7 @@ nvidia() {
             echo -e "ENABLE_VKBASALT=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_ASYNC=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_HUD=compile" | sudo tee -a /etc/environment &&
+            echo -e "MESA_NO_DITHER=1" | sudo tee -a /etc/environment &&
             echo -e "MESA_NO_ERROR=1" | sudo tee -a /etc/environment &&
             echo -e "MESA_GLSL_CACHE_DISABLE=true" | sudo tee -a /etc/environment &&
             echo -e "mesa_glthread=true" | sudo tee -a /etc/environment &&
@@ -263,6 +270,7 @@ nvidia() {
             echo -e "__GL_YIELD=NOTHING" | sudo tee -a /etc/environment &&
             echo -e "LIBGL_DRI3_DISABLE=1" | sudo tee -a /etc/environment &&
             echo -e "VKD3D_CONFIG=upload_hvv" | sudo tee -a /etc/environment &&
+            echo -e "LP_PERF=no_mipmap,no_linear,no_mip_linear,no_tex,no_blend,no_depth,no_alphatest" | sudo tee -a /etc/environment &&
             echo -e "vblank_mode=1" | sudo tee -a /etc/environment
     fi
     which pacman >/dev/null 2>&1
@@ -287,6 +295,7 @@ nvidia() {
             echo -e "ENABLE_VKBASALT=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_ASYNC=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_HUD=compile" | sudo tee -a /etc/environment &&
+            echo -e "MESA_NO_DITHER=1" | sudo tee -a /etc/environment &&
             echo -e "MESA_NO_ERROR=1" | sudo tee -a /etc/environment &&
             echo -e "MESA_GLSL_CACHE_DISABLE=true" | sudo tee -a /etc/environment &&
             echo -e "mesa_glthread=true" | sudo tee -a /etc/environment &&
@@ -299,6 +308,7 @@ nvidia() {
             echo -e "__GL_YIELD=NOTHING" | sudo tee -a /etc/environment &&
             echo -e "LIBGL_DRI3_DISABLE=1" | sudo tee -a /etc/environment &&
             echo -e "VKD3D_CONFIG=upload_hvv" | sudo tee -a /etc/environment &&
+            echo -e "LP_PERF=no_mipmap,no_linear,no_mip_linear,no_tex,no_blend,no_depth,no_alphatest" | sudo tee -a /etc/environment &&
             echo -e "vblank_mode=1" | sudo tee -a /etc/environment
     fi
     which dnf >/dev/null 2>&1
@@ -323,6 +333,7 @@ nvidia() {
             echo -e "ENABLE_VKBASALT=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_ASYNC=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_HUD=compile" | sudo tee -a /etc/environment &&
+            echo -e "MESA_NO_DITHER=1" | sudo tee -a /etc/environment &&
             echo -e "MESA_NO_ERROR=1" | sudo tee -a /etc/environment &&
             echo -e "MESA_GLSL_CACHE_DISABLE=true" | sudo tee -a /etc/environment &&
             echo -e "mesa_glthread=true" | sudo tee -a /etc/environment &&
@@ -335,6 +346,7 @@ nvidia() {
             echo -e "__GL_YIELD=NOTHING" | sudo tee -a /etc/environment &&
             echo -e "LIBGL_DRI3_DISABLE=1" | sudo tee -a /etc/environment &&
             echo -e "VKD3D_CONFIG=upload_hvv" | sudo tee -a /etc/environment &&
+            echo -e "LP_PERF=no_mipmap,no_linear,no_mip_linear,no_tex,no_blend,no_depth,no_alphatest" | sudo tee -a /etc/environment &&
             echo -e "vblank_mode=1" | sudo tee -a /etc/environment
     fi
 }
