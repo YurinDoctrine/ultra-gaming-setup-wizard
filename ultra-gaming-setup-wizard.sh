@@ -132,6 +132,7 @@ amd() {
             echo -e "MESA_NO_ERROR=1" | sudo tee -a /etc/environment &&
             echo -e "MESA_GLSL_CACHE_DISABLE=false" | sudo tee -a /etc/environment &&
             echo -e "mesa_glthread=true" | sudo tee -a /etc/environment &&
+            echo -e "ANV_ENABLE_PIPELINE_CACHE=1" | sudo tee -a /etc/environment &&
             echo -e "__GLX_VENDOR_LIBRARY_NAME=mesa" | sudo tee -a /etc/environment &&
             echo -e "__GL_THREADED_OPTIMIZATIONS=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_SYNC_TO_VBLANK=1" | sudo tee -a /etc/environment &&
@@ -175,6 +176,7 @@ amd() {
             echo -e "MESA_NO_ERROR=1" | sudo tee -a /etc/environment &&
             echo -e "MESA_GLSL_CACHE_DISABLE=false" | sudo tee -a /etc/environment &&
             echo -e "mesa_glthread=true" | sudo tee -a /etc/environment &&
+            echo -e "ANV_ENABLE_PIPELINE_CACHE=1" | sudo tee -a /etc/environment &&
             echo -e "__GLX_VENDOR_LIBRARY_NAME=mesa" | sudo tee -a /etc/environment &&
             echo -e "__GL_THREADED_OPTIMIZATIONS=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_SYNC_TO_VBLANK=1" | sudo tee -a /etc/environment &&
@@ -218,6 +220,7 @@ amd() {
             echo -e "MESA_NO_ERROR=1" | sudo tee -a /etc/environment &&
             echo -e "MESA_GLSL_CACHE_DISABLE=false" | sudo tee -a /etc/environment &&
             echo -e "mesa_glthread=true" | sudo tee -a /etc/environment &&
+            echo -e "ANV_ENABLE_PIPELINE_CACHE=1" | sudo tee -a /etc/environment &&
             echo -e "__GLX_VENDOR_LIBRARY_NAME=mesa" | sudo tee -a /etc/environment &&
             echo -e "__GL_THREADED_OPTIMIZATIONS=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_SYNC_TO_VBLANK=1" | sudo tee -a /etc/environment &&
@@ -264,6 +267,7 @@ nvidia() {
             echo -e "MESA_NO_ERROR=1" | sudo tee -a /etc/environment &&
             echo -e "MESA_GLSL_CACHE_DISABLE=false" | sudo tee -a /etc/environment &&
             echo -e "mesa_glthread=true" | sudo tee -a /etc/environment &&
+            echo -e "ANV_ENABLE_PIPELINE_CACHE=1" | sudo tee -a /etc/environment &&
             echo -e "__NV_PRIME_RENDER_OFFLOAD=1" | sudo tee -a /etc/environment &&
             echo -e "__GLX_VENDOR_LIBRARY_NAME=mesa" | sudo tee -a /etc/environment &&
             echo -e "__GL_THREADED_OPTIMIZATIONS=1" | sudo tee -a /etc/environment &&
@@ -303,6 +307,7 @@ nvidia() {
             echo -e "MESA_NO_ERROR=1" | sudo tee -a /etc/environment &&
             echo -e "MESA_GLSL_CACHE_DISABLE=false" | sudo tee -a /etc/environment &&
             echo -e "mesa_glthread=true" | sudo tee -a /etc/environment &&
+            echo -e "ANV_ENABLE_PIPELINE_CACHE=1" | sudo tee -a /etc/environment &&
             echo -e "__NV_PRIME_RENDER_OFFLOAD=1" | sudo tee -a /etc/environment &&
             echo -e "__GLX_VENDOR_LIBRARY_NAME=mesa" | sudo tee -a /etc/environment &&
             echo -e "__GL_THREADED_OPTIMIZATIONS=1" | sudo tee -a /etc/environment &&
@@ -342,6 +347,7 @@ nvidia() {
             echo -e "MESA_NO_ERROR=1" | sudo tee -a /etc/environment &&
             echo -e "MESA_GLSL_CACHE_DISABLE=false" | sudo tee -a /etc/environment &&
             echo -e "mesa_glthread=true" | sudo tee -a /etc/environment &&
+            echo -e "ANV_ENABLE_PIPELINE_CACHE=1" | sudo tee -a /etc/environment &&
             echo -e "__NV_PRIME_RENDER_OFFLOAD=1" | sudo tee -a /etc/environment &&
             echo -e "__GLX_VENDOR_LIBRARY_NAME=mesa" | sudo tee -a /etc/environment &&
             echo -e "__GL_THREADED_OPTIMIZATIONS=1" | sudo tee -a /etc/environment &&
