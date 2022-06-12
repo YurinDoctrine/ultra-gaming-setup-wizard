@@ -329,7 +329,7 @@ nvidia() {
     fi
     which dnf >/dev/null 2>&1
     if [ $? -eq 0 ]; then
-        sudo dnf install vulkan akmod-nvidia xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs -y &&
+        sudo dnf install vulkan akmod-nvidia xorg-x11-drv-nvidia xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs -y &&
             echo -e "WINEPREFIX=~/.wine" | sudo tee -a /etc/environment &&
             echo -e "WINE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
             echo -e "WINEFSYNC_SPINCOUNT=24" | sudo tee -a /etc/environment &&
