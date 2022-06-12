@@ -550,7 +550,7 @@ prompt_4() {
     which apt >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         sudo apt install --assume-yes --install-recommends schedtool -f
-        git clone https://github.com/Nefelim4ag/Ananicy.git
+        git clone https://github.com/kuche1/minq-ananicy.git
         ./Ananicy/package.sh debian
         sudo dpkg -i ./Ananicy/ananicy-*.deb
         sudo apt install --assume-yes --install-recommends gamemode -f
@@ -562,7 +562,7 @@ prompt_4() {
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
-        yay -S --needed --noconfirm schedtool ananicy-git gamemode lib32-gamemode thermald tuned
+        yay -S --needed --noconfirm schedtool minq-ananicy-git gamemode lib32-gamemode thermald tuned
 
         sudo systemctl enable ananicy
         sudo systemctl start ananicy
