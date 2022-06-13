@@ -551,8 +551,8 @@ prompt_4() {
     if [ $? -eq 0 ]; then
         sudo apt install --assume-yes --install-recommends schedtool -f
         git clone https://github.com/kuche1/minq-ananicy.git
-        ./Ananicy/package.sh debian
-        sudo dpkg -i ./Ananicy/ananicy-*.deb
+        ./minq-ananicy/package.sh debian
+        sudo dpkg -i ./minq-ananicy/*ananicy-*.deb
         sudo apt install --assume-yes --install-recommends gamemode -f
         sudo apt install --assume-yes --install-recommends thermald -f
         sudo apt install --assume-yes --install-recommends tuned -f
