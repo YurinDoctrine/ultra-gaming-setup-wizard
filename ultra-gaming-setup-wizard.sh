@@ -144,6 +144,7 @@ amd() {
             echo -e "__GL_SHADER_DISK_CACHE=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_SHADER_DISK_CACHE_SKIP_CLEANUP=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_YIELD=NOTHING" | sudo tee -a /etc/environment &&
+            echo -e "__GL_VRR_ALLOWED=0" | sudo tee -a /etc/environment &&
             echo -e "LIBGL_DRI3_DISABLE=1" | sudo tee -a /etc/environment &&
             echo -e "VKD3D_CONFIG=upload_hvv" | sudo tee -a /etc/environment &&
             echo -e "LP_PERF=no_mipmap,no_linear,no_mip_linear,no_tex,no_blend,no_depth,no_alphatest" | sudo tee -a /etc/environment &&
@@ -193,6 +194,7 @@ amd() {
             echo -e "__GL_SHADER_DISK_CACHE=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_SHADER_DISK_CACHE_SKIP_CLEANUP=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_YIELD=NOTHING" | sudo tee -a /etc/environment &&
+            echo -e "__GL_VRR_ALLOWED=0" | sudo tee -a /etc/environment &&
             echo -e "LIBGL_DRI3_DISABLE=1" | sudo tee -a /etc/environment &&
             echo -e "VKD3D_CONFIG=upload_hvv" | sudo tee -a /etc/environment &&
             echo -e "LP_PERF=no_mipmap,no_linear,no_mip_linear,no_tex,no_blend,no_depth,no_alphatest" | sudo tee -a /etc/environment &&
@@ -242,6 +244,7 @@ amd() {
             echo -e "__GL_SHADER_DISK_CACHE=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_SHADER_DISK_CACHE_SKIP_CLEANUP=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_YIELD=NOTHING" | sudo tee -a /etc/environment &&
+            echo -e "__GL_VRR_ALLOWED=0" | sudo tee -a /etc/environment &&
             echo -e "LIBGL_DRI3_DISABLE=1" | sudo tee -a /etc/environment &&
             echo -e "VKD3D_CONFIG=upload_hvv" | sudo tee -a /etc/environment &&
             echo -e "LP_PERF=no_mipmap,no_linear,no_mip_linear,no_tex,no_blend,no_depth,no_alphatest" | sudo tee -a /etc/environment &&
@@ -293,6 +296,7 @@ nvidia() {
             echo -e "__GL_SHADER_DISK_CACHE=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_SHADER_DISK_CACHE_SKIP_CLEANUP=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_YIELD=NOTHING" | sudo tee -a /etc/environment &&
+            echo -e "__GL_VRR_ALLOWED=0" | sudo tee -a /etc/environment &&
             echo -e "LIBGL_DRI3_DISABLE=1" | sudo tee -a /etc/environment &&
             echo -e "VKD3D_CONFIG=upload_hvv" | sudo tee -a /etc/environment &&
             echo -e "LP_PERF=no_mipmap,no_linear,no_mip_linear,no_tex,no_blend,no_depth,no_alphatest" | sudo tee -a /etc/environment &&
@@ -336,6 +340,7 @@ nvidia() {
             echo -e "__GL_SHADER_DISK_CACHE=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_SHADER_DISK_CACHE_SKIP_CLEANUP=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_YIELD=NOTHING" | sudo tee -a /etc/environment &&
+            echo -e "__GL_VRR_ALLOWED=0" | sudo tee -a /etc/environment &&
             echo -e "LIBGL_DRI3_DISABLE=1" | sudo tee -a /etc/environment &&
             echo -e "VKD3D_CONFIG=upload_hvv" | sudo tee -a /etc/environment &&
             echo -e "LP_PERF=no_mipmap,no_linear,no_mip_linear,no_tex,no_blend,no_depth,no_alphatest" | sudo tee -a /etc/environment &&
@@ -379,6 +384,7 @@ nvidia() {
             echo -e "__GL_SHADER_DISK_CACHE=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_SHADER_DISK_CACHE_SKIP_CLEANUP=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_YIELD=NOTHING" | sudo tee -a /etc/environment &&
+            echo -e "__GL_VRR_ALLOWED=0" | sudo tee -a /etc/environment &&
             echo -e "LIBGL_DRI3_DISABLE=1" | sudo tee -a /etc/environment &&
             echo -e "VKD3D_CONFIG=upload_hvv" | sudo tee -a /etc/environment &&
             echo -e "LP_PERF=no_mipmap,no_linear,no_mip_linear,no_tex,no_blend,no_depth,no_alphatest" | sudo tee -a /etc/environment &&
