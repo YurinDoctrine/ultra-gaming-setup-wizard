@@ -589,6 +589,7 @@ prompt_4() {
 
         sudo systemctl enable ananicy
         sudo systemctl start ananicy
+        sudo tuned-adm profile throughput-performance
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
@@ -596,12 +597,14 @@ prompt_4() {
 
         sudo systemctl enable ananicy
         sudo systemctl start ananicy
+        sudo tuned-adm profile throughput-performance
     fi
     which dnf >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         sudo dnf install gamemode -y
         sudo dnf install thermald -y
         sudo dnf install tuned -y
+        sudo tuned-adm profile throughput-performance
     fi
 }
 prompt_4
