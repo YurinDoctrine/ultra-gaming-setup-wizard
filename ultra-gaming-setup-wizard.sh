@@ -435,7 +435,7 @@ net.ipv4.tcp_congestion_control = bbr" | sudo tee /etc/sysctl.d/90-override.conf
     which dnf >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         sudo dnf copr enable rmnscnce/kernel-xanmod -y &&
-        sudo dnf in kernel-xanmod-rt kernel-xanmod-exptl -y
+            sudo dnf in kernel-xanmod-rt kernel-xanmod-exptl -y
         echo -e "net.core.default_qdisc = fq_pie
 net.ipv4.tcp_congestion_control = bbr" | sudo tee /etc/sysctl.d/90-override.conf
     fi
@@ -455,7 +455,7 @@ liquarix() {
     which dnf >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         sudo dnf copr enable rmnscnce/kernel-lqx -y &&
-        sudo dnf install kernel-lqx kernel-lqx-headers -y
+            sudo dnf install kernel-lqx kernel-lqx-headers -y
     fi
 }
 
@@ -503,22 +503,22 @@ prompt_1() {
     if [[ "$nockl" == "1" ]]; then
         echo -e "INSTALLING ..." &&
             xanmod
-            sudo grub-mkconfig -o /boot/grub/grub.cfg
+        sudo grub-mkconfig -o /boot/grub/grub.cfg
     fi
     if [[ "$nockl" == "2" ]]; then
         echo -e "INSTALLING ..." &&
             liquarix
-            sudo grub-mkconfig -o /boot/grub/grub.cfg
+        sudo grub-mkconfig -o /boot/grub/grub.cfg
     fi
     if [[ "$nockl" == "3" ]]; then
         echo -e "INSTALLING ..." &&
             zen
-            sudo grub-mkconfig -o /boot/grub/grub.cfg
+        sudo grub-mkconfig -o /boot/grub/grub.cfg
     fi
     if [[ "$nockl" == "4" ]]; then
         echo -e "INSTALLING ..." &&
             linux-tkg
-            sudo grub-mkconfig -o /boot/grub/grub.cfg
+        sudo grub-mkconfig -o /boot/grub/grub.cfg
     fi
     if [[ "$nockl" == "" ]]; then
         clear
@@ -532,7 +532,6 @@ prompt_2() {
     which apt >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         cd /tmp &&
-
             wget -qnc https://dl.winehq.org/wine-builds/winehq.key &&
             sudo mv winehq.key /usr/share/keyrings/winehq-archive.key &&
             sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ jammy main' -y &&
