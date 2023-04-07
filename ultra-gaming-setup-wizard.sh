@@ -603,6 +603,7 @@ prompt_4() {
         sudo dnf install gamemode -y
         sudo dnf install thermald -y
         sudo dnf install tuned -y
+
         sudo tuned-adm profile throughput-performance
     fi
 }
