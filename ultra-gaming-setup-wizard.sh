@@ -76,7 +76,6 @@ multilib() {
     if [ $? -eq 0 ]; then
         _has_multilib=$(grep -n "\[multilib\]" /etc/pacman.conf | cut -f1 -d:)
         if [[ -z $_has_multilib ]]; then
-            # artix
             echo -e "\n[lib32]\nInclude = /etc/pacman.d/mirrorlist" | sudo tee -a /etc/pacman.conf
         else
             sudo sed -i -e "${_has_multilib}s/^#//" /etc/pacman.conf
@@ -606,7 +605,6 @@ prompt_4() {
 
         sudo tuned-adm profile throughput-performance
     fi
-    #--Update firmware
     sudo fwupdmgr get-devices
     sudo fwupdmgr refresh --force
     sudo fwupdmgr get-updates -y
