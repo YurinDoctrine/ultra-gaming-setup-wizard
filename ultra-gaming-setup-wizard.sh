@@ -149,6 +149,7 @@ amd() {
             echo -e "VKD3D_CONFIG=upload_hvv" | sudo tee -a /etc/environment &&
             echo -e "LP_PERF=no_mipmap,no_linear,no_mip_linear,no_tex,no_blend,no_depth,no_alphatest" | sudo tee -a /etc/environment &&
             echo -e "STEAM_FRAME_FORCE_CLOSE=0" | sudo tee -a /etc/environment &&
+            echo -e "GAMEMODE=1" | sudo tee -a /etc/environment &&
             echo -e "vblank_mode=1" | sudo tee -a /etc/environment
     fi
     which pacman >/dev/null 2>&1
@@ -200,6 +201,7 @@ amd() {
             echo -e "VKD3D_CONFIG=upload_hvv" | sudo tee -a /etc/environment &&
             echo -e "LP_PERF=no_mipmap,no_linear,no_mip_linear,no_tex,no_blend,no_depth,no_alphatest" | sudo tee -a /etc/environment &&
             echo -e "STEAM_FRAME_FORCE_CLOSE=0" | sudo tee -a /etc/environment &&
+            echo -e "GAMEMODE=1" | sudo tee -a /etc/environment &&
             echo -e "vblank_mode=1" | sudo tee -a /etc/environment
     fi
     which dnf >/dev/null 2>&1
@@ -251,6 +253,7 @@ amd() {
             echo -e "VKD3D_CONFIG=upload_hvv" | sudo tee -a /etc/environment &&
             echo -e "LP_PERF=no_mipmap,no_linear,no_mip_linear,no_tex,no_blend,no_depth,no_alphatest" | sudo tee -a /etc/environment &&
             echo -e "STEAM_FRAME_FORCE_CLOSE=0" | sudo tee -a /etc/environment &&
+            echo -e "GAMEMODE=1" | sudo tee -a /etc/environment &&
             echo -e "vblank_mode=1" | sudo tee -a /etc/environment
     fi
 }
@@ -304,6 +307,7 @@ nvidia() {
             echo -e "VKD3D_CONFIG=upload_hvv" | sudo tee -a /etc/environment &&
             echo -e "LP_PERF=no_mipmap,no_linear,no_mip_linear,no_tex,no_blend,no_depth,no_alphatest" | sudo tee -a /etc/environment &&
             echo -e "STEAM_FRAME_FORCE_CLOSE=0" | sudo tee -a /etc/environment &&
+            echo -e "GAMEMODE=1" | sudo tee -a /etc/environment &&
             echo -e "vblank_mode=1" | sudo tee -a /etc/environment
     fi
     which pacman >/dev/null 2>&1
@@ -349,6 +353,7 @@ nvidia() {
             echo -e "VKD3D_CONFIG=upload_hvv" | sudo tee -a /etc/environment &&
             echo -e "LP_PERF=no_mipmap,no_linear,no_mip_linear,no_tex,no_blend,no_depth,no_alphatest" | sudo tee -a /etc/environment &&
             echo -e "STEAM_FRAME_FORCE_CLOSE=0" | sudo tee -a /etc/environment &&
+            echo -e "GAMEMODE=1" | sudo tee -a /etc/environment &&
             echo -e "vblank_mode=1" | sudo tee -a /etc/environment
     fi
     which dnf >/dev/null 2>&1
@@ -394,6 +399,7 @@ nvidia() {
             echo -e "VKD3D_CONFIG=upload_hvv" | sudo tee -a /etc/environment &&
             echo -e "LP_PERF=no_mipmap,no_linear,no_mip_linear,no_tex,no_blend,no_depth,no_alphatest" | sudo tee -a /etc/environment &&
             echo -e "STEAM_FRAME_FORCE_CLOSE=0" | sudo tee -a /etc/environment &&
+            echo -e "GAMEMODE=1" | sudo tee -a /etc/environment &&
             echo -e "vblank_mode=1" | sudo tee -a /etc/environment
     fi
 }
