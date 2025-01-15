@@ -259,6 +259,8 @@ amd() {
 }
 
 nvidia() {
+    echo -e "options nvidia NVreg_UsePageAttributeTable=1 NVreg_InitializeSystemMemoryAllocations=0 NVreg_DynamicPowerManagement=0x02" | sudo tee /etc/modprobe.d/nvidia.conf
+
     which apt >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         ubuntu-drivers devices
