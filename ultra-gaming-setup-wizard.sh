@@ -123,7 +123,6 @@ amd() {
             echo -e "WINE_FULLSCREEN_FSR=1" | sudo tee -a /etc/environment &&
             echo -e "WINE_VK_USE_FSR=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_LOG=0" | sudo tee -a /etc/environment &&
-            echo -e "PROTON_USE_WINED3D=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_FORCE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_NO_ESYNC=1" | sudo tee -a /etc/environment &&
             echo -e "ENABLE_VKBASALT=1" | sudo tee -a /etc/environment &&
@@ -175,7 +174,6 @@ amd() {
             echo -e "WINE_FULLSCREEN_FSR=1" | sudo tee -a /etc/environment &&
             echo -e "WINE_VK_USE_FSR=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_LOG=0" | sudo tee -a /etc/environment &&
-            echo -e "PROTON_USE_WINED3D=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_FORCE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_NO_ESYNC=1" | sudo tee -a /etc/environment &&
             echo -e "ENABLE_VKBASALT=1" | sudo tee -a /etc/environment &&
@@ -227,7 +225,6 @@ amd() {
             echo -e "WINE_FULLSCREEN_FSR=1" | sudo tee -a /etc/environment &&
             echo -e "WINE_VK_USE_FSR=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_LOG=0" | sudo tee -a /etc/environment &&
-            echo -e "PROTON_USE_WINED3D=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_FORCE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_NO_ESYNC=1" | sudo tee -a /etc/environment &&
             echo -e "ENABLE_VKBASALT=1" | sudo tee -a /etc/environment &&
@@ -282,7 +279,6 @@ nvidia() {
             echo -e "STAGING_RT_PRIORITY_BASE=2" | sudo tee -a /etc/environment &&
             echo -e "STAGING_AUDIO_PERIOD=13333" | sudo tee -a /etc/environment &&
             echo -e "PROTON_LOG=0" | sudo tee -a /etc/environment &&
-            echo -e "PROTON_USE_WINED3D=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_FORCE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_NO_ESYNC=1" | sudo tee -a /etc/environment &&
             echo -e "ENABLE_VKBASALT=1" | sudo tee -a /etc/environment &&
@@ -328,7 +324,6 @@ nvidia() {
             echo -e "STAGING_RT_PRIORITY_BASE=2" | sudo tee -a /etc/environment &&
             echo -e "STAGING_AUDIO_PERIOD=13333" | sudo tee -a /etc/environment &&
             echo -e "PROTON_LOG=0" | sudo tee -a /etc/environment &&
-            echo -e "PROTON_USE_WINED3D=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_FORCE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_NO_ESYNC=1" | sudo tee -a /etc/environment &&
             echo -e "ENABLE_VKBASALT=1" | sudo tee -a /etc/environment &&
@@ -374,7 +369,6 @@ nvidia() {
             echo -e "STAGING_RT_PRIORITY_BASE=2" | sudo tee -a /etc/environment &&
             echo -e "STAGING_AUDIO_PERIOD=13333" | sudo tee -a /etc/environment &&
             echo -e "PROTON_LOG=0" | sudo tee -a /etc/environment &&
-            echo -e "PROTON_USE_WINED3D=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_FORCE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_NO_ESYNC=1" | sudo tee -a /etc/environment &&
             echo -e "ENABLE_VKBASALT=1" | sudo tee -a /etc/environment &&
