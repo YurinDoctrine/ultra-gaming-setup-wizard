@@ -607,10 +607,8 @@ prompt_4() {
 
         sudo tuned-adm profile throughput-performance
     fi
-    sudo fwupdmgr get-devices
     sudo fwupdmgr refresh --force
-    sudo fwupdmgr get-updates -y
-    sudo fwupdmgr update -y
+    sudo fwupdmgr update
 }
 prompt_4
 
