@@ -295,6 +295,7 @@ nvidia() {
             echo -e "mesa_glthread=true" | sudo tee -a /etc/environment &&
             echo -e "ANV_ENABLE_PIPELINE_CACHE=1" | sudo tee -a /etc/environment &&
             echo -e "NVD_BACKEND=direct" | sudo tee -a /etc/environment &&
+            echo -e "NVD_LOG=0" | sudo tee -a /etc/environment &&
             echo -e "__NV_PRIME_RENDER_OFFLOAD=1" | sudo tee -a /etc/environment &&
             echo -e "__GLX_VENDOR_LIBRARY_NAME=nvidia" | sudo tee -a /etc/environment &&
             echo -e "__GLVND_DISALLOW_PATCHING=1" | sudo tee -a /etc/environment &&
@@ -343,6 +344,7 @@ nvidia() {
             echo -e "mesa_glthread=true" | sudo tee -a /etc/environment &&
             echo -e "ANV_ENABLE_PIPELINE_CACHE=1" | sudo tee -a /etc/environment &&
             echo -e "NVD_BACKEND=direct" | sudo tee -a /etc/environment &&
+            echo -e "NVD_LOG=0" | sudo tee -a /etc/environment &&
             echo -e "__NV_PRIME_RENDER_OFFLOAD=1" | sudo tee -a /etc/environment &&
             echo -e "__GLX_VENDOR_LIBRARY_NAME=nvidia" | sudo tee -a /etc/environment &&
             echo -e "__GLVND_DISALLOW_PATCHING=1" | sudo tee -a /etc/environment &&
@@ -391,6 +393,7 @@ nvidia() {
             echo -e "mesa_glthread=true" | sudo tee -a /etc/environment &&
             echo -e "ANV_ENABLE_PIPELINE_CACHE=1" | sudo tee -a /etc/environment &&
             echo -e "NVD_BACKEND=direct" | sudo tee -a /etc/environment &&
+            echo -e "NVD_LOG=0" | sudo tee -a /etc/environment &&
             echo -e "__NV_PRIME_RENDER_OFFLOAD=1" | sudo tee -a /etc/environment &&
             echo -e "__GLX_VENDOR_LIBRARY_NAME=nvidia" | sudo tee -a /etc/environment &&
             echo -e "__GLVND_DISALLOW_PATCHING=1" | sudo tee -a /etc/environment &&
