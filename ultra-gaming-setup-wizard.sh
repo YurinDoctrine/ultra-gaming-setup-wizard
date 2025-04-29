@@ -127,6 +127,7 @@ amd() {
             echo -e "PROTON_FORCE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_NO_ESYNC=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_USE_FSYNC=1" | sudo tee -a /etc/environment &&
+            echo -e "PROTON_ENABLE_NGX_UPDATER=1" | sudo tee -a /etc/environment &&
             echo -e "ENABLE_VKBASALT=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_ASYNC=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_HUD=compile" | sudo tee -a /etc/environment &&
@@ -180,6 +181,7 @@ amd() {
             echo -e "PROTON_FORCE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_NO_ESYNC=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_USE_FSYNC=1" | sudo tee -a /etc/environment &&
+            echo -e "PROTON_ENABLE_NGX_UPDATER=1" | sudo tee -a /etc/environment &&
             echo -e "ENABLE_VKBASALT=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_ASYNC=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_HUD=compile" | sudo tee -a /etc/environment &&
@@ -233,6 +235,7 @@ amd() {
             echo -e "PROTON_FORCE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_NO_ESYNC=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_USE_FSYNC=1" | sudo tee -a /etc/environment &&
+            echo -e "PROTON_ENABLE_NGX_UPDATER=1" | sudo tee -a /etc/environment &&
             echo -e "ENABLE_VKBASALT=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_ASYNC=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_HUD=compile" | sudo tee -a /etc/environment &&
@@ -289,6 +292,7 @@ nvidia() {
             echo -e "PROTON_FORCE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_NO_ESYNC=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_USE_FSYNC=1" | sudo tee -a /etc/environment &&
+            echo -e "PROTON_ENABLE_NGX_UPDATER=1" | sudo tee -a /etc/environment &&
             echo -e "ENABLE_VKBASALT=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_ASYNC=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_HUD=compile" | sudo tee -a /etc/environment &&
@@ -339,6 +343,7 @@ nvidia() {
             echo -e "PROTON_FORCE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_NO_ESYNC=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_USE_FSYNC=1" | sudo tee -a /etc/environment &&
+            echo -e "PROTON_ENABLE_NGX_UPDATER=1" | sudo tee -a /etc/environment &&
             echo -e "ENABLE_VKBASALT=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_ASYNC=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_HUD=compile" | sudo tee -a /etc/environment &&
@@ -389,6 +394,7 @@ nvidia() {
             echo -e "PROTON_FORCE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_NO_ESYNC=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_USE_FSYNC=1" | sudo tee -a /etc/environment &&
+            echo -e "PROTON_ENABLE_NGX_UPDATER=1" | sudo tee -a /etc/environment &&
             echo -e "ENABLE_VKBASALT=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_ASYNC=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_HUD=compile" | sudo tee -a /etc/environment &&
