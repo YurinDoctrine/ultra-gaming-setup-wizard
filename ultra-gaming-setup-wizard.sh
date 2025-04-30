@@ -144,7 +144,7 @@ amd() {
             echo -e "__GL_SHADER_DISK_CACHE=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_SHADER_DISK_CACHE_SKIP_CLEANUP=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_YIELD=NOTHING" | sudo tee -a /etc/environment &&
-            echo -e "__GL_VRR_ALLOWED=0" | sudo tee -a /etc/environment &&
+            echo -e "__GL_VRR_ALLOWED=1" | sudo tee -a /etc/environment &&
             echo -e "LIBVA_DRIVER_NAME=radeonsi" | sudo tee -a /etc/environment &&
             echo -e "VDPAU_DRIVER=radeonsi" | sudo tee -a /etc/environment &&
             echo -e "VKD3D_CONFIG=upload_hvv" | sudo tee -a /etc/environment &&
@@ -198,7 +198,7 @@ amd() {
             echo -e "__GL_SHADER_DISK_CACHE=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_SHADER_DISK_CACHE_SKIP_CLEANUP=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_YIELD=NOTHING" | sudo tee -a /etc/environment &&
-            echo -e "__GL_VRR_ALLOWED=0" | sudo tee -a /etc/environment &&
+            echo -e "__GL_VRR_ALLOWED=1" | sudo tee -a /etc/environment &&
             echo -e "LIBVA_DRIVER_NAME=radeonsi" | sudo tee -a /etc/environment &&
             echo -e "VDPAU_DRIVER=radeonsi" | sudo tee -a /etc/environment &&
             echo -e "VKD3D_CONFIG=upload_hvv" | sudo tee -a /etc/environment &&
@@ -252,7 +252,7 @@ amd() {
             echo -e "__GL_SHADER_DISK_CACHE=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_SHADER_DISK_CACHE_SKIP_CLEANUP=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_YIELD=NOTHING" | sudo tee -a /etc/environment &&
-            echo -e "__GL_VRR_ALLOWED=0" | sudo tee -a /etc/environment &&
+            echo -e "__GL_VRR_ALLOWED=1" | sudo tee -a /etc/environment &&
             echo -e "LIBVA_DRIVER_NAME=radeonsi" | sudo tee -a /etc/environment &&
             echo -e "VDPAU_DRIVER=radeonsi" | sudo tee -a /etc/environment &&
             echo -e "VKD3D_CONFIG=upload_hvv" | sudo tee -a /etc/environment &&
@@ -312,7 +312,7 @@ nvidia() {
             echo -e "__GL_SHADER_DISK_CACHE=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_SHADER_DISK_CACHE_SKIP_CLEANUP=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_YIELD=NOTHING" | sudo tee -a /etc/environment &&
-            echo -e "__GL_VRR_ALLOWED=0" | sudo tee -a /etc/environment &&
+            echo -e "__GL_VRR_ALLOWED=1" | sudo tee -a /etc/environment &&
             echo -e "LIBVA_DRIVER_NAME=nvidia" | sudo tee -a /etc/environment &&
             echo -e "VDPAU_DRIVER=nvidia" | sudo tee -a /etc/environment &&
             echo -e "GBM_BACKEND=nvidia-drm" | sudo tee -a /etc/environment &&
@@ -363,7 +363,7 @@ nvidia() {
             echo -e "__GL_SHADER_DISK_CACHE=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_SHADER_DISK_CACHE_SKIP_CLEANUP=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_YIELD=NOTHING" | sudo tee -a /etc/environment &&
-            echo -e "__GL_VRR_ALLOWED=0" | sudo tee -a /etc/environment &&
+            echo -e "__GL_VRR_ALLOWED=1" | sudo tee -a /etc/environment &&
             echo -e "LIBVA_DRIVER_NAME=nvidia" | sudo tee -a /etc/environment &&
             echo -e "VDPAU_DRIVER=nvidia" | sudo tee -a /etc/environment &&
             echo -e "GBM_BACKEND=nvidia-drm" | sudo tee -a /etc/environment &&
@@ -414,7 +414,7 @@ nvidia() {
             echo -e "__GL_SHADER_DISK_CACHE=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_SHADER_DISK_CACHE_SKIP_CLEANUP=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_YIELD=NOTHING" | sudo tee -a /etc/environment &&
-            echo -e "__GL_VRR_ALLOWED=0" | sudo tee -a /etc/environment &&
+            echo -e "__GL_VRR_ALLOWED=1" | sudo tee -a /etc/environment &&
             echo -e "LIBVA_DRIVER_NAME=nvidia" | sudo tee -a /etc/environment &&
             echo -e "VDPAU_DRIVER=nvidia" | sudo tee -a /etc/environment &&
             echo -e "GBM_BACKEND=nvidia-drm" | sudo tee -a /etc/environment &&
