@@ -317,7 +317,7 @@ nvidia() {
             echo -e "__GL_YIELD=NOTHING" | sudo tee -a /etc/environment &&
             echo -e "__GL_VRR_ALLOWED=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_GSYNC_ALLOWED=1" | sudo tee -a /etc/environment &&
-            echo -e "__VK_LAYER_NV_optimus='NVIDIA_only'" | sudo tee -a /etc/environment &&
+            echo -e "__VK_LAYER_NV_optimus=NVIDIA_only" | sudo tee -a /etc/environment &&
             echo -e "LIBVA_DRIVER_NAME=nvidia" | sudo tee -a /etc/environment &&
             echo -e "VDPAU_DRIVER=nvidia" | sudo tee -a /etc/environment &&
             echo -e "GBM_BACKEND=nvidia-drm" | sudo tee -a /etc/environment &&
@@ -370,7 +370,7 @@ nvidia() {
             echo -e "__GL_YIELD=NOTHING" | sudo tee -a /etc/environment &&
             echo -e "__GL_VRR_ALLOWED=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_GSYNC_ALLOWED=1" | sudo tee -a /etc/environment &&
-            echo -e "__VK_LAYER_NV_optimus='NVIDIA_only'" | sudo tee -a /etc/environment &&
+            echo -e "__VK_LAYER_NV_optimus=nvidia_only" | sudo tee -a /etc/environment &&
             echo -e "LIBVA_DRIVER_NAME=nvidia" | sudo tee -a /etc/environment &&
             echo -e "VDPAU_DRIVER=nvidia" | sudo tee -a /etc/environment &&
             echo -e "GBM_BACKEND=nvidia-drm" | sudo tee -a /etc/environment &&
@@ -423,7 +423,7 @@ nvidia() {
             echo -e "__GL_YIELD=NOTHING" | sudo tee -a /etc/environment &&
             echo -e "__GL_VRR_ALLOWED=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_GSYNC_ALLOWED=1" | sudo tee -a /etc/environment &&
-            echo -e "__VK_LAYER_NV_optimus='NVIDIA_only'" | sudo tee -a /etc/environment &&
+            echo -e "__VK_LAYER_NV_optimus=nvidia_only" | sudo tee -a /etc/environment &&
             echo -e "LIBVA_DRIVER_NAME=nvidia" | sudo tee -a /etc/environment &&
             echo -e "VDPAU_DRIVER=nvidia" | sudo tee -a /etc/environment &&
             echo -e "GBM_BACKEND=nvidia-drm" | sudo tee -a /etc/environment &&
