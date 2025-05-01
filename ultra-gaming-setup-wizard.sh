@@ -150,6 +150,7 @@ amd() {
             echo -e "VDPAU_DRIVER=radeonsi" | sudo tee -a /etc/environment &&
             echo -e "VKD3D_CONFIG=upload_hvv" | sudo tee -a /etc/environment &&
             echo -e "LP_PERF=no_mipmap,no_linear,no_mip_linear,no_tex,no_blend,no_depth,no_alphatest" | sudo tee -a /etc/environment &&
+            echo -e "USE_HEAP=1" | sudo tee -a /etc/environment &&
             echo -e "STEAM_FRAME_FORCE_CLOSE=0" | sudo tee -a /etc/environment &&
             echo -e "STEAM_RUNTIME_HEAVY=1" | sudo tee -a /etc/environment &&
             echo -e "GAMEMODE=1" | sudo tee -a /etc/environment &&
@@ -205,6 +206,7 @@ amd() {
             echo -e "VDPAU_DRIVER=radeonsi" | sudo tee -a /etc/environment &&
             echo -e "VKD3D_CONFIG=upload_hvv" | sudo tee -a /etc/environment &&
             echo -e "LP_PERF=no_mipmap,no_linear,no_mip_linear,no_tex,no_blend,no_depth,no_alphatest" | sudo tee -a /etc/environment &&
+            echo -e "USE_HEAP=1" | sudo tee -a /etc/environment &&
             echo -e "STEAM_FRAME_FORCE_CLOSE=0" | sudo tee -a /etc/environment &&
             echo -e "STEAM_RUNTIME_HEAVY=1" | sudo tee -a /etc/environment &&
             echo -e "GAMEMODE=1" | sudo tee -a /etc/environment &&
@@ -260,6 +262,7 @@ amd() {
             echo -e "VDPAU_DRIVER=radeonsi" | sudo tee -a /etc/environment &&
             echo -e "VKD3D_CONFIG=upload_hvv" | sudo tee -a /etc/environment &&
             echo -e "LP_PERF=no_mipmap,no_linear,no_mip_linear,no_tex,no_blend,no_depth,no_alphatest" | sudo tee -a /etc/environment &&
+            echo -e "USE_HEAP=1" | sudo tee -a /etc/environment &&
             echo -e "STEAM_FRAME_FORCE_CLOSE=0" | sudo tee -a /etc/environment &&
             echo -e "STEAM_RUNTIME_HEAVY=1" | sudo tee -a /etc/environment &&
             echo -e "GAMEMODE=1" | sudo tee -a /etc/environment &&
@@ -323,6 +326,7 @@ nvidia() {
             echo -e "GBM_BACKEND=nvidia-drm" | sudo tee -a /etc/environment &&
             echo -e "VKD3D_CONFIG=upload_hvv" | sudo tee -a /etc/environment &&
             echo -e "LP_PERF=no_mipmap,no_linear,no_mip_linear,no_tex,no_blend,no_depth,no_alphatest" | sudo tee -a /etc/environment &&
+            echo -e "USE_HEAP=1" | sudo tee -a /etc/environment &&
             echo -e "STEAM_FRAME_FORCE_CLOSE=0" | sudo tee -a /etc/environment &&
             echo -e "STEAM_RUNTIME_HEAVY=1" | sudo tee -a /etc/environment &&
             echo -e "GAMEMODE=1" | sudo tee -a /etc/environment &&
@@ -376,6 +380,7 @@ nvidia() {
             echo -e "GBM_BACKEND=nvidia-drm" | sudo tee -a /etc/environment &&
             echo -e "VKD3D_CONFIG=upload_hvv" | sudo tee -a /etc/environment &&
             echo -e "LP_PERF=no_mipmap,no_linear,no_mip_linear,no_tex,no_blend,no_depth,no_alphatest" | sudo tee -a /etc/environment &&
+            echo -e "USE_HEAP=1" | sudo tee -a /etc/environment &&
             echo -e "STEAM_FRAME_FORCE_CLOSE=0" | sudo tee -a /etc/environment &&
             echo -e "STEAM_RUNTIME_HEAVY=1" | sudo tee -a /etc/environment &&
             echo -e "GAMEMODE=1" | sudo tee -a /etc/environment &&
@@ -429,6 +434,7 @@ nvidia() {
             echo -e "GBM_BACKEND=nvidia-drm" | sudo tee -a /etc/environment &&
             echo -e "VKD3D_CONFIG=upload_hvv" | sudo tee -a /etc/environment &&
             echo -e "LP_PERF=no_mipmap,no_linear,no_mip_linear,no_tex,no_blend,no_depth,no_alphatest" | sudo tee -a /etc/environment &&
+            echo -e "USE_HEAP=1" | sudo tee -a /etc/environment &&
             echo -e "STEAM_FRAME_FORCE_CLOSE=0" | sudo tee -a /etc/environment &&
             echo -e "STEAM_RUNTIME_HEAVY=1" | sudo tee -a /etc/environment &&
             echo -e "GAMEMODE=1" | sudo tee -a /etc/environment &&
