@@ -138,6 +138,7 @@ amd() {
             echo -e "ANV_ENABLE_PIPELINE_CACHE=1" | sudo tee -a /etc/environment &&
             echo -e "__GLX_VENDOR_LIBRARY_NAME=amdgpu" | sudo tee -a /etc/environment &&
             echo -e "__GLVND_DISALLOW_PATCHING=1" | sudo tee -a /etc/environment &&
+            echo -e "__GL_THREADED_OPTIMIZATION=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_THREADED_OPTIMIZATIONS=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_SYNC_TO_VBLANK=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_MaxFramesAllowed=1" | sudo tee -a /etc/environment &&
@@ -148,13 +149,13 @@ amd() {
             echo -e "__GL_GSYNC_ALLOWED=1" | sudo tee -a /etc/environment &&
             echo -e "LIBVA_DRIVER_NAME=radeonsi" | sudo tee -a /etc/environment &&
             echo -e "VDPAU_DRIVER=radeonsi" | sudo tee -a /etc/environment &&
-            echo -e "VKD3D_CONFIG=upload_hvv" | sudo tee -a /etc/environment &&
+            echo -e "VKD3D_CONFIG=force_static_cbv" | sudo tee -a /etc/environment &&
             echo -e "LP_PERF=no_mipmap,no_linear,no_mip_linear,no_tex,no_blend,no_depth,no_alphatest" | sudo tee -a /etc/environment &&
             echo -e "USE_HEAP=1" | sudo tee -a /etc/environment &&
             echo -e "STEAM_FRAME_FORCE_CLOSE=0" | sudo tee -a /etc/environment &&
             echo -e "STEAM_RUNTIME_HEAVY=1" | sudo tee -a /etc/environment &&
             echo -e "GAMEMODE=1" | sudo tee -a /etc/environment &&
-            echo -e "vblank_mode=1" | sudo tee -a /etc/environment
+            echo -e "vblank_mode=0" | sudo tee -a /etc/environment
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
@@ -194,6 +195,7 @@ amd() {
             echo -e "ANV_ENABLE_PIPELINE_CACHE=1" | sudo tee -a /etc/environment &&
             echo -e "__GLX_VENDOR_LIBRARY_NAME=amdgpu" | sudo tee -a /etc/environment &&
             echo -e "__GLVND_DISALLOW_PATCHING=1" | sudo tee -a /etc/environment &&
+            echo -e "__GL_THREADED_OPTIMIZATION=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_THREADED_OPTIMIZATIONS=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_SYNC_TO_VBLANK=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_MaxFramesAllowed=1" | sudo tee -a /etc/environment &&
@@ -204,13 +206,13 @@ amd() {
             echo -e "__GL_GSYNC_ALLOWED=1" | sudo tee -a /etc/environment &&
             echo -e "LIBVA_DRIVER_NAME=radeonsi" | sudo tee -a /etc/environment &&
             echo -e "VDPAU_DRIVER=radeonsi" | sudo tee -a /etc/environment &&
-            echo -e "VKD3D_CONFIG=upload_hvv" | sudo tee -a /etc/environment &&
+            echo -e "VKD3D_CONFIG=force_static_cbv" | sudo tee -a /etc/environment &&
             echo -e "LP_PERF=no_mipmap,no_linear,no_mip_linear,no_tex,no_blend,no_depth,no_alphatest" | sudo tee -a /etc/environment &&
             echo -e "USE_HEAP=1" | sudo tee -a /etc/environment &&
             echo -e "STEAM_FRAME_FORCE_CLOSE=0" | sudo tee -a /etc/environment &&
             echo -e "STEAM_RUNTIME_HEAVY=1" | sudo tee -a /etc/environment &&
             echo -e "GAMEMODE=1" | sudo tee -a /etc/environment &&
-            echo -e "vblank_mode=1" | sudo tee -a /etc/environment
+            echo -e "vblank_mode=0" | sudo tee -a /etc/environment
     fi
     which dnf >/dev/null 2>&1
     if [ $? -eq 0 ]; then
@@ -250,6 +252,7 @@ amd() {
             echo -e "ANV_ENABLE_PIPELINE_CACHE=1" | sudo tee -a /etc/environment &&
             echo -e "__GLX_VENDOR_LIBRARY_NAME=amdgpu" | sudo tee -a /etc/environment &&
             echo -e "__GLVND_DISALLOW_PATCHING=1" | sudo tee -a /etc/environment &&
+            echo -e "__GL_THREADED_OPTIMIZATION=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_THREADED_OPTIMIZATIONS=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_SYNC_TO_VBLANK=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_MaxFramesAllowed=1" | sudo tee -a /etc/environment &&
@@ -260,13 +263,13 @@ amd() {
             echo -e "__GL_GSYNC_ALLOWED=1" | sudo tee -a /etc/environment &&
             echo -e "LIBVA_DRIVER_NAME=radeonsi" | sudo tee -a /etc/environment &&
             echo -e "VDPAU_DRIVER=radeonsi" | sudo tee -a /etc/environment &&
-            echo -e "VKD3D_CONFIG=upload_hvv" | sudo tee -a /etc/environment &&
+            echo -e "VKD3D_CONFIG=force_static_cbv" | sudo tee -a /etc/environment &&
             echo -e "LP_PERF=no_mipmap,no_linear,no_mip_linear,no_tex,no_blend,no_depth,no_alphatest" | sudo tee -a /etc/environment &&
             echo -e "USE_HEAP=1" | sudo tee -a /etc/environment &&
             echo -e "STEAM_FRAME_FORCE_CLOSE=0" | sudo tee -a /etc/environment &&
             echo -e "STEAM_RUNTIME_HEAVY=1" | sudo tee -a /etc/environment &&
             echo -e "GAMEMODE=1" | sudo tee -a /etc/environment &&
-            echo -e "vblank_mode=1" | sudo tee -a /etc/environment
+            echo -e "vblank_mode=0" | sudo tee -a /etc/environment
     fi
 }
 
@@ -299,6 +302,8 @@ nvidia() {
             echo -e "PROTON_NO_ESYNC=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_USE_FSYNC=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_ENABLE_NGX_UPDATER=1" | sudo tee -a /etc/environment &&
+            echo -e "PROTON_ENABLE_NVAPI=1" | sudo tee -a /etc/environment &&
+            echo -e "PROTON_HIDE_NVIDIA_GPU=0" | sudo tee -a /etc/environment &&
             echo -e "ENABLE_VKBASALT=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_ASYNC=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_HUD=compile" | sudo tee -a /etc/environment &&
@@ -312,6 +317,7 @@ nvidia() {
             echo -e "__NV_PRIME_RENDER_OFFLOAD=1" | sudo tee -a /etc/environment &&
             echo -e "__GLX_VENDOR_LIBRARY_NAME=nvidia" | sudo tee -a /etc/environment &&
             echo -e "__GLVND_DISALLOW_PATCHING=1" | sudo tee -a /etc/environment &&
+            echo -e "__GL_THREADED_OPTIMIZATION=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_THREADED_OPTIMIZATIONS=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_SYNC_TO_VBLANK=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_MaxFramesAllowed=1" | sudo tee -a /etc/environment &&
@@ -324,13 +330,14 @@ nvidia() {
             echo -e "LIBVA_DRIVER_NAME=nvidia" | sudo tee -a /etc/environment &&
             echo -e "VDPAU_DRIVER=nvidia" | sudo tee -a /etc/environment &&
             echo -e "GBM_BACKEND=nvidia-drm" | sudo tee -a /etc/environment &&
-            echo -e "VKD3D_CONFIG=upload_hvv" | sudo tee -a /etc/environment &&
+            echo -e "VKD3D_CONFIG=force_static_cbv" | sudo tee -a /etc/environment &&
             echo -e "LP_PERF=no_mipmap,no_linear,no_mip_linear,no_tex,no_blend,no_depth,no_alphatest" | sudo tee -a /etc/environment &&
             echo -e "USE_HEAP=1" | sudo tee -a /etc/environment &&
             echo -e "STEAM_FRAME_FORCE_CLOSE=0" | sudo tee -a /etc/environment &&
             echo -e "STEAM_RUNTIME_HEAVY=1" | sudo tee -a /etc/environment &&
             echo -e "GAMEMODE=1" | sudo tee -a /etc/environment &&
-            echo -e "vblank_mode=1" | sudo tee -a /etc/environment
+            echo -e "PRIMUS_SYNC=1" | sudo tee -a /etc/environment &&
+            echo -e "vblank_mode=0" | sudo tee -a /etc/environment
     fi
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
@@ -353,6 +360,8 @@ nvidia() {
             echo -e "PROTON_NO_ESYNC=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_USE_FSYNC=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_ENABLE_NGX_UPDATER=1" | sudo tee -a /etc/environment &&
+            echo -e "PROTON_ENABLE_NVAPI=1" | sudo tee -a /etc/environment &&
+            echo -e "PROTON_HIDE_NVIDIA_GPU=0" | sudo tee -a /etc/environment &&
             echo -e "ENABLE_VKBASALT=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_ASYNC=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_HUD=compile" | sudo tee -a /etc/environment &&
@@ -366,6 +375,7 @@ nvidia() {
             echo -e "__NV_PRIME_RENDER_OFFLOAD=1" | sudo tee -a /etc/environment &&
             echo -e "__GLX_VENDOR_LIBRARY_NAME=nvidia" | sudo tee -a /etc/environment &&
             echo -e "__GLVND_DISALLOW_PATCHING=1" | sudo tee -a /etc/environment &&
+            echo -e "__GL_THREADED_OPTIMIZATION=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_THREADED_OPTIMIZATIONS=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_SYNC_TO_VBLANK=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_MaxFramesAllowed=1" | sudo tee -a /etc/environment &&
@@ -378,13 +388,14 @@ nvidia() {
             echo -e "LIBVA_DRIVER_NAME=nvidia" | sudo tee -a /etc/environment &&
             echo -e "VDPAU_DRIVER=nvidia" | sudo tee -a /etc/environment &&
             echo -e "GBM_BACKEND=nvidia-drm" | sudo tee -a /etc/environment &&
-            echo -e "VKD3D_CONFIG=upload_hvv" | sudo tee -a /etc/environment &&
+            echo -e "VKD3D_CONFIG=force_static_cbv" | sudo tee -a /etc/environment &&
             echo -e "LP_PERF=no_mipmap,no_linear,no_mip_linear,no_tex,no_blend,no_depth,no_alphatest" | sudo tee -a /etc/environment &&
             echo -e "USE_HEAP=1" | sudo tee -a /etc/environment &&
             echo -e "STEAM_FRAME_FORCE_CLOSE=0" | sudo tee -a /etc/environment &&
             echo -e "STEAM_RUNTIME_HEAVY=1" | sudo tee -a /etc/environment &&
             echo -e "GAMEMODE=1" | sudo tee -a /etc/environment &&
-            echo -e "vblank_mode=1" | sudo tee -a /etc/environment
+            echo -e "PRIMUS_SYNC=1" | sudo tee -a /etc/environment &&
+            echo -e "vblank_mode=0" | sudo tee -a /etc/environment
     fi
     which dnf >/dev/null 2>&1
     if [ $? -eq 0 ]; then
@@ -407,6 +418,8 @@ nvidia() {
             echo -e "PROTON_NO_ESYNC=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_USE_FSYNC=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_ENABLE_NGX_UPDATER=1" | sudo tee -a /etc/environment &&
+            echo -e "PROTON_ENABLE_NVAPI=1" | sudo tee -a /etc/environment &&
+            echo -e "PROTON_HIDE_NVIDIA_GPU=0" | sudo tee -a /etc/environment &&
             echo -e "ENABLE_VKBASALT=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_ASYNC=1" | sudo tee -a /etc/environment &&
             echo -e "DXVK_HUD=compile" | sudo tee -a /etc/environment &&
@@ -420,6 +433,7 @@ nvidia() {
             echo -e "__NV_PRIME_RENDER_OFFLOAD=1" | sudo tee -a /etc/environment &&
             echo -e "__GLX_VENDOR_LIBRARY_NAME=nvidia" | sudo tee -a /etc/environment &&
             echo -e "__GLVND_DISALLOW_PATCHING=1" | sudo tee -a /etc/environment &&
+            echo -e "__GL_THREADED_OPTIMIZATION=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_THREADED_OPTIMIZATIONS=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_SYNC_TO_VBLANK=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_MaxFramesAllowed=1" | sudo tee -a /etc/environment &&
@@ -432,13 +446,14 @@ nvidia() {
             echo -e "LIBVA_DRIVER_NAME=nvidia" | sudo tee -a /etc/environment &&
             echo -e "VDPAU_DRIVER=nvidia" | sudo tee -a /etc/environment &&
             echo -e "GBM_BACKEND=nvidia-drm" | sudo tee -a /etc/environment &&
-            echo -e "VKD3D_CONFIG=upload_hvv" | sudo tee -a /etc/environment &&
+            echo -e "VKD3D_CONFIG=force_static_cbv" | sudo tee -a /etc/environment &&
             echo -e "LP_PERF=no_mipmap,no_linear,no_mip_linear,no_tex,no_blend,no_depth,no_alphatest" | sudo tee -a /etc/environment &&
             echo -e "USE_HEAP=1" | sudo tee -a /etc/environment &&
             echo -e "STEAM_FRAME_FORCE_CLOSE=0" | sudo tee -a /etc/environment &&
             echo -e "STEAM_RUNTIME_HEAVY=1" | sudo tee -a /etc/environment &&
             echo -e "GAMEMODE=1" | sudo tee -a /etc/environment &&
-            echo -e "vblank_mode=1" | sudo tee -a /etc/environment
+            echo -e "PRIMUS_SYNC=1" | sudo tee -a /etc/environment &&
+            echo -e "vblank_mode=0" | sudo tee -a /etc/environment
     fi
 }
 
