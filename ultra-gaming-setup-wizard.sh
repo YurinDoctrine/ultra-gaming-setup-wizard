@@ -309,7 +309,9 @@ nvidia() {
             echo -e "MESA_SHADER_CACHE_DISABLE=false" | sudo tee -a /etc/environment &&
             echo -e "mesa_glthread=true" | sudo tee -a /etc/environment &&
             echo -e "ANV_ENABLE_PIPELINE_CACHE=1" | sudo tee -a /etc/environment &&
+            echo -e "NVIDIA_PERSISTENCE_MODE=1" | sudo tee -a /etc/environment &&
             echo -e "NVIDIA_ANTI_FLICKER=1" | sudo tee -a /etc/environment &&
+            echo -e "NVIDIA_DEBUG=0" | sudo tee -a /etc/environment &&
             echo -e "NVD_BACKEND=direct" | sudo tee -a /etc/environment &&
             echo -e "NVD_LOG=0" | sudo tee -a /etc/environment &&
             echo -e "__GLVND_DISALLOW_PATCHING=1" | sudo tee -a /etc/environment &&
@@ -366,7 +368,9 @@ nvidia() {
             echo -e "MESA_SHADER_CACHE_DISABLE=false" | sudo tee -a /etc/environment &&
             echo -e "mesa_glthread=true" | sudo tee -a /etc/environment &&
             echo -e "ANV_ENABLE_PIPELINE_CACHE=1" | sudo tee -a /etc/environment &&
+            echo -e "NVIDIA_PERSISTENCE_MODE=1" | sudo tee -a /etc/environment &&
             echo -e "NVIDIA_ANTI_FLICKER=1" | sudo tee -a /etc/environment &&
+            echo -e "NVIDIA_DEBUG=0" | sudo tee -a /etc/environment &&
             echo -e "NVD_BACKEND=direct" | sudo tee -a /etc/environment &&
             echo -e "NVD_LOG=0" | sudo tee -a /etc/environment &&
             echo -e "__GLVND_DISALLOW_PATCHING=1" | sudo tee -a /etc/environment &&
@@ -423,7 +427,9 @@ nvidia() {
             echo -e "MESA_SHADER_CACHE_DISABLE=false" | sudo tee -a /etc/environment &&
             echo -e "mesa_glthread=true" | sudo tee -a /etc/environment &&
             echo -e "ANV_ENABLE_PIPELINE_CACHE=1" | sudo tee -a /etc/environment &&
+            echo -e "NVIDIA_PERSISTENCE_MODE=1" | sudo tee -a /etc/environment &&
             echo -e "NVIDIA_ANTI_FLICKER=1" | sudo tee -a /etc/environment &&
+            echo -e "NVIDIA_DEBUG=0" | sudo tee -a /etc/environment &&
             echo -e "NVD_BACKEND=direct" | sudo tee -a /etc/environment &&
             echo -e "NVD_LOG=0" | sudo tee -a /etc/environment &&
             echo -e "__GLVND_DISALLOW_PATCHING=1" | sudo tee -a /etc/environment &&
