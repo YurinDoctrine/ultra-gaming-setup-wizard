@@ -311,6 +311,7 @@ nvidia() {
             echo -e "ANV_ENABLE_PIPELINE_CACHE=1" | sudo tee -a /etc/environment &&
             echo -e "NVIDIA_PERSISTENCE_MODE=1" | sudo tee -a /etc/environment &&
             echo -e "NVIDIA_ANTI_FLICKER=1" | sudo tee -a /etc/environment &&
+            echo -e "NVIDIA_ACCOUNTING=0" | sudo tee -a /etc/environment &&
             echo -e "NVIDIA_DEBUG=0" | sudo tee -a /etc/environment &&
             echo -e "NVD_BACKEND=direct" | sudo tee -a /etc/environment &&
             echo -e "NVD_LOG=0" | sudo tee -a /etc/environment &&
@@ -370,6 +371,7 @@ nvidia() {
             echo -e "ANV_ENABLE_PIPELINE_CACHE=1" | sudo tee -a /etc/environment &&
             echo -e "NVIDIA_PERSISTENCE_MODE=1" | sudo tee -a /etc/environment &&
             echo -e "NVIDIA_ANTI_FLICKER=1" | sudo tee -a /etc/environment &&
+            echo -e "NVIDIA_ACCOUNTING=0" | sudo tee -a /etc/environment &&
             echo -e "NVIDIA_DEBUG=0" | sudo tee -a /etc/environment &&
             echo -e "NVD_BACKEND=direct" | sudo tee -a /etc/environment &&
             echo -e "NVD_LOG=0" | sudo tee -a /etc/environment &&
@@ -429,6 +431,7 @@ nvidia() {
             echo -e "ANV_ENABLE_PIPELINE_CACHE=1" | sudo tee -a /etc/environment &&
             echo -e "NVIDIA_PERSISTENCE_MODE=1" | sudo tee -a /etc/environment &&
             echo -e "NVIDIA_ANTI_FLICKER=1" | sudo tee -a /etc/environment &&
+            echo -e "NVIDIA_ACCOUNTING=0" | sudo tee -a /etc/environment &&
             echo -e "NVIDIA_DEBUG=0" | sudo tee -a /etc/environment &&
             echo -e "NVD_BACKEND=direct" | sudo tee -a /etc/environment &&
             echo -e "NVD_LOG=0" | sudo tee -a /etc/environment &&
