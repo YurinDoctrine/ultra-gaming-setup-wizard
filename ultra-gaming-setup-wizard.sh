@@ -128,6 +128,7 @@ amd() {
             echo -e "PROTON_LOG=0" | sudo tee -a /etc/environment &&
             echo -e "PROTON_FORCE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_NO_ESYNC=1" | sudo tee -a /etc/environment &&
+            echo -e "PROTON_USE_WINED3D=0" | sudo tee -a /etc/environment &&
             echo -e "PROTON_USE_FSYNC=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_ENABLE_NGX_UPDATER=1" | sudo tee -a /etc/environment &&
             echo -e "ENABLE_VKBASALT=1" | sudo tee -a /etc/environment &&
@@ -186,6 +187,7 @@ amd() {
             echo -e "PROTON_LOG=0" | sudo tee -a /etc/environment &&
             echo -e "PROTON_FORCE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_NO_ESYNC=1" | sudo tee -a /etc/environment &&
+            echo -e "PROTON_USE_WINED3D=0" | sudo tee -a /etc/environment &&
             echo -e "PROTON_USE_FSYNC=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_ENABLE_NGX_UPDATER=1" | sudo tee -a /etc/environment &&
             echo -e "ENABLE_VKBASALT=1" | sudo tee -a /etc/environment &&
@@ -244,6 +246,7 @@ amd() {
             echo -e "PROTON_LOG=0" | sudo tee -a /etc/environment &&
             echo -e "PROTON_FORCE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_NO_ESYNC=1" | sudo tee -a /etc/environment &&
+            echo -e "PROTON_USE_WINED3D=0" | sudo tee -a /etc/environment &&
             echo -e "PROTON_USE_FSYNC=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_ENABLE_NGX_UPDATER=1" | sudo tee -a /etc/environment &&
             echo -e "ENABLE_VKBASALT=1" | sudo tee -a /etc/environment &&
@@ -303,6 +306,7 @@ nvidia() {
             echo -e "PROTON_LOG=0" | sudo tee -a /etc/environment &&
             echo -e "PROTON_FORCE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_NO_ESYNC=1" | sudo tee -a /etc/environment &&
+            echo -e "PROTON_USE_WINED3D=0" | sudo tee -a /etc/environment &&
             echo -e "PROTON_USE_FSYNC=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_ENABLE_NGX_UPDATER=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_ENABLE_NVAPI=1" | sudo tee -a /etc/environment &&
@@ -363,6 +367,7 @@ nvidia() {
             echo -e "PROTON_LOG=0" | sudo tee -a /etc/environment &&
             echo -e "PROTON_FORCE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_NO_ESYNC=1" | sudo tee -a /etc/environment &&
+            echo -e "PROTON_USE_WINED3D=0" | sudo tee -a /etc/environment &&
             echo -e "PROTON_USE_FSYNC=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_ENABLE_NGX_UPDATER=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_ENABLE_NVAPI=1" | sudo tee -a /etc/environment &&
@@ -423,6 +428,7 @@ nvidia() {
             echo -e "PROTON_LOG=0" | sudo tee -a /etc/environment &&
             echo -e "PROTON_FORCE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_NO_ESYNC=1" | sudo tee -a /etc/environment &&
+            echo -e "PROTON_USE_WINED3D=0" | sudo tee -a /etc/environment &&
             echo -e "PROTON_USE_FSYNC=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_ENABLE_NGX_UPDATER=1" | sudo tee -a /etc/environment &&
             echo -e "PROTON_ENABLE_NVAPI=1" | sudo tee -a /etc/environment &&
