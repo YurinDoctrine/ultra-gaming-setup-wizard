@@ -679,8 +679,8 @@ prompt_4() {
 
         sudo tuned-adm profile throughput-performance
     fi
-    sudo fwupdmgr refresh --force
-    sudo fwupdmgr update
+    sudo fwupdmgr refresh --assume-yes --force
+    sudo fwupdmgr update --assume-yes --force
 }
 prompt_4
 
