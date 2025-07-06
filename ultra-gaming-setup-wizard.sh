@@ -325,7 +325,6 @@ nvidia() {
             echo -e "NVIDIA_DEBUG=0" | sudo tee -a /etc/environment &&
             echo -e "NVD_BACKEND=direct" | sudo tee -a /etc/environment &&
             echo -e "NVD_LOG=0" | sudo tee -a /etc/environment &&
-            echo -e "CUDA_VISIBLE_DEVICES=0" | sudo tee -a /etc/environment &&
             echo -e "__GLVND_DISALLOW_PATCHING=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_THREADED_OPTIMIZATION=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_THREADED_OPTIMIZATIONS=1" | sudo tee -a /etc/environment &&
@@ -387,7 +386,6 @@ nvidia() {
             echo -e "NVIDIA_DEBUG=0" | sudo tee -a /etc/environment &&
             echo -e "NVD_BACKEND=direct" | sudo tee -a /etc/environment &&
             echo -e "NVD_LOG=0" | sudo tee -a /etc/environment &&
-            echo -e "CUDA_VISIBLE_DEVICES=0" | sudo tee -a /etc/environment &&
             echo -e "__GLVND_DISALLOW_PATCHING=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_THREADED_OPTIMIZATION=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_THREADED_OPTIMIZATIONS=1" | sudo tee -a /etc/environment &&
@@ -449,7 +447,6 @@ nvidia() {
             echo -e "NVIDIA_DEBUG=0" | sudo tee -a /etc/environment &&
             echo -e "NVD_BACKEND=direct" | sudo tee -a /etc/environment &&
             echo -e "NVD_LOG=0" | sudo tee -a /etc/environment &&
-            echo -e "CUDA_VISIBLE_DEVICES=0" | sudo tee -a /etc/environment &&
             echo -e "__GLVND_DISALLOW_PATCHING=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_THREADED_OPTIMIZATION=1" | sudo tee -a /etc/environment &&
             echo -e "__GL_THREADED_OPTIMIZATIONS=1" | sudo tee -a /etc/environment &&
