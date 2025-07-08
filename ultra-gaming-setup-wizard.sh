@@ -109,10 +109,11 @@ amd() {
             echo -e "RADV_PERFTEST=aco,sam,nggc" | sudo tee -a /etc/environment &&
             echo -e "RADV_FORCE_VRS=2x2" | sudo tee -a /etc/environment &&
             echo -e "RADV_DEBUG=novrsflatshading" | sudo tee -a /etc/environment &&
-            echo -e "WINEPREFIX=~/.wine" | sudo tee -a /etc/environment &&
+            echo -e "WINEPREFIX=/opt/.wine" | sudo tee -a /etc/environment &&
+            echo -e "WINEDEBUG=-all" | sudo tee -a /etc/environment &&
             echo -e "WINE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
-            echo -e "WINEFSYNC_SPINCOUNT=24" | sudo tee -a /etc/environment &&
             echo -e "WINEFSYNC=1" | sudo tee -a /etc/environment &&
+            echo -e "WINEFSYNC_SPINCOUNT=24" | sudo tee -a /etc/environment &&
             echo -e "WINEFSYNC_FUTEX2=1" | sudo tee -a /etc/environment &&
             echo -e "WINE_SKIP_GECKO_INSTALLATION=1" | sudo tee -a /etc/environment &&
             echo -e "WINE_SKIP_MONO_INSTALLATION=1" | sudo tee -a /etc/environment &&
@@ -157,6 +158,7 @@ amd() {
             echo -e "VKD3D_CONFIG=force_static_cbv" | sudo tee -a /etc/environment &&
             echo -e "LP_PERF=no_mipmap,no_linear,no_mip_linear,no_tex,no_blend,no_depth,no_alphatest" | sudo tee -a /etc/environment &&
             echo -e "USE_HEAP=1" | sudo tee -a /etc/environment &&
+            echo -e "PBA_DISABLE=0" | sudo tee -a /etc/environment &&
             echo -e "STEAM_FRAME_FORCE_CLOSE=0" | sudo tee -a /etc/environment &&
             echo -e "STEAM_RUNTIME_HEAVY=1" | sudo tee -a /etc/environment &&
             echo -e "GAMEMODE=1" | sudo tee -a /etc/environment &&
@@ -171,10 +173,11 @@ amd() {
             echo -e "RADV_PERFTEST=aco,sam,nggc" | sudo tee -a /etc/environment &&
             echo -e "RADV_FORCE_VRS=2x2" | sudo tee -a /etc/environment &&
             echo -e "RADV_DEBUG=novrsflatshading" | sudo tee -a /etc/environment &&
-            echo -e "WINEPREFIX=~/.wine" | sudo tee -a /etc/environment &&
+            echo -e "WINEPREFIX=/opt/.wine" | sudo tee -a /etc/environment &&
+            echo -e "WINEDEBUG=-all" | sudo tee -a /etc/environment &&
             echo -e "WINE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
-            echo -e "WINEFSYNC_SPINCOUNT=24" | sudo tee -a /etc/environment &&
             echo -e "WINEFSYNC=1" | sudo tee -a /etc/environment &&
+            echo -e "WINEFSYNC_SPINCOUNT=24" | sudo tee -a /etc/environment &&
             echo -e "WINEFSYNC_FUTEX2=1" | sudo tee -a /etc/environment &&
             echo -e "WINE_SKIP_GECKO_INSTALLATION=1" | sudo tee -a /etc/environment &&
             echo -e "WINE_SKIP_MONO_INSTALLATION=1" | sudo tee -a /etc/environment &&
@@ -219,6 +222,7 @@ amd() {
             echo -e "VKD3D_CONFIG=force_static_cbv" | sudo tee -a /etc/environment &&
             echo -e "LP_PERF=no_mipmap,no_linear,no_mip_linear,no_tex,no_blend,no_depth,no_alphatest" | sudo tee -a /etc/environment &&
             echo -e "USE_HEAP=1" | sudo tee -a /etc/environment &&
+            echo -e "PBA_DISABLE=0" | sudo tee -a /etc/environment &&
             echo -e "STEAM_FRAME_FORCE_CLOSE=0" | sudo tee -a /etc/environment &&
             echo -e "STEAM_RUNTIME_HEAVY=1" | sudo tee -a /etc/environment &&
             echo -e "GAMEMODE=1" | sudo tee -a /etc/environment &&
@@ -233,10 +237,11 @@ amd() {
             echo -e "RADV_PERFTEST=aco,sam,nggc" | sudo tee -a /etc/environment &&
             echo -e "RADV_FORCE_VRS=2x2" | sudo tee -a /etc/environment &&
             echo -e "RADV_DEBUG=novrsflatshading" | sudo tee -a /etc/environment &&
-            echo -e "WINEPREFIX=~/.wine" | sudo tee -a /etc/environment &&
+            echo -e "WINEPREFIX=/opt/.wine" | sudo tee -a /etc/environment &&
+            echo -e "WINEDEBUG=-all" | sudo tee -a /etc/environment &&
             echo -e "WINE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
-            echo -e "WINEFSYNC_SPINCOUNT=24" | sudo tee -a /etc/environment &&
             echo -e "WINEFSYNC=1" | sudo tee -a /etc/environment &&
+            echo -e "WINEFSYNC_SPINCOUNT=24" | sudo tee -a /etc/environment &&
             echo -e "WINEFSYNC_FUTEX2=1" | sudo tee -a /etc/environment &&
             echo -e "WINE_SKIP_GECKO_INSTALLATION=1" | sudo tee -a /etc/environment &&
             echo -e "WINE_SKIP_MONO_INSTALLATION=1" | sudo tee -a /etc/environment &&
@@ -281,6 +286,7 @@ amd() {
             echo -e "VKD3D_CONFIG=force_static_cbv" | sudo tee -a /etc/environment &&
             echo -e "LP_PERF=no_mipmap,no_linear,no_mip_linear,no_tex,no_blend,no_depth,no_alphatest" | sudo tee -a /etc/environment &&
             echo -e "USE_HEAP=1" | sudo tee -a /etc/environment &&
+            echo -e "PBA_DISABLE=0" | sudo tee -a /etc/environment &&
             echo -e "STEAM_FRAME_FORCE_CLOSE=0" | sudo tee -a /etc/environment &&
             echo -e "STEAM_RUNTIME_HEAVY=1" | sudo tee -a /etc/environment &&
             echo -e "GAMEMODE=1" | sudo tee -a /etc/environment &&
@@ -299,10 +305,11 @@ nvidia() {
         sudo add-apt-repository ppa:graphics-drivers/ppa -y
         sudo apt-get update
         sudo apt install -f --assume-yes --no-install-recommends libglx-mesa0 libglx-mesa0:i386 libgl1-mesa-dri libgl1-mesa-dri:i386 libnvidia-gl-510 libnvidia-gl-510:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386 mesa-va-drivers mesa-va-drivers:i386 libvulkan-dev libvulkan-dev:i386 mesa-utils vulkan-tools mesa-common-dev mesa-vdpau-drivers &&
-            echo -e "WINEPREFIX=~/.wine" | sudo tee -a /etc/environment &&
+            echo -e "WINEPREFIX=/opt/.wine" | sudo tee -a /etc/environment &&
+            echo -e "WINEDEBUG=-all" | sudo tee -a /etc/environment &&
             echo -e "WINE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
-            echo -e "WINEFSYNC_SPINCOUNT=24" | sudo tee -a /etc/environment &&
             echo -e "WINEFSYNC=1" | sudo tee -a /etc/environment &&
+            echo -e "WINEFSYNC_SPINCOUNT=24" | sudo tee -a /etc/environment &&
             echo -e "WINEFSYNC_FUTEX2=1" | sudo tee -a /etc/environment &&
             echo -e "WINE_SKIP_GECKO_INSTALLATION=1" | sudo tee -a /etc/environment &&
             echo -e "WINE_SKIP_MONO_INSTALLATION=1" | sudo tee -a /etc/environment &&
@@ -354,6 +361,7 @@ nvidia() {
             echo -e "VKD3D_CONFIG=force_static_cbv" | sudo tee -a /etc/environment &&
             echo -e "LP_PERF=no_mipmap,no_linear,no_mip_linear,no_tex,no_blend,no_depth,no_alphatest" | sudo tee -a /etc/environment &&
             echo -e "USE_HEAP=1" | sudo tee -a /etc/environment &&
+            echo -e "PBA_DISABLE=0" | sudo tee -a /etc/environment &&
             echo -e "STEAM_FRAME_FORCE_CLOSE=0" | sudo tee -a /etc/environment &&
             echo -e "STEAM_RUNTIME_HEAVY=1" | sudo tee -a /etc/environment &&
             echo -e "GAMEMODE=1" | sudo tee -a /etc/environment &&
@@ -363,10 +371,11 @@ nvidia() {
     which pacman >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         yay -S --needed --noconfirm mesa lib32-mesa opencl-nvidia lib32-opencl-nvidia nvidia-utils lib32-nvidia-utils xf86-video-nouveau libva-mesa-driver vkd3d lib32-vkd3d vulkan-tools vulkan-intel lib32-vulkan-intel vulkan-mesa-layers lib32-vulkan-mesa-layers mesa-vdpau lib32-mesa-vdpau &&
-            echo -e "WINEPREFIX=~/.wine" | sudo tee -a /etc/environment &&
+            echo -e "WINEPREFIX=/opt/.wine" | sudo tee -a /etc/environment &&
+            echo -e "WINEDEBUG=-all" | sudo tee -a /etc/environment &&
             echo -e "WINE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
-            echo -e "WINEFSYNC_SPINCOUNT=24" | sudo tee -a /etc/environment &&
             echo -e "WINEFSYNC=1" | sudo tee -a /etc/environment &&
+            echo -e "WINEFSYNC_SPINCOUNT=24" | sudo tee -a /etc/environment &&
             echo -e "WINEFSYNC_FUTEX2=1" | sudo tee -a /etc/environment &&
             echo -e "WINE_SKIP_GECKO_INSTALLATION=1" | sudo tee -a /etc/environment &&
             echo -e "WINE_SKIP_MONO_INSTALLATION=1" | sudo tee -a /etc/environment &&
@@ -418,6 +427,7 @@ nvidia() {
             echo -e "VKD3D_CONFIG=force_static_cbv" | sudo tee -a /etc/environment &&
             echo -e "LP_PERF=no_mipmap,no_linear,no_mip_linear,no_tex,no_blend,no_depth,no_alphatest" | sudo tee -a /etc/environment &&
             echo -e "USE_HEAP=1" | sudo tee -a /etc/environment &&
+            echo -e "PBA_DISABLE=0" | sudo tee -a /etc/environment &&
             echo -e "STEAM_FRAME_FORCE_CLOSE=0" | sudo tee -a /etc/environment &&
             echo -e "STEAM_RUNTIME_HEAVY=1" | sudo tee -a /etc/environment &&
             echo -e "GAMEMODE=1" | sudo tee -a /etc/environment &&
@@ -427,10 +437,11 @@ nvidia() {
     which dnf >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         sudo dnf install vulkan akmod-nvidia xorg-x11-drv-nvidia xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs -y &&
-            echo -e "WINEPREFIX=~/.wine" | sudo tee -a /etc/environment &&
+            echo -e "WINEPREFIX=/opt/.wine" | sudo tee -a /etc/environment &&
+            echo -e "WINEDEBUG=-all" | sudo tee -a /etc/environment &&
             echo -e "WINE_LARGE_ADDRESS_AWARE=1" | sudo tee -a /etc/environment &&
-            echo -e "WINEFSYNC_SPINCOUNT=24" | sudo tee -a /etc/environment &&
             echo -e "WINEFSYNC=1" | sudo tee -a /etc/environment &&
+            echo -e "WINEFSYNC_SPINCOUNT=24" | sudo tee -a /etc/environment &&
             echo -e "WINEFSYNC_FUTEX2=1" | sudo tee -a /etc/environment &&
             echo -e "WINE_SKIP_GECKO_INSTALLATION=1" | sudo tee -a /etc/environment &&
             echo -e "WINE_SKIP_MONO_INSTALLATION=1" | sudo tee -a /etc/environment &&
@@ -482,6 +493,7 @@ nvidia() {
             echo -e "VKD3D_CONFIG=force_static_cbv" | sudo tee -a /etc/environment &&
             echo -e "LP_PERF=no_mipmap,no_linear,no_mip_linear,no_tex,no_blend,no_depth,no_alphatest" | sudo tee -a /etc/environment &&
             echo -e "USE_HEAP=1" | sudo tee -a /etc/environment &&
+            echo -e "PBA_DISABLE=0" | sudo tee -a /etc/environment &&
             echo -e "STEAM_FRAME_FORCE_CLOSE=0" | sudo tee -a /etc/environment &&
             echo -e "STEAM_RUNTIME_HEAVY=1" | sudo tee -a /etc/environment &&
             echo -e "GAMEMODE=1" | sudo tee -a /etc/environment &&
